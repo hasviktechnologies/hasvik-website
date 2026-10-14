@@ -9,7 +9,15 @@ import { WhatsappGlyph } from "@/components/layout/whatsapp-fab";
 import { ContactForm } from "./contact-form";
 import { MapFacade } from "./map-facade";
 
-export async function ContactSection({ as = "h2", defaultService }: { as?: "h1" | "h2"; defaultService?: string }) {
+export async function ContactSection({
+  as = "h2",
+  defaultService,
+  hideHeader = false,
+}: {
+  as?: "h1" | "h2";
+  defaultService?: string;
+  hideHeader?: boolean;
+}) {
   const { locale, t } = await getDictionary();
   const c = t.contact.channels;
 
@@ -24,16 +32,18 @@ export async function ContactSection({ as = "h2", defaultService }: { as?: "h1" 
   const toOption = (s: (typeof techServices)[number]) => ({ value: s.slug, label: tr(s.title, locale) });
 
   return (
-    <Section tone="soft" id="contact" aria-labelledby="contact-title">
+    <Section tone="soft" id="contact" aria-labelledby={hideHeader ? undefined : "contact-title"} aria-label={hideHeader ? t.contact.pageTitle : undefined}>
       <Container>
-        <SectionHeader
-          as={as}
-          id="contact-title"
-          eyebrow={t.contact.eyebrow}
-          title={t.contact.title}
-          highlight={t.contact.highlight}
-          subtitle={t.contact.subtitle}
-        />
+        {hideHeader ? null : (
+          <SectionHeader
+            as={as}
+            id="contact-title"
+            eyebrow={t.contact.eyebrow}
+            title={t.contact.title}
+            highlight={t.contact.highlight}
+            subtitle={t.contact.subtitle}
+          />
+        )}
 
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="flex flex-col gap-4 lg:col-span-5">

@@ -279,6 +279,11 @@ export const en = {
     rural:
       "Skill is everywhere; opportunity isn't. By building our team in Ballia, guided by experienced mentors from the industry, we keep our pricing affordable for clients while creating jobs in our own community.",
     journey: "Our journey",
+    today: {
+      date: "Today",
+      title: "Growing across Eastern UP",
+      body: "{projects}+ projects delivered for {clients}+ happy clients, from schools to engineering firms, and the team keeps growing.",
+    },
   },
   careersPage: {
     title: "Careers at HASVIK",
