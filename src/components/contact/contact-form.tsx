@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -32,6 +32,11 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
   const summaryRef = useRef<HTMLDivElement>(null);
   const startedAt = useRef(0);
   const [showSummary, setShowSummary] = useState(false);
+  const [summaryFocusKey, setSummaryFocusKey] = useState(0);
+
+  useEffect(() => {
+    if (summaryFocusKey) summaryRef.current?.focus();
+  }, [summaryFocusKey]);
 
   const {
     register,
@@ -43,6 +48,7 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
   } = useForm<ContactFields>({
     resolver: zodResolver(schema),
     mode: "onTouched",
+    shouldFocusError: false, // we manage focus: error summary (2+ errors) or the single invalid field
     defaultValues: { name: "", phone: "", email: "", service: defaultService, budget: "", message: "", website: "" },
   });
 
@@ -79,7 +85,7 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
     const count = fieldOrder.filter((f) => errs[f]).length;
     if (count > 1) {
       setShowSummary(true);
-      requestAnimationFrame(() => summaryRef.current?.focus());
+      setSummaryFocusKey((k) => k + 1); // focus moves in the effect below, after the summary renders
     } else {
       setShowSummary(false);
       const first = fieldOrder.find((f) => errs[f]);
