@@ -1,0 +1,101 @@
+import type { Metadata, Viewport } from "next";
+import { Noto_Sans_Devanagari, Poppins } from "next/font/google";
+import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import "../globals.css";
+import { hasLocale, htmlLang, locales } from "@/i18n/config";
+import { dictionaryFor } from "@/i18n/dictionaries";
+import { site } from "@/content/site";
+import { siteUrl } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
+import { Providers, themeScript } from "@/components/providers";
+import { SiteHeader } from "@/components/layout/site-header";
+import { Footer } from "@/components/layout/footer";
+import { WhatsappFab } from "@/components/layout/whatsapp-fab";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const devanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-devanagari",
+  display: "swap",
+  preload: false, // only needed on Hindi pages; avoids preloading on English ones
+});
+
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#004C9A" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1C3E" },
+  ],
+  colorScheme: "light dark",
+};
+
+export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
+  const { lang } = await params;
+  if (!hasLocale(lang)) return {};
+  const t = dictionaryFor(lang);
+  return {
+    metadataBase: new URL(siteUrl),
+    ...pageMetadata({ locale: lang, path: "/" }),
+    title: { default: t.meta.defaultTitle, template: `%s | ${site.name}` },
+    applicationName: site.name,
+    authors: [{ name: site.name, url: siteUrl }],
+    creator: site.name,
+    formatDetection: { telephone: true, email: true, address: true },
+    appleWebApp: { title: site.shortName, capable: true, statusBarStyle: "black-translucent" },
+    category: "technology",
+  };
+}
+
+export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) notFound();
+  const t = dictionaryFor(lang);
+
+  return (
+    <html
+      lang={htmlLang[lang]}
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+      className={`${poppins.variable} ${devanagari.variable} scroll-smooth antialiased`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-dvh overflow-x-clip bg-background">
+        <a
+          href="#main"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-3 font-semibold text-brand-950 transition-transform focus:translate-y-0"
+        >
+          {t.a11y.skip}
+        </a>
+        <Providers>
+          <SiteHeader />
+          <main id="main" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer />
+          <WhatsappFab label={t.a11y.whatsapp} />
+        </Providers>
+        {/* Vercel Analytics scripts only exist on Vercel deployments. */}
+        {process.env.VERCEL ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
+      </body>
+    </html>
+  );
+}
