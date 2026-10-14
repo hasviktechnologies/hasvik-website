@@ -17,13 +17,21 @@ export async function FeaturedProject({ slug = featuredProjectSlug }: { slug?: s
   const domain = new URL(project.liveUrl).host.replace(/^www\./, "");
 
   return (
-    <section aria-labelledby="featured-title" className="on-dark relative isolate overflow-hidden bg-band py-20 text-white sm:py-24">
+    <section aria-labelledby="featured-title" className="on-dark bg-band relative isolate overflow-hidden py-20 text-white sm:py-24">
       <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-60" />
-      <div aria-hidden="true" className="absolute -right-40 top-1/2 -z-10 size-[34rem] -translate-y-1/2 rounded-full bg-accent/20 blur-[120px]" />
+      <div
+        aria-hidden="true"
+        className="absolute top-1/2 -right-40 -z-10 size-[34rem] -translate-y-1/2 rounded-full bg-accent/20 blur-[120px]"
+      />
       <Container className="grid items-center gap-14 lg:grid-cols-[1fr_1.1fr]">
         <Reveal className="flex flex-col items-start gap-5">
           <Eyebrow onDark>{t.featured.eyebrow}</Eyebrow>
-          <HighlightTitle id="featured-title" start={t.featured.title} highlight={t.featured.highlight} className="text-3xl text-white sm:text-4xl lg:text-5xl" />
+          <HighlightTitle
+            id="featured-title"
+            start={t.featured.title}
+            highlight={t.featured.highlight}
+            className="text-3xl text-white sm:text-4xl lg:text-5xl"
+          />
           <span aria-hidden="true" className="h-1 w-14 rounded-full bg-gradient-to-r from-accent to-accent-teal" />
           <p className="max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">{t.featured.body}</p>
 

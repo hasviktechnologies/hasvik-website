@@ -44,7 +44,7 @@ export function ServicesGrid({ locale, t }: { locale: Locale; t: Dictionary }) {
         </RevealItem>
       ))}
       <RevealItem>
-        <div className="on-dark relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-card bg-hero p-7 text-white shadow-soft">
+        <div className="on-dark bg-hero relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-card p-7 text-white shadow-soft">
           <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
           <div className="relative">
             <span className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-accent text-brand-950">

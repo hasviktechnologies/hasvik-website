@@ -32,7 +32,7 @@ export function Eyebrow({ children, className, onDark }: { children: ReactNode; 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]",
+        "inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-[0.14em] uppercase",
         onDark ? "bg-white/10 text-[#9be47f] ring-1 ring-white/15" : "bg-eyebrow text-eyebrow-foreground ring-1 ring-accent/25",
         className,
       )}
@@ -89,7 +89,12 @@ export function SectionHeader({
   as?: "h1" | "h2";
 }) {
   return (
-    <Reveal className={cn("mb-12 flex max-w-3xl flex-col gap-4 sm:mb-16", align === "center" ? "mx-auto items-center text-center" : "items-start")}>
+    <Reveal
+      className={cn(
+        "mb-12 flex max-w-3xl flex-col gap-4 sm:mb-16",
+        align === "center" ? "mx-auto items-center text-center" : "items-start",
+      )}
+    >
       <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow>
       <HighlightTitle
         as={as}
@@ -103,9 +108,7 @@ export function SectionHeader({
         )}
       />
       <span aria-hidden="true" className="h-1 w-14 rounded-full bg-gradient-to-r from-accent to-accent-teal" />
-      {subtitle ? (
-        <p className={cn("text-base sm:text-lg", onDark ? "text-white/80" : "text-muted-foreground")}>{subtitle}</p>
-      ) : null}
+      {subtitle ? <p className={cn("text-base sm:text-lg", onDark ? "text-white/80" : "text-muted-foreground")}>{subtitle}</p> : null}
     </Reveal>
   );
 }

@@ -16,15 +16,20 @@ export async function Hero() {
   const shots = projects.map((p) => ({ src: p.image.src, alt: tr(p.image.alt, locale), name: p.name, url: p.liveUrl }));
   const trustIcons = [BadgeCheck, CalendarDays, FolderCheck, MapPinned];
   const trust = t.hero.trust.map((s) => fmt(s, { n: site.stats.projectsCompleted }));
-  const tagline = tr(site.tagline, locale).split(". ").map((w) => w.replace(/\.$/, ""));
+  const tagline = tr(site.tagline, locale)
+    .split(". ")
+    .map((w) => w.replace(/\.$/, ""));
 
   return (
-    <section aria-labelledby="hero-title" className="on-dark bg-hero relative isolate overflow-hidden pb-16 pt-32 text-white sm:pt-36 lg:pb-24 lg:pt-44">
+    <section
+      aria-labelledby="hero-title"
+      className="on-dark bg-hero relative isolate overflow-hidden pt-32 pb-16 text-white sm:pt-36 lg:pt-44 lg:pb-24"
+    >
       {/* Animated aurora + grid background */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-40 -top-40 size-[36rem] rounded-full bg-[#71c554]/25 blur-[110px] animate-aurora" />
-        <div className="absolute -right-32 top-20 size-[32rem] rounded-full bg-[#2fa3ff]/30 blur-[110px] animate-aurora [animation-delay:-6s]" />
-        <div className="absolute bottom-[-12rem] left-1/3 size-[30rem] rounded-full bg-[#2f9e60]/25 blur-[120px] animate-aurora [animation-delay:-12s]" />
+        <div className="absolute -top-40 -left-40 size-[36rem] animate-aurora rounded-full bg-[#71c554]/25 blur-[110px]" />
+        <div className="absolute top-20 -right-32 size-[32rem] animate-aurora rounded-full bg-[#2fa3ff]/30 blur-[110px] [animation-delay:-6s]" />
+        <div className="absolute bottom-[-12rem] left-1/3 size-[30rem] animate-aurora rounded-full bg-[#2f9e60]/25 blur-[120px] [animation-delay:-12s]" />
         <div className="bg-grid absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-black/10" />
       </div>
@@ -39,14 +44,17 @@ export async function Hero() {
             {site.legalStatus} · {site.address.locality}, {site.address.district}
           </span>
 
-          <h1 id="hero-title" className="text-[2.5rem] font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[4.1rem]">
+          <h1
+            id="hero-title"
+            className="text-[2.5rem] leading-[1.08] font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.1rem]"
+          >
             {t.hero.titleStart} <span className="text-highlight">{t.hero.titleHighlight}</span>
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">{t.hero.subtitle}</p>
 
           <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-base text-white/80 backdrop-blur-sm sm:text-lg">
-            <span className="mb-0.5 block text-xs font-semibold uppercase tracking-[0.16em] text-white/60">{t.hero.rotatingPrefix}</span>
+            <span className="mb-0.5 block text-xs font-semibold tracking-[0.16em] text-white/60 uppercase">{t.hero.rotatingPrefix}</span>
             <RotatingText items={t.hero.rotating} />
           </div>
 
@@ -64,7 +72,10 @@ export async function Hero() {
               {t.hero.ctaPrimary}
               <ArrowRight className="transition-transform duration-200 group-hover/btn:translate-x-1" aria-hidden="true" />
             </Link>
-            <Link href={localizePath("/contact", locale)} className={cn(buttonVariants({ variant: "glass", size: "lg" }), "w-full sm:w-auto")}>
+            <Link
+              href={localizePath("/contact", locale)}
+              className={cn(buttonVariants({ variant: "glass", size: "lg" }), "w-full sm:w-auto")}
+            >
               {t.hero.ctaSecondary}
             </Link>
           </div>

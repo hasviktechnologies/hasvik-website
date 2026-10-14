@@ -45,7 +45,10 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
   const words = title.split(" ");
   const related = projects.filter((p) => p.services.includes(service.slug)).slice(0, 3);
   const others = publishedServices.filter((s) => s.slug !== service.slug).slice(0, 3);
-  const hl = (s: string) => { const r = splitTitle(s); return { title: r.start, highlight: r.highlight }; };
+  const hl = (s: string) => {
+    const r = splitTitle(s);
+    return { title: r.start, highlight: r.highlight };
+  };
   const faqs = service.faqs.map((f) => ({ q: tr(f.q, locale), a: tr(f.a, locale) }));
 
   return (
@@ -99,7 +102,12 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
             {t.nav.getQuote}
             <ArrowRight className="transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />
           </Link>
-          <a href={whatsappLink(`Hello HASVIK, I am interested in ${tr(service.title, "en")}`)} target="_blank" rel="noopener noreferrer" className={buttonVariants({ variant: "glass" })}>
+          <a
+            href={whatsappLink(`Hello HASVIK, I am interested in ${tr(service.title, "en")}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "glass" })}
+          >
             <WhatsappGlyph className="size-4" />
             {t.cta.secondary}
             <span className="sr-only">{t.a11y.external}</span>
@@ -114,7 +122,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
               {title}
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground">{tr(service.description, locale)}</p>
-            <h3 className="mb-4 mt-10 text-xl font-semibold">{t.services.whatYouGet}</h3>
+            <h3 className="mt-10 mb-4 text-xl font-semibold">{t.services.whatYouGet}</h3>
             <ul className="grid gap-3 sm:grid-cols-2">
               {service.deliverables.map((d) => (
                 <li key={tr(d, "en")} className="flex gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft">
@@ -125,7 +133,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
             </ul>
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col gap-5">
-            <div className="on-dark relative overflow-hidden rounded-xl2 bg-hero p-7 text-white shadow-lift">
+            <div className="on-dark bg-hero relative overflow-hidden rounded-xl2 p-7 text-white shadow-lift">
               <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
               <h3 className="relative mb-4 flex items-center gap-2 text-lg font-semibold text-white">
                 <Users className="size-5 text-accent" aria-hidden="true" />

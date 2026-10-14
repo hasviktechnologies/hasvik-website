@@ -15,13 +15,16 @@ export function ProcessStrip({ locale, t }: { locale: Locale; t: Dictionary }) {
         subtitle={t.services.processSubtitle}
       />
       <RevealGroup className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <div aria-hidden="true" className="absolute left-[10%] right-[10%] top-9 hidden h-0.5 bg-gradient-to-r from-brand-600/20 via-accent to-brand-600/20 lg:block" />
+        <div
+          aria-hidden="true"
+          className="absolute top-9 right-[10%] left-[10%] hidden h-0.5 bg-gradient-to-r from-brand-600/20 via-accent to-brand-600/20 lg:block"
+        />
         {processSteps.map((step, i) => (
           <RevealItem key={tr(step.title, "en")} className="relative">
             <div className="flex h-full flex-col items-center rounded-card border border-border bg-card p-6 text-center shadow-soft">
               <span className="relative mb-4 inline-flex size-[4.5rem] items-center justify-center rounded-full bg-gradient-to-br from-brand-900 to-brand-600 text-white ring-8 ring-background">
                 <Icon name={step.icon} className="size-7" />
-                <span className="absolute -right-1 -top-1 inline-flex size-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-brand-950">
+                <span className="absolute -top-1 -right-1 inline-flex size-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-brand-950">
                   {i + 1}
                 </span>
               </span>

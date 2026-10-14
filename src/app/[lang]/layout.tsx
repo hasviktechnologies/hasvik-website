@@ -13,19 +13,25 @@ import { Providers, themeScript } from "@/components/providers";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsappFab } from "@/components/layout/whatsapp-fab";
+import { RevealObserver } from "@/components/motion/reveal-observer";
+import { revealScript } from "@/components/motion/reveal-script";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  // 3 weights keep font transfer small (font-medium -> 400/600, font-extrabold -> 700).
+  weight: ["400", "600", "700"],
   variable: "--font-poppins",
-  display: "swap",
+  // "optional" + preload: no late font swap, so no layout shift and no LCP re-paint.
+  // If the font misses the ~100ms window on a slow first visit, the size-adjusted
+  // fallback is used for that page view and Poppins is served from cache afterwards.
+  display: "optional",
 });
 
 const devanagari = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
   variable: "--font-devanagari",
-  display: "swap",
+  display: "optional", // falls back to the system Devanagari font rather than reflowing
   preload: false, // only needed on Hindi pages; avoids preloading on English ones
 });
 
@@ -76,7 +82,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <body className="min-h-dvh overflow-x-clip bg-background">
         <a
           href="#main"
-          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-3 font-semibold text-brand-950 transition-transform focus:translate-y-0"
+          className="fixed top-4 left-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-3 font-semibold text-brand-950 transition-transform focus:translate-y-0"
         >
           {t.a11y.skip}
         </a>
@@ -87,7 +93,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           </main>
           <Footer />
           <WhatsappFab label={t.a11y.whatsapp} />
+          <RevealObserver />
         </Providers>
+        <script dangerouslySetInnerHTML={{ __html: revealScript }} />
         {/* Vercel Analytics scripts only exist on Vercel deployments. */}
         {process.env.VERCEL ? (
           <>

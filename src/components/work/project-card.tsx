@@ -36,8 +36,11 @@ export function ProjectCard({ project, locale, t, priority }: { project: Project
           sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 92vw"
           className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[rgb(2_6_23/0.85)] via-[rgb(2_6_23/0.15)] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90" />
-        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-[rgb(2_6_23/0.85)] via-[rgb(2_6_23/0.15)] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90"
+        />
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
           <StatusBadge status={project.status} label={t.work.status[project.status]} />
         </div>
         <span className="absolute bottom-4 left-4 rounded-full bg-white/15 px-2.5 py-1 text-xs font-medium text-white ring-1 ring-white/25 backdrop-blur">
@@ -46,7 +49,7 @@ export function ProjectCard({ project, locale, t, priority }: { project: Project
       </div>
       <div className="flex flex-1 flex-col gap-2 p-6">
         <h3 className="text-lg font-semibold">
-          <Link href={caseHref} className="hover:text-link focus-visible:outline-none group-has-[a:focus-visible]:underline">
+          <Link href={caseHref} className="group-has-[a:focus-visible]:underline hover:text-link focus-visible:outline-none">
             {project.name}
           </Link>
         </h3>

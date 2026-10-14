@@ -13,10 +13,13 @@ export async function CtaBand() {
   return (
     <section aria-labelledby="cta-title" className="py-16 sm:py-20">
       <Container>
-        <Reveal className="on-dark relative isolate overflow-hidden rounded-[2rem] bg-hero px-6 py-14 text-center text-white shadow-lift sm:px-12 sm:py-16">
+        <Reveal className="on-dark bg-hero relative isolate overflow-hidden rounded-[2rem] px-6 py-14 text-center text-white shadow-lift sm:px-12 sm:py-16">
           <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-70" />
-          <div aria-hidden="true" className="absolute -left-20 -top-24 -z-10 size-80 rounded-full bg-accent/30 blur-3xl animate-aurora" />
-          <div aria-hidden="true" className="absolute -bottom-24 -right-16 -z-10 size-80 rounded-full bg-[#2fa3ff]/30 blur-3xl animate-aurora [animation-delay:-8s]" />
+          <div aria-hidden="true" className="absolute -top-24 -left-20 -z-10 size-80 animate-aurora rounded-full bg-accent/30 blur-3xl" />
+          <div
+            aria-hidden="true"
+            className="absolute -right-16 -bottom-24 -z-10 size-80 animate-aurora rounded-full bg-[#2fa3ff]/30 blur-3xl [animation-delay:-8s]"
+          />
           <h2 id="cta-title" className="mx-auto max-w-2xl text-3xl font-bold text-white sm:text-4xl">
             {t.cta.title}
           </h2>

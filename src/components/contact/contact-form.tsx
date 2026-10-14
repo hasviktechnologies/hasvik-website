@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
-import { useForm, type FieldErrors } from "react-hook-form";
+import { useForm, useWatch, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
@@ -25,6 +25,15 @@ type Props = {
 
 const fieldOrder = ["name", "phone", "email", "service", "message"] as const;
 
+function Req({ label }: { label: string }) {
+  return (
+    <span className="text-red-700 dark:text-red-300">
+      <span aria-hidden="true"> *</span>
+      <span className="sr-only"> ({label})</span>
+    </span>
+  );
+}
+
 export function ContactForm({ strings, validation, techOptions, nonTechOptions, defaultService = "" }: Props) {
   const schema = useMemo(() => contactFieldsSchema(validation), [validation]);
   const [pending, startTransition] = useTransition();
@@ -41,7 +50,7 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     reset,
     setError,
     formState: { errors },
@@ -52,7 +61,7 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
     defaultValues: { name: "", phone: "", email: "", service: defaultService, budget: "", message: "", website: "" },
   });
 
-  const values = watch();
+  const values = useWatch({ control });
   const allOptions = [...techOptions, ...nonTechOptions];
   const waText = [
     "Hello HASVIK,",
@@ -75,7 +84,9 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
         return;
       }
       if (res.error === "validation" && res.fields) {
-        for (const f of res.fields) if ((fieldOrder as readonly string[]).includes(f)) setError(f as (typeof fieldOrder)[number], { message: validation[f as keyof typeof validation] });
+        for (const f of res.fields)
+          if ((fieldOrder as readonly string[]).includes(f))
+            setError(f as (typeof fieldOrder)[number], { message: validation[f as keyof typeof validation] });
       }
       toast.error(res.error === "rate_limited" ? strings.rateLimited : strings.error);
     });
@@ -98,13 +109,6 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
   const label = "mb-1.5 block text-sm font-semibold text-heading";
   const errorCls = "mt-1.5 text-sm font-medium text-red-700 dark:text-red-300";
 
-  const Req = () => (
-    <span className="text-red-700 dark:text-red-300">
-      <span aria-hidden="true"> *</span>
-      <span className="sr-only"> ({strings.required})</span>
-    </span>
-  );
-
   if (sent) {
     return (
       <div role="status" className="flex flex-col items-center gap-4 rounded-xl2 border border-accent/40 bg-eyebrow p-10 text-center">
@@ -120,7 +124,7 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
   return (
     <form
       noValidate
-      onSubmit={handleSubmit(onValid, onInvalid)}
+      onSubmit={(e) => void handleSubmit(onValid, onInvalid)(e)}
       onFocusCapture={() => {
         // First interaction time, used by the server-side time trap.
         if (!startedAt.current) startedAt.current = Date.now();
@@ -128,7 +132,12 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
       className="flex flex-col gap-5"
     >
       {showSummary ? (
-        <div ref={summaryRef} tabIndex={-1} role="alert" className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-400/40 dark:bg-red-950/40 dark:text-red-200">
+        <div
+          ref={summaryRef}
+          tabIndex={-1}
+          role="alert"
+          className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-400/40 dark:bg-red-950/40 dark:text-red-200"
+        >
           <p className="mb-2 font-semibold">{strings.errorSummary}</p>
           <ul className="list-inside list-disc">
             {fieldOrder
@@ -154,18 +163,42 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
         <div>
           <label htmlFor="cf-name" className={label}>
             {strings.name}
-            <Req />
+            <Req label={strings.required} />
           </label>
-          <input id="cf-name" autoComplete="name" className={input} aria-invalid={!!errors.name} aria-describedby={errors.name ? "cf-name-err" : undefined} {...register("name")} />
-          {errors.name ? <p id="cf-name-err" className={errorCls}>{errors.name.message}</p> : null}
+          <input
+            id="cf-name"
+            autoComplete="name"
+            className={input}
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "cf-name-err" : undefined}
+            {...register("name")}
+          />
+          {errors.name ? (
+            <p id="cf-name-err" className={errorCls}>
+              {errors.name.message}
+            </p>
+          ) : null}
         </div>
         <div>
           <label htmlFor="cf-phone" className={label}>
             {strings.phone}
-            <Req />
+            <Req label={strings.required} />
           </label>
-          <input id="cf-phone" type="tel" inputMode="tel" autoComplete="tel" className={input} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "cf-phone-err" : undefined} {...register("phone")} />
-          {errors.phone ? <p id="cf-phone-err" className={errorCls}>{errors.phone.message}</p> : null}
+          <input
+            id="cf-phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            className={input}
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? "cf-phone-err" : undefined}
+            {...register("phone")}
+          />
+          {errors.phone ? (
+            <p id="cf-phone-err" className={errorCls}>
+              {errors.phone.message}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -173,17 +206,40 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
         <label htmlFor="cf-email" className={label}>
           {strings.email}
         </label>
-        <input id="cf-email" type="email" inputMode="email" autoComplete="email" className={input} aria-invalid={!!errors.email} aria-describedby={errors.email ? "cf-email-err" : undefined} {...register("email")} />
-        {errors.email ? <p id="cf-email-err" className={errorCls}>{errors.email.message}</p> : null}
+        <input
+          id="cf-email"
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          className={input}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "cf-email-err" : undefined}
+          {...register("email")}
+        />
+        {errors.email ? (
+          <p id="cf-email-err" className={errorCls}>
+            {errors.email.message}
+          </p>
+        ) : null}
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-service" className={label}>
             {strings.service}
-            <Req />
+            <Req label={strings.required} />
           </label>
-          <select id="cf-service" className={cn(input, "appearance-none bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10")} style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e6c82' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")" }} aria-invalid={!!errors.service} aria-describedby={errors.service ? "cf-service-err" : undefined} {...register("service")}>
+          <select
+            id="cf-service"
+            className={cn(input, "appearance-none bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10")}
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e6c82' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+            }}
+            aria-invalid={!!errors.service}
+            aria-describedby={errors.service ? "cf-service-err" : undefined}
+            {...register("service")}
+          >
             <option value="">{strings.servicePlaceholder}</option>
             <optgroup label={strings.serviceTech}>
               {techOptions.map((o) => (
@@ -201,13 +257,25 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
               <option value="other">{strings.serviceOther}</option>
             </optgroup>
           </select>
-          {errors.service ? <p id="cf-service-err" className={errorCls}>{errors.service.message}</p> : null}
+          {errors.service ? (
+            <p id="cf-service-err" className={errorCls}>
+              {errors.service.message}
+            </p>
+          ) : null}
         </div>
         <div>
           <label htmlFor="cf-budget" className={label}>
             {strings.budget}
           </label>
-          <select id="cf-budget" className={cn(input, "appearance-none bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10")} style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e6c82' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")" }} {...register("budget")}>
+          <select
+            id="cf-budget"
+            className={cn(input, "appearance-none bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10")}
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235e6c82' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+            }}
+            {...register("budget")}
+          >
             <option value="">{strings.budgetPlaceholder}</option>
             {strings.budgets.map((b) => (
               <option key={b} value={b}>
@@ -221,10 +289,22 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
       <div>
         <label htmlFor="cf-message" className={label}>
           {strings.message}
-          <Req />
+          <Req label={strings.required} />
         </label>
-        <textarea id="cf-message" rows={5} placeholder={strings.messagePlaceholder} className={cn(input, "resize-y")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "cf-message-err" : "cf-privacy"} {...register("message")} />
-        {errors.message ? <p id="cf-message-err" className={errorCls}>{errors.message.message}</p> : null}
+        <textarea
+          id="cf-message"
+          rows={5}
+          placeholder={strings.messagePlaceholder}
+          className={cn(input, "resize-y")}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "cf-message-err" : "cf-privacy"}
+          {...register("message")}
+        />
+        {errors.message ? (
+          <p id="cf-message-err" className={errorCls}>
+            {errors.message.message}
+          </p>
+        ) : null}
       </div>
 
       <p id="cf-privacy" className="text-xs text-muted-foreground">
@@ -236,7 +316,12 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
           {pending ? <Loader2 className="animate-spin" aria-hidden="true" /> : <Send aria-hidden="true" />}
           {pending ? strings.sending : strings.submit}
         </button>
-        <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-link hover:underline">
+        <a
+          href={whatsappLink(waText)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-link hover:underline"
+        >
           <WhatsappGlyph className="size-4 text-[#1a9e4b]" />
           {strings.whatsappFallback}
         </a>

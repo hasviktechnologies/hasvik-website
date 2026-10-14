@@ -36,8 +36,7 @@ export const site = {
     // Approximate coordinates of Maniar, Ballia. TODO(owner): replace with exact office pin.
     geo: { lat: 25.9833, lng: 84.1667 },
   },
-  mapEmbedUrl:
-    "https://www.google.com/maps?q=HASVIK+Technologies+Maniar+Ballia+Uttar+Pradesh+277207&output=embed",
+  mapEmbedUrl: "https://www.google.com/maps?q=HASVIK+Technologies+Maniar+Ballia+Uttar+Pradesh+277207&output=embed",
   // TODO(owner): replace with the exact Google Business Profile share link.
   mapsListingUrl: "https://www.google.com/maps/search/?api=1&query=HASVIK+Technologies+Maniar+Ballia",
 

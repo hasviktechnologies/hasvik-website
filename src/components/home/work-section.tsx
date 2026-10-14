@@ -13,7 +13,13 @@ export async function WorkSection() {
   return (
     <Section tone="surface" aria-labelledby="work-title">
       <Container>
-        <SectionHeader id="work-title" eyebrow={t.work.eyebrow} title={t.work.title} highlight={t.work.highlight} subtitle={t.work.subtitle} />
+        <SectionHeader
+          id="work-title"
+          eyebrow={t.work.eyebrow}
+          title={t.work.title}
+          highlight={t.work.highlight}
+          subtitle={t.work.subtitle}
+        />
         <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <RevealItem key={p.slug}>

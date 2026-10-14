@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  experimental: {
+    // Inline Tailwind CSS into the HTML: removes the render-blocking stylesheet
+    // request for first-time (mostly mobile) visitors. See docs/PROJECT_CONTEXT.md.
+    inlineCss: true,
+  },
   turbopack: {
     rules: {
       "*.css": {

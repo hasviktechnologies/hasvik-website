@@ -328,21 +328,19 @@ export const services: Service[] = [
       ["social-media-management", "megaphone", "Social Media Management", "सोशल मीडिया मैनेजमेंट"],
       ["graphic-design-printing", "palette", "Graphic Design & Printing", "ग्राफ़िक डिज़ाइन और प्रिंटिंग"],
     ] as const
-  ).map(
-    ([slug, icon, en, hi]): Service => ({
-      slug,
-      kind: "non-tech",
-      published: false,
-      icon,
-      title: { en, hi },
-      short: "TODO(owner): one-line description",
-      description: "TODO(owner): full description",
-      features: [],
-      deliverables: [],
-      idealFor: [],
-      faqs: [],
-    }),
-  ),
+  ).map(([slug, icon, en, hi]): Service => ({
+    slug,
+    kind: "non-tech",
+    published: false,
+    icon,
+    title: { en, hi },
+    short: "TODO(owner): one-line description",
+    description: "TODO(owner): full description",
+    features: [],
+    deliverables: [],
+    idealFor: [],
+    faqs: [],
+  })),
 ];
 
 export const publishedServices = services.filter((s) => s.published);
@@ -355,9 +353,29 @@ export function getService(slug: string) {
 
 /** "How We Work" process strip. */
 export const processSteps: { icon: IconName; title: Localized; body: Localized }[] = [
-  { icon: "messages", title: { en: "Discuss", hi: "चर्चा" }, body: { en: "We understand your goals, audience and budget.", hi: "हम आपके लक्ष्य, ग्राहक और बजट समझते हैं।" } },
-  { icon: "pen-tool", title: { en: "Design", hi: "डिज़ाइन" }, body: { en: "A clean, on-brand design you approve first.", hi: "पहले आपकी मंज़ूरी वाला साफ़, ब्रांड के अनुरूप डिज़ाइन।" } },
-  { icon: "code", title: { en: "Develop", hi: "डेवलप" }, body: { en: "Fast, secure, mobile-first build with modern tech.", hi: "आधुनिक तकनीक से तेज़, सुरक्षित, मोबाइल-फ़र्स्ट निर्माण।" } },
-  { icon: "rocket", title: { en: "Deploy", hi: "लॉन्च" }, body: { en: "Go live on your domain, indexed on Google.", hi: "आपके डोमेन पर लाइव, Google पर इंडेक्स।" } },
-  { icon: "life-buoy", title: { en: "Support", hi: "सपोर्ट" }, body: { en: "Updates, fixes and help whenever you need it.", hi: "जब भी ज़रूरत हो, अपडेट, सुधार और मदद।" } },
+  {
+    icon: "messages",
+    title: { en: "Discuss", hi: "चर्चा" },
+    body: { en: "We understand your goals, audience and budget.", hi: "हम आपके लक्ष्य, ग्राहक और बजट समझते हैं।" },
+  },
+  {
+    icon: "pen-tool",
+    title: { en: "Design", hi: "डिज़ाइन" },
+    body: { en: "A clean, on-brand design you approve first.", hi: "पहले आपकी मंज़ूरी वाला साफ़, ब्रांड के अनुरूप डिज़ाइन।" },
+  },
+  {
+    icon: "code",
+    title: { en: "Develop", hi: "डेवलप" },
+    body: { en: "Fast, secure, mobile-first build with modern tech.", hi: "आधुनिक तकनीक से तेज़, सुरक्षित, मोबाइल-फ़र्स्ट निर्माण।" },
+  },
+  {
+    icon: "rocket",
+    title: { en: "Deploy", hi: "लॉन्च" },
+    body: { en: "Go live on your domain, indexed on Google.", hi: "आपके डोमेन पर लाइव, Google पर इंडेक्स।" },
+  },
+  {
+    icon: "life-buoy",
+    title: { en: "Support", hi: "सपोर्ट" },
+    body: { en: "Updates, fixes and help whenever you need it.", hi: "जब भी ज़रूरत हो, अपडेट, सुधार और मदद।" },
+  },
 ];

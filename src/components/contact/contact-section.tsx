@@ -22,17 +22,43 @@ export async function ContactSection({
   const c = t.contact.channels;
 
   const channels = [
-    { key: "sales", icon: Briefcase, label: c.sales.label, body: c.sales.body, value: site.emails.sales, href: `mailto:${site.emails.sales}` },
-    { key: "support", icon: Headphones, label: c.support.label, body: c.support.body, value: site.emails.support, href: `mailto:${site.emails.support}` },
+    {
+      key: "sales",
+      icon: Briefcase,
+      label: c.sales.label,
+      body: c.sales.body,
+      value: site.emails.sales,
+      href: `mailto:${site.emails.sales}`,
+    },
+    {
+      key: "support",
+      icon: Headphones,
+      label: c.support.label,
+      body: c.support.body,
+      value: site.emails.support,
+      href: `mailto:${site.emails.support}`,
+    },
     { key: "info", icon: Info, label: c.info.label, body: c.info.body, value: site.emails.info, href: `mailto:${site.emails.info}` },
-    { key: "careers", icon: Mail, label: c.careers.label, body: c.careers.body, value: site.emails.careers, href: `mailto:${site.emails.careers}` },
+    {
+      key: "careers",
+      icon: Mail,
+      label: c.careers.label,
+      body: c.careers.body,
+      value: site.emails.careers,
+      href: `mailto:${site.emails.careers}`,
+    },
     { key: "phone", icon: Phone, label: c.phone.label, body: c.phone.body, value: site.phone.display, href: `tel:${site.phone.e164}` },
   ];
 
   const toOption = (s: (typeof techServices)[number]) => ({ value: s.slug, label: tr(s.title, locale) });
 
   return (
-    <Section tone="soft" id="contact" aria-labelledby={hideHeader ? undefined : "contact-title"} aria-label={hideHeader ? t.contact.pageTitle : undefined}>
+    <Section
+      tone="soft"
+      id="contact"
+      aria-labelledby={hideHeader ? undefined : "contact-title"}
+      aria-label={hideHeader ? t.contact.pageTitle : undefined}
+    >
       <Container>
         {hideHeader ? null : (
           <SectionHeader
@@ -75,7 +101,7 @@ export async function ContactSection({
                       <ch.icon className="size-5" aria-hidden="true" />
                     </span>
                     <span className="text-sm font-semibold text-heading">{ch.label}</span>
-                    <span className="break-all text-sm font-medium text-link">{ch.value}</span>
+                    <span className="text-sm font-medium break-all text-link">{ch.value}</span>
                     <span className="text-xs text-muted-foreground">{ch.body}</span>
                   </a>
                 </RevealItem>
@@ -98,7 +124,7 @@ export async function ContactSection({
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-heading">{t.contact.office}</p>
-                  <address className="text-sm not-italic text-muted-foreground">{fullAddress}</address>
+                  <address className="text-sm text-muted-foreground not-italic">{fullAddress}</address>
                   <a
                     href={site.mapsListingUrl}
                     target="_blank"
@@ -117,7 +143,7 @@ export async function ContactSection({
           <div className="flex flex-col gap-6 lg:col-span-7">
             <Reveal id="quote" className="scroll-mt-28 rounded-xl2 border border-border bg-card p-6 shadow-lift sm:p-8">
               <h3 className="text-2xl font-bold">{t.contact.form.title}</h3>
-              <p className="mb-6 mt-1 text-sm text-muted-foreground">{t.contact.form.intro}</p>
+              <p className="mt-1 mb-6 text-sm text-muted-foreground">{t.contact.form.intro}</p>
               <ContactForm
                 strings={t.contact.form}
                 validation={t.contact.validation}
@@ -126,7 +152,13 @@ export async function ContactSection({
                 defaultService={defaultService}
               />
             </Reveal>
-            <MapFacade src={site.mapEmbedUrl} title={t.contact.mapTitle} loadLabel={t.contact.loadMap} notice={t.contact.mapNotice} address={fullAddress} />
+            <MapFacade
+              src={site.mapEmbedUrl}
+              title={t.contact.mapTitle}
+              loadLabel={t.contact.loadMap}
+              notice={t.contact.mapNotice}
+              address={fullAddress}
+            />
           </div>
         </div>
       </Container>

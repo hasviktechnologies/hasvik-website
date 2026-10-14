@@ -33,8 +33,11 @@ export default async function ServicesPage() {
           { name: t.nav.services, href: L("/services") },
         ]}
       />
-      <Section tone="surface" aria-label={t.services.pageTitle}>
+      <Section tone="surface" aria-labelledby="services-list-title">
         <Container>
+          <h2 id="services-list-title" className="sr-only">
+            {t.services.pageTitle}
+          </h2>
           <ServicesGrid locale={locale} t={t} />
         </Container>
       </Section>

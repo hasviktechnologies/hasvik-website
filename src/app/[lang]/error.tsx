@@ -12,7 +12,12 @@ import { StatusPage } from "@/components/layout/status-page";
 // Mirror of `common.*` in src/i18n/dictionaries.
 const strings = {
   en: { title: "Something went wrong", body: "An unexpected error occurred. Please try again.", retry: "Try again", home: "Back to home" },
-  hi: { title: "कुछ गड़बड़ हो गई", body: "एक अनपेक्षित त्रुटि हुई। कृपया फिर से कोशिश करें।", retry: "फिर कोशिश करें", home: "होम पर जाएँ" },
+  hi: {
+    title: "कुछ गड़बड़ हो गई",
+    body: "एक अनपेक्षित त्रुटि हुई। कृपया फिर से कोशिश करें।",
+    retry: "फिर कोशिश करें",
+    home: "होम पर जाएँ",
+  },
 } as const;
 
 export default function ErrorPage({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {

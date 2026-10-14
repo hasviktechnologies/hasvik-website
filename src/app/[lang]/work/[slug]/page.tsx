@@ -105,10 +105,19 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
                 <span className="size-3 rounded-full bg-[#febc2e]" />
                 <span className="size-3 rounded-full bg-[#28c840]" />
               </span>
-              <span className="ml-3 truncate rounded-md bg-card px-3 py-1 text-xs text-muted-foreground ring-1 ring-border">{project.liveUrl.replace(/^https?:\/\//, "")}</span>
+              <span className="ml-3 truncate rounded-md bg-card px-3 py-1 text-xs text-muted-foreground ring-1 ring-border">
+                {project.liveUrl.replace(/^https?:\/\//, "")}
+              </span>
             </div>
             <div className="relative aspect-[16/8]">
-              <Image src={project.image.src} alt={tr(project.image.alt, locale)} fill priority sizes="(min-width: 1280px) 1216px, 96vw" className="object-cover object-top" />
+              <Image
+                src={project.image.src}
+                alt={tr(project.image.alt, locale)}
+                fill
+                priority
+                sizes="(min-width: 1280px) 1216px, 96vw"
+                className="object-cover object-top"
+              />
             </div>
           </Reveal>
 
@@ -118,7 +127,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
               <h2 className="mb-3 text-2xl font-bold">{t.work.problem}</h2>
               <p className="leading-relaxed text-muted-foreground">{tr(project.caseStudy.problem, locale)}</p>
             </Reveal>
-            <Reveal delay={0.08} className="on-dark relative overflow-hidden rounded-xl2 bg-hero p-8 text-white shadow-lift">
+            <Reveal delay={0.08} className="on-dark bg-hero relative overflow-hidden rounded-xl2 p-8 text-white shadow-lift">
               <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
               <Wrench className="relative mb-4 size-8 text-accent" aria-hidden="true" />
               <h2 className="relative mb-3 text-2xl font-bold text-white">{t.work.solution}</h2>
@@ -143,7 +152,10 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
               <ul className="flex flex-col gap-2">
                 {usedServices.map((s) => (
                   <li key={s.slug}>
-                    <Link href={L(`/services/${s.slug}`)} className="flex min-h-11 items-center gap-3 rounded-xl px-2 text-sm font-semibold text-link hover:bg-surface">
+                    <Link
+                      href={L(`/services/${s.slug}`)}
+                      className="flex min-h-11 items-center gap-3 rounded-xl px-2 text-sm font-semibold text-link hover:bg-surface"
+                    >
                       <Icon name={s.icon} className="size-4" />
                       {tr(s.title, locale)}
                     </Link>
@@ -161,7 +173,13 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
                   <RevealItem key={g.src}>
                     <figure className="group overflow-hidden rounded-card border border-border bg-card shadow-soft">
                       <div className="relative aspect-[3/4] overflow-hidden">
-                        <Image src={g.src} alt={tr(g.alt, locale)} fill sizes="(min-width: 1024px) 300px, 46vw" className="object-cover object-top transition-[object-position] duration-[3000ms] ease-in-out group-hover:object-bottom" />
+                        <Image
+                          src={g.src}
+                          alt={tr(g.alt, locale)}
+                          fill
+                          sizes="(min-width: 1024px) 300px, 46vw"
+                          className="object-cover object-top transition-[object-position] duration-[3000ms] ease-in-out group-hover:object-bottom"
+                        />
                       </div>
                       <figcaption className="p-4 text-xs text-muted-foreground">{tr(g.caption, locale)}</figcaption>
                     </figure>
@@ -173,8 +191,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
 
           {testimonial ? (
             <Reveal className="mt-16">
-              <figure className="relative overflow-hidden rounded-xl2 border border-border bg-soft p-8 shadow-soft sm:p-12">
-                <Quote aria-hidden="true" className="absolute right-8 top-8 size-16 text-accent/25" />
+              <figure className="bg-soft relative overflow-hidden rounded-xl2 border border-border p-8 shadow-soft sm:p-12">
+                <Quote aria-hidden="true" className="absolute top-8 right-8 size-16 text-accent/25" />
                 <div role="img" aria-label={t.a11y.rating.replace("{n}", String(testimonial.rating))} className="mb-4 flex gap-0.5">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
                     <Star key={i} aria-hidden="true" className="size-5 fill-[#f5b301] text-[#f5b301]" />
@@ -182,7 +200,10 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
                 </div>
                 <blockquote className="max-w-3xl text-lg leading-relaxed text-foreground sm:text-xl">“{testimonial.quote}”</blockquote>
                 <figcaption className="mt-6 font-semibold text-heading">
-                  {testimonial.name} <span className="font-normal text-muted-foreground">· {testimonial.company}, {testimonial.location}</span>
+                  {testimonial.name}{" "}
+                  <span className="font-normal text-muted-foreground">
+                    · {testimonial.company}, {testimonial.location}
+                  </span>
                 </figcaption>
               </figure>
             </Reveal>
@@ -192,7 +213,14 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
 
       <Section tone="surface" aria-labelledby="more-title">
         <Container>
-          <SectionHeader id="more-title" eyebrow={t.work.eyebrow} {...(() => { const r = splitTitle(t.work.moreWork); return { title: r.start, highlight: r.highlight }; })()} />
+          <SectionHeader
+            id="more-title"
+            eyebrow={t.work.eyebrow}
+            {...(() => {
+              const r = splitTitle(t.work.moreWork);
+              return { title: r.start, highlight: r.highlight };
+            })()}
+          />
           <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {more.map((p) => (
               <RevealItem key={p.slug}>

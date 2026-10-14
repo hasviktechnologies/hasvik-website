@@ -43,7 +43,10 @@ export async function Footer() {
   return (
     <footer className="on-dark relative overflow-hidden bg-brand-950 text-white">
       <div aria-hidden="true" className="bg-grid pointer-events-none absolute inset-0 opacity-40" />
-      <div aria-hidden="true" className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[48rem] -translate-x-1/2 rounded-full bg-brand-600/25 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[48rem] -translate-x-1/2 rounded-full bg-brand-600/25 blur-3xl"
+      />
       <Container className="relative grid gap-12 py-16 sm:py-20 md:grid-cols-2 lg:grid-cols-12">
         <div className="flex flex-col gap-5 lg:col-span-4">
           <Link href={L("/")} className="w-fit rounded-full bg-white px-4 py-2">
@@ -79,7 +82,7 @@ export async function Footer() {
         </div>
 
         <nav aria-label={t.footer.quickLinks} className="lg:col-span-2">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t.footer.quickLinks}</h2>
+          <h2 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">{t.footer.quickLinks}</h2>
           <ul className="flex flex-col gap-2.5 text-sm">
             {quick.map((q) => (
               <li key={q.href}>
@@ -92,7 +95,7 @@ export async function Footer() {
         </nav>
 
         <nav aria-label={t.footer.services} className="lg:col-span-3">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t.footer.services}</h2>
+          <h2 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">{t.footer.services}</h2>
           <ul className="flex flex-col gap-2.5 text-sm">
             {publishedServices.map((s) => (
               <li key={s.slug}>
@@ -105,7 +108,7 @@ export async function Footer() {
         </nav>
 
         <div className="lg:col-span-3">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t.footer.getInTouch}</h2>
+          <h2 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">{t.footer.getInTouch}</h2>
           <ul className="flex flex-col gap-4 text-sm text-white/75">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
@@ -131,7 +134,7 @@ export async function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 md:col-span-2 lg:col-span-12">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/60">{t.footer.areas}</h2>
+          <h2 className="mb-3 text-xs font-semibold tracking-wider text-white/60 uppercase">{t.footer.areas}</h2>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
             {cities.map((c) => (
               <li key={c.slug}>

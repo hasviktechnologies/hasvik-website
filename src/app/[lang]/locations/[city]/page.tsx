@@ -114,7 +114,7 @@ export default async function CityPage({ params }: PageProps<"/[lang]/locations/
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.08} className="on-dark relative overflow-hidden rounded-xl2 bg-hero p-8 text-white shadow-lift">
+          <Reveal delay={0.08} className="on-dark bg-hero relative overflow-hidden rounded-xl2 p-8 text-white shadow-lift">
             <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
             <Sparkles className="relative mb-4 size-8 text-accent" aria-hidden="true" />
             <h2 className="relative mb-3 text-2xl font-bold text-white">{fmt(t.locationsPage.whyTitle, { city: name })}</h2>
@@ -184,7 +184,10 @@ export default async function CityPage({ params }: PageProps<"/[lang]/locations/
             <ul className="flex flex-wrap gap-2">
               {nearby.map((n) => (
                 <li key={n.slug}>
-                  <Link href={L(`/locations/${n.slug}`)} className="inline-flex min-h-11 items-center rounded-full bg-eyebrow px-4 text-sm font-semibold text-eyebrow-foreground hover:underline">
+                  <Link
+                    href={L(`/locations/${n.slug}`)}
+                    className="inline-flex min-h-11 items-center rounded-full bg-eyebrow px-4 text-sm font-semibold text-eyebrow-foreground hover:underline"
+                  >
                     {tr(n.name, locale)}
                   </Link>
                 </li>

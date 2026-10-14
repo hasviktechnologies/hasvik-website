@@ -107,27 +107,50 @@
   --animate-float: float 6s ease-in-out infinite;
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-50% - var(--marquee-gap, 1rem) / 2)); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - var(--marquee-gap, 1rem) / 2));
+    }
   }
   @keyframes aurora {
-    0% { transform: translate3d(-6%, -4%, 0) rotate(0deg) scale(1); }
-    50% { transform: translate3d(4%, 6%, 0) rotate(8deg) scale(1.08); }
-    100% { transform: translate3d(8%, -2%, 0) rotate(-6deg) scale(1); }
+    0% {
+      transform: translate3d(-6%, -4%, 0) rotate(0deg) scale(1);
+    }
+    50% {
+      transform: translate3d(4%, 6%, 0) rotate(8deg) scale(1.08);
+    }
+    100% {
+      transform: translate3d(8%, -2%, 0) rotate(-6deg) scale(1);
+    }
   }
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 @layer base {
@@ -141,11 +164,16 @@
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     color: var(--heading);
     text-wrap: balance;
   }
-  p { text-wrap: pretty; }
+  p {
+    text-wrap: pretty;
+  }
   ::selection {
     background: rgb(113 197 84 / 0.35);
   }
@@ -154,8 +182,15 @@
     outline-offset: 3px;
     border-radius: 6px;
   }
-  button, [role="button"], a { touch-action: manipulation; }
-  button:not(:disabled), [role="button"] { cursor: pointer; }
+  button,
+  [role="button"],
+  a {
+    touch-action: manipulation;
+  }
+  button:not(:disabled),
+  [role="button"] {
+    cursor: pointer;
+  }
 }
 
 @layer components {
@@ -217,11 +252,68 @@
     z-index: -1;
     pointer-events: none;
   }
-  .spotlight:hover::before { opacity: 1; }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Scroll reveal (see components/motion/reveal.tsx). Hidden only when JS runs. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 550ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+}
+html.js [data-reveal="item"] {
+  transform: translate3d(0, 16px, 0) scale(0.98);
+}
+html.js [data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+/* Stagger children of a reveal group 60ms apart. */
+[data-reveal-group] > [data-reveal]:nth-child(2) {
+  --reveal-delay: 60ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(3) {
+  --reveal-delay: 120ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(4) {
+  --reveal-delay: 180ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(5) {
+  --reveal-delay: 240ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(6) {
+  --reveal-delay: 300ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(7) {
+  --reveal-delay: 340ms;
+}
+[data-reveal-group] > [data-reveal]:nth-child(n + 8) {
+  --reveal-delay: 380ms;
+}
+
+/* Performance on phones: large animated blur blobs and floating glass badges cost
+   ~1s of style/paint work on mid-range devices, so they are desktop-only. */
+@media (max-width: 767px) {
+  .animate-aurora {
+    display: none;
+  }
+  .animate-float {
+    animation: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

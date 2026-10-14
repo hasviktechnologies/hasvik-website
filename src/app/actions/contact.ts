@@ -21,8 +21,7 @@ function rateLimited(ip: string) {
   return recent.length > MAX_HITS;
 }
 
-const escape = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+const escape = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 export async function submitContact(input: ContactPayload): Promise<ContactResult> {
   const parsed = contactServerSchema.safeParse(input);
@@ -75,7 +74,10 @@ export async function submitContact(input: ContactPayload): Promise<ContactResul
       text: `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nMessage:\n${data.message}\n\nIP: ${ip}`,
       html: `<h2 style="font-family:sans-serif;color:#002f6c">New quote request</h2>
 <table style="font-family:sans-serif;border-collapse:collapse">${rows
-        .map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#5e6c82">${k}</td><td style="padding:4px 0"><strong>${escape(v)}</strong></td></tr>`)
+        .map(
+          ([k, v]) =>
+            `<tr><td style="padding:4px 12px 4px 0;color:#5e6c82">${k}</td><td style="padding:4px 0"><strong>${escape(v)}</strong></td></tr>`,
+        )
         .join("")}</table>
 <p style="font-family:sans-serif;white-space:pre-wrap;border-left:3px solid #71c554;padding-left:12px">${escape(data.message)}</p>`,
     });

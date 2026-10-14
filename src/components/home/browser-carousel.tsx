@@ -11,7 +11,17 @@ export type CarouselSlide = { src: string; width: number; height: number; alt: s
 type Strings = { previous: string; next: string; pause: string; play: string; goToSlide: string; live: string; external: string };
 
 /** Browser-chrome framed, auto-playing carousel (WAI-ARIA carousel pattern, pausable). */
-export function BrowserCarousel({ slides, domain, strings, interval = 5000 }: { slides: CarouselSlide[]; domain: string; strings: Strings; interval?: number }) {
+export function BrowserCarousel({
+  slides,
+  domain,
+  strings,
+  interval = 5000,
+}: {
+  slides: CarouselSlide[];
+  domain: string;
+  strings: Strings;
+  interval?: number;
+}) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -46,7 +56,10 @@ export function BrowserCarousel({ slides, domain, strings, interval = 5000 }: { 
             <span className="size-2.5 rounded-full bg-[#28c840]" />
           </span>
           <span className="ml-2 flex min-w-0 flex-1 items-center gap-2 rounded-md bg-white px-3 py-1 text-xs text-slate-600 ring-1 ring-slate-200">
-            <span className="truncate">{domain}{slide.href ? new URL(slide.href).pathname.replace(/^\/$/, "") : ""}</span>
+            <span className="truncate">
+              {domain}
+              {slide.href ? new URL(slide.href).pathname.replace(/^\/$/, "") : ""}
+            </span>
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
             <span aria-hidden="true" className="relative flex size-1.5">
@@ -86,20 +99,40 @@ export function BrowserCarousel({ slides, domain, strings, interval = 5000 }: { 
         <p className="min-h-[3rem] text-sm text-white/85 sm:max-w-sm">
           {slide.caption}
           {slide.href ? (
-            <a href={slide.href} target="_blank" rel="noopener noreferrer" className="ml-1.5 inline-flex items-center gap-1 font-semibold text-[#9be47f] hover:underline">
+            <a
+              href={slide.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1.5 inline-flex items-center gap-1 font-semibold text-[#9be47f] hover:underline"
+            >
               <ExternalLink className="size-3.5" aria-hidden="true" />
               <span className="sr-only">{strings.external}</span>
             </a>
           ) : null}
         </p>
         <div className="flex items-center gap-1.5 self-end sm:self-auto">
-          <button type="button" onClick={() => setPlaying((p) => !p)} aria-label={playing ? strings.pause : strings.play} className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20">
+          <button
+            type="button"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? strings.pause : strings.play}
+            className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20"
+          >
             {playing ? <Pause className="size-4" aria-hidden="true" /> : <Play className="size-4" aria-hidden="true" />}
           </button>
-          <button type="button" onClick={() => go(-1)} aria-label={strings.previous} className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20">
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label={strings.previous}
+            className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20"
+          >
             <ChevronLeft className="size-5" aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => go(1)} aria-label={strings.next} className="inline-flex size-11 items-center justify-center rounded-full bg-accent text-brand-950 hover:brightness-105">
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label={strings.next}
+            className="inline-flex size-11 items-center justify-center rounded-full bg-accent text-brand-950 hover:brightness-105"
+          >
             <ChevronRight className="size-5" aria-hidden="true" />
           </button>
         </div>
@@ -113,9 +146,14 @@ export function BrowserCarousel({ slides, domain, strings, interval = 5000 }: { 
             onClick={() => setIndex(i)}
             aria-label={`${strings.goToSlide} ${i + 1}`}
             aria-current={i === index ? "true" : undefined}
-            className="inline-flex h-6 items-center"
+            className="inline-flex h-6 min-w-6 items-center justify-center"
           >
-            <span className={cn("block h-1 rounded-full transition-all duration-300", i === index ? "w-8 bg-accent" : "w-4 bg-white/30 hover:bg-white/60")} />
+            <span
+              className={cn(
+                "block h-1 rounded-full transition-all duration-300",
+                i === index ? "w-8 bg-accent" : "w-4 bg-white/30 hover:bg-white/60",
+              )}
+            />
           </button>
         ))}
       </div>

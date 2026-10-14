@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// zod v4 probes `new Function()` for a JIT fast path, which trips our CSP
+// (no 'unsafe-eval'). The interpreted path is plenty fast for one form.
+z.config({ jitless: true });
+
 export type ContactMessages = {
   name: string;
   phone: string;
@@ -44,6 +48,4 @@ export const contactServerSchema = contactFieldsSchema().extend({
 export type ContactFields = z.infer<ReturnType<typeof contactFieldsSchema>>;
 export type ContactPayload = z.input<typeof contactServerSchema>;
 
-export type ContactResult =
-  | { ok: true }
-  | { ok: false; error: "validation" | "rate_limited" | "server"; fields?: string[] };
+export type ContactResult = { ok: true } | { ok: false; error: "validation" | "rate_limited" | "server"; fields?: string[] };

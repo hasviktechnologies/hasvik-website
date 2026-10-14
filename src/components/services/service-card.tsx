@@ -48,7 +48,7 @@ export function ServiceCard({
         <span className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-600 text-white shadow-soft transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-4deg]">
           <Icon name={service.icon} className="size-6" />
         </span>
-        <h3 className="mb-2 text-lg font-semibold leading-snug sm:text-xl">
+        <h3 className="mb-2 text-lg leading-snug font-semibold sm:text-xl">
           <Link href={href} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
             {title}
           </Link>
@@ -70,7 +70,10 @@ export function ServiceCard({
         </span>
       </div>
       {/* Focus ring for the stretched link */}
-      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-card ring-ring group-has-[a:focus-visible]:ring-[3px]" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-card ring-ring group-has-[a:focus-visible]:ring-[3px]"
+      />
     </Spotlight>
   );
 }

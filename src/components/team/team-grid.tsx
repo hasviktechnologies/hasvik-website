@@ -45,7 +45,7 @@ export function Mentors({ locale, t }: { locale: Locale; t: Dictionary }) {
       <RevealGroup className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
         {mentors.map((m) => (
           <RevealItem key={tr(m.title, "en")}>
-            <div className="on-dark relative h-full overflow-hidden rounded-card bg-hero p-7 text-white shadow-lift">
+            <div className="on-dark bg-hero relative h-full overflow-hidden rounded-card p-7 text-white shadow-lift">
               <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-50" />
               <div className="relative flex gap-5">
                 <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-accent ring-1 ring-white/15">

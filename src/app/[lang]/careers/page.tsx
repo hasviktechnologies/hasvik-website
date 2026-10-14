@@ -91,7 +91,7 @@ export default async function CareersPage() {
               <p className="text-muted-foreground">{t.careersPage.noRoles}</p>
             )}
           </Reveal>
-          <Reveal delay={0.08} className="on-dark relative overflow-hidden rounded-xl2 bg-hero p-8 text-white shadow-lift">
+          <Reveal delay={0.08} className="on-dark bg-hero relative overflow-hidden rounded-xl2 p-8 text-white shadow-lift">
             <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
             <GraduationCap className="relative mb-4 size-8 text-accent" aria-hidden="true" />
             <h2 className="relative mb-3 text-2xl font-bold text-white">{t.careersPage.internshipTitle}</h2>

@@ -48,7 +48,10 @@ export default async function LocationsPage() {
                     <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-eyebrow text-eyebrow-foreground">
                       <MapPin className="size-5" aria-hidden="true" />
                     </span>
-                    <ArrowUpRight className="size-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    <ArrowUpRight
+                      className="size-5 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
                   </span>
                   <span>
                     <span className="block text-lg font-semibold text-heading">{tr(c.name, locale)}</span>

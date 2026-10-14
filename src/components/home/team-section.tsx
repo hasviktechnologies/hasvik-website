@@ -7,7 +7,13 @@ export async function TeamSection() {
   return (
     <Section aria-labelledby="team-title">
       <Container>
-        <SectionHeader id="team-title" eyebrow={t.team.eyebrow} title={t.team.title} highlight={t.team.highlight} subtitle={t.team.subtitle} />
+        <SectionHeader
+          id="team-title"
+          eyebrow={t.team.eyebrow}
+          title={t.team.title}
+          highlight={t.team.highlight}
+          subtitle={t.team.subtitle}
+        />
         <TeamGrid locale={locale} />
         <Mentors locale={locale} t={t} />
       </Container>

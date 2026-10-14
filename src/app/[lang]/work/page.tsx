@@ -37,8 +37,11 @@ export default async function WorkPage() {
           { name: t.nav.work, href: L("/work") },
         ]}
       />
-      <Section tone="surface" aria-label={t.work.pageTitle}>
+      <Section tone="surface" aria-labelledby="work-list-title">
         <Container>
+          <h2 id="work-list-title" className="sr-only">
+            {t.work.pageTitle}
+          </h2>
           <WorkFilters
             items={projects.map((p, i) => ({
               slug: p.slug,
@@ -51,7 +54,9 @@ export default async function WorkPage() {
               label: t.work.filterCategory,
               all: t.work.all,
               // Only offer categories that have at least one project.
-              options: categories.filter((c) => projects.some((p) => p.category === c)).map((c) => ({ value: c, label: t.work.category[c] })),
+              options: categories
+                .filter((c) => projects.some((p) => p.category === c))
+                .map((c) => ({ value: c, label: t.work.category[c] })),
             }}
             strings={{ empty: t.work.empty, reset: t.work.reset, results: t.work.results }}
           />

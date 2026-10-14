@@ -18,7 +18,10 @@ export async function WhySection() {
 
   return (
     <Section tone="soft" aria-labelledby="why-title">
-      <div aria-hidden="true" className="bg-dots absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,transparent,#000_30%,#000_70%,transparent)]" />
+      <div
+        aria-hidden="true"
+        className="bg-dots absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,#000_30%,#000_70%,transparent)] opacity-50"
+      />
       <Container className="relative">
         <SectionHeader id="why-title" eyebrow={t.why.eyebrow} title={t.why.title} highlight={t.why.highlight} subtitle={t.why.subtitle} />
 

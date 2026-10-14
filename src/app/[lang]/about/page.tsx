@@ -34,7 +34,9 @@ export default async function AboutPage() {
     {
       date: t.aboutPage.today.date,
       title: t.aboutPage.today.title,
-      body: t.aboutPage.today.body.replace("{projects}", String(site.stats.projectsCompleted)).replace("{clients}", String(site.stats.happyClients)),
+      body: t.aboutPage.today.body
+        .replace("{projects}", String(site.stats.projectsCompleted))
+        .replace("{clients}", String(site.stats.happyClients)),
       Icon: Rocket,
     },
   ];
@@ -78,7 +80,7 @@ export default async function AboutPage() {
       <Section tone="surface" aria-label={t.aboutPage.missionTitle}>
         <Container>
           <RevealGroup className="grid gap-5 md:grid-cols-2">
-            <RevealItem className="on-dark relative overflow-hidden rounded-xl2 bg-hero p-8 text-white shadow-lift sm:p-10">
+            <RevealItem className="on-dark bg-hero relative overflow-hidden rounded-xl2 p-8 text-white shadow-lift sm:p-10">
               <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
               <Target className="relative mb-5 size-10 text-accent" aria-hidden="true" />
               <h2 className="relative mb-3 text-2xl font-bold text-white">{t.aboutPage.missionTitle}</h2>
@@ -95,8 +97,14 @@ export default async function AboutPage() {
 
       <Section aria-labelledby="journey-title">
         <Container className="max-w-4xl">
-          <SectionHeader id="journey-title" eyebrow={t.aboutPage.journey} title={t.about.title} highlight={t.about.highlight} titleEnd={t.about.titleEnd} />
-          <ol className="relative flex flex-col gap-8 before:absolute before:bottom-2 before:left-6 before:top-2 before:w-0.5 before:bg-gradient-to-b before:from-accent before:to-brand-600/30 sm:before:left-1/2">
+          <SectionHeader
+            id="journey-title"
+            eyebrow={t.aboutPage.journey}
+            title={t.about.title}
+            highlight={t.about.highlight}
+            titleEnd={t.about.titleEnd}
+          />
+          <ol className="relative flex flex-col gap-8 before:absolute before:top-2 before:bottom-2 before:left-6 before:w-0.5 before:bg-gradient-to-b before:from-accent before:to-brand-600/30 sm:before:left-1/2">
             {journey.map((item, i) => (
               <li key={item.date} className="relative grid grid-cols-[3rem_1fr] gap-5 sm:grid-cols-2 sm:gap-12">
                 <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-full bg-accent text-brand-950 ring-8 ring-background sm:absolute sm:left-1/2 sm:-translate-x-1/2">
@@ -104,7 +112,7 @@ export default async function AboutPage() {
                 </span>
                 <Reveal className={i % 2 === 0 ? "sm:col-start-1 sm:pr-10 sm:text-right" : "sm:col-start-2 sm:pl-10"}>
                   <div className="rounded-card border border-border bg-card p-6 shadow-soft">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-eyebrow-foreground">{item.date}</p>
+                    <p className="text-xs font-semibold tracking-wider text-eyebrow-foreground uppercase">{item.date}</p>
                     <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
                   </div>
@@ -117,7 +125,13 @@ export default async function AboutPage() {
 
       <Section tone="soft" aria-labelledby="values-title">
         <Container>
-          <SectionHeader id="values-title" eyebrow={t.why.eyebrow} title={t.why.title} highlight={t.why.highlight} subtitle={t.why.subtitle} />
+          <SectionHeader
+            id="values-title"
+            eyebrow={t.why.eyebrow}
+            title={t.why.title}
+            highlight={t.why.highlight}
+            subtitle={t.why.subtitle}
+          />
           <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.about.values.map((v, i) => {
               const VIcon = valueIcons[i];
@@ -137,7 +151,13 @@ export default async function AboutPage() {
 
       <Section aria-labelledby="team-preview-title">
         <Container>
-          <SectionHeader id="team-preview-title" eyebrow={t.team.eyebrow} title={t.team.title} highlight={t.team.highlight} subtitle={t.team.subtitle} />
+          <SectionHeader
+            id="team-preview-title"
+            eyebrow={t.team.eyebrow}
+            title={t.team.title}
+            highlight={t.team.highlight}
+            subtitle={t.team.subtitle}
+          />
           <TeamGrid locale={locale} />
           <div className="mt-10 flex justify-center">
             <Link href={L("/team")} className={buttonVariants({ variant: "outline" })}>

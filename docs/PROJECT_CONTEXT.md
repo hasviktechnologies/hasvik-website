@@ -8,18 +8,18 @@ still open. Update it whenever a decision changes.
 
 ## 1. Stack actually used
 
-| Brief asked for | Used | Why |
-|---|---|---|
-| Next.js 15+ App Router | **Next.js 16.4** (Turbopack, React 19.3) | Latest stable from `create-next-app`. Ships with **Cache Components** + Partial Prefetching on. |
-| Tailwind v4 | Tailwind v4 (`@theme` tokens in `src/app/globals.css`) | |
-| shadcn/ui (Radix) | Radix primitives via the unified `radix-ui` package, hand-written shadcn-style wrappers in `src/components/ui` | The shadcn CLI is interactive; same result, fewer files. |
-| Framer Motion | `motion` (`motion/react`) with `LazyMotion` + `m` + `MotionConfig reducedMotion="user"` | Smaller bundle; honours reduced-motion globally. |
-| lucide-react + local tech SVGs | lucide-react; tech/social logos generated from CC0 `simple-icons` into `src/content/tech-icons.generated.ts` | No hot-linking. Java uses the OpenJDK mark (Oracle's Java logo isn't distributed). LinkedIn glyph is hand-drawn. |
-| next-intl (or dictionary) | **Dictionary** (`src/i18n/dictionaries/{en,hi}.ts`) + `next/root-params` | Native to Next 16; zero client JS for translations. |
-| next-themes | **Not used**: 1-line inline head script + CSS-only toggle | next-themes renders a `<script>` inside a client component, which React 19.2+ warns about in the console (the brief requires zero console errors). |
-| next-sitemap | App Router `sitemap.ts` / `robots.ts` | Built-in. |
-| Resend | Resend in a Server Action | |
-| Toasts | `sonner` | What shadcn uses now. |
+| Brief asked for                | Used                                                                                                           | Why                                                                                                                                                |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Next.js 15+ App Router         | **Next.js 16.4** (Turbopack, React 19.3)                                                                       | Latest stable from `create-next-app`. Ships with **Cache Components** + Partial Prefetching on.                                                    |
+| Tailwind v4                    | Tailwind v4 (`@theme` tokens in `src/app/globals.css`)                                                         |                                                                                                                                                    |
+| shadcn/ui (Radix)              | Radix primitives via the unified `radix-ui` package, hand-written shadcn-style wrappers in `src/components/ui` | The shadcn CLI is interactive; same result, fewer files.                                                                                           |
+| Framer Motion                  | `motion` (`motion/react`) with `LazyMotion` + `m` + `MotionConfig reducedMotion="user"`                        | Smaller bundle; honours reduced-motion globally.                                                                                                   |
+| lucide-react + local tech SVGs | lucide-react; tech/social logos generated from CC0 `simple-icons` into `src/content/tech-icons.generated.ts`   | No hot-linking. Java uses the OpenJDK mark (Oracle's Java logo isn't distributed). LinkedIn glyph is hand-drawn.                                   |
+| next-intl (or dictionary)      | **Dictionary** (`src/i18n/dictionaries/{en,hi}.ts`) + `next/root-params`                                       | Native to Next 16; zero client JS for translations.                                                                                                |
+| next-themes                    | **Not used**: 1-line inline head script + CSS-only toggle                                                      | next-themes renders a `<script>` inside a client component, which React 19.2+ warns about in the console (the brief requires zero console errors). |
+| next-sitemap                   | App Router `sitemap.ts` / `robots.ts`                                                                          | Built-in.                                                                                                                                          |
+| Resend                         | Resend in a Server Action                                                                                      |                                                                                                                                                    |
+| Toasts                         | `sonner`                                                                                                       | What shadcn uses now.                                                                                                                              |
 
 ## 2. Routing & i18n
 
@@ -56,21 +56,42 @@ still open. Update it whenever a decision changes.
 
 Search the code for `TODO(owner)` to find all of these.
 
-| Item | Where | Status |
-|---|---|---|
-| Non-tech services (back-office, digitization, typing, social media, design/printing) | `src/content/services.ts` | Drafted as `published: false`. Hidden until you write copy and publish. Only Data Entry is live. |
-| LinkedIn company URL | `src/content/site.ts` → `socials.linkedin` | Empty, so the icon is hidden. |
-| Google Business Profile link + review count | `site.ts` → `mapsListingUrl`, `rating.count` | Search-URL placeholder; count set to 3. |
-| Exact office geo-coordinates | `site.ts` → `address.geo` | Approximate (Maniar). |
-| FAQ answers on pricing / non-tech / domain / payment terms | `src/content/faqs.ts` (`needsReview: true`) | Drafted, need owner review. |
-| Case-study text | `src/content/projects.ts` | Drafted from the old site's one-liners. Review them. |
-| RM Suncity sub-page links (`/about`, `/academics`, `/gallery`) | `projects.ts` gallery `href` | Assumed paths. Verify. |
-| Stats (7 completed / 4 in progress / 7 clients / 1+ yr) | `site.ts` → `stats` | Kept as business totals. The portfolio shows only 6 projects, so these numbers intentionally differ. |
-| Mentor names | `src/content/team.ts` | Anonymous, as on the old site. |
-| SVG logo | `public/images/logo.webp` | A PNG→WebP of the old logo is used. Replace it when you have an SVG. |
-| Project screenshots | `public/images/*.webp` | Real screenshots from the old site, converted to WebP. Replace them as you add projects. |
+| Item                                                                                 | Where                                        | Status                                                                                               |
+| ------------------------------------------------------------------------------------ | -------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Non-tech services (back-office, digitization, typing, social media, design/printing) | `src/content/services.ts`                    | Drafted as `published: false`. Hidden until you write copy and publish. Only Data Entry is live.     |
+| LinkedIn company URL                                                                 | `src/content/site.ts` → `socials.linkedin`   | Empty, so the icon is hidden.                                                                        |
+| Google Business Profile link + review count                                          | `site.ts` → `mapsListingUrl`, `rating.count` | Search-URL placeholder; count set to 3.                                                              |
+| Exact office geo-coordinates                                                         | `site.ts` → `address.geo`                    | Approximate (Maniar).                                                                                |
+| FAQ answers on pricing / non-tech / domain / payment terms                           | `src/content/faqs.ts` (`needsReview: true`)  | Drafted, need owner review.                                                                          |
+| Case-study text                                                                      | `src/content/projects.ts`                    | Drafted from the old site's one-liners. Review them.                                                 |
+| RM Suncity sub-page links (`/about`, `/academics`, `/gallery`)                       | `projects.ts` gallery `href`                 | Assumed paths. Verify.                                                                               |
+| Stats (7 completed / 4 in progress / 7 clients / 1+ yr)                              | `site.ts` → `stats`                          | Kept as business totals. The portfolio shows only 6 projects, so these numbers intentionally differ. |
+| Mentor names                                                                         | `src/content/team.ts`                        | Anonymous, as on the old site.                                                                       |
+| SVG logo                                                                             | `public/images/logo.webp`                    | A PNG→WebP of the old logo is used. Replace it when you have an SVG.                                 |
+| Project screenshots                                                                  | `public/images/*.webp`                       | Real screenshots from the old site, converted to WebP. Replace them as you add projects.             |
 
-## 6. Deliberate deviations from the brief
+## 6. Performance & accessibility work (and what is still open)
+
+Measured with Lighthouse 13 (mobile, slow-4G + 4× CPU) against `next start` in headless Edge.
+
+| Change                                                                                                                           | Why / effect                                                                                                                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `experimental.inlineCss`                                                                                                         | Removes the render-blocking stylesheet request (≈1 s on throttled mobile). Trade-off: CSS isn't cached separately, which is fine because Tailwind output is small and most visitors are first-time mobile users.                                                                             |
+| Poppins trimmed to 400/600/700, `display: "optional"` + preload; Devanagari `optional` without preload                           | Font transfer fell from 252 KB to 33 KB on English pages. `optional` removed the font-swap layout shift (CLS 0.19 → 0) and the late LCP re-paint. A first visit on a very slow connection may see the size-adjusted fallback font once.                                                      |
+| Scroll reveals moved from 60 Motion `whileInView` wrappers to CSS + one IntersectionObserver (`components/motion/reveal*.ts[x]`) | Less hydration work. An inline bootstrap at the end of `<body>` reveals above-the-fold content before hydration. Hidden-until-revealed only applies when JS runs (`html.js`), and reduced-motion users see everything immediately. Motion is still used for the carousels and rotating text. |
+| Aurora blur blobs hidden and floating badges static below 768 px                                                                 | About 1 s of style/paint work on phones.                                                                                                                                                                                                                                                     |
+| `z.config({ jitless: true })`                                                                                                    | zod v4's `new Function` probe tripped the CSP (Best Practices 96 → 100).                                                                                                                                                                                                                     |
+| Carousel dot buttons ≥ 24×24 px; visually hidden `h2` on /work and /services                                                     | WCAG 2.2 target size and heading order (Accessibility 100).                                                                                                                                                                                                                                  |
+
+**Best results on a healthy host (applied throttling):** work 100, locations 99, contact 98, home 92, services 87, /hi 82. LCP 1.3–1.8 s, CLS 0, Accessibility/Best Practices/SEO 100.
+
+**Still open, not yet verified:**
+
+- **Total Blocking Time on the homepage** (≈350 ms EN, ≈650 ms HI under 4× CPU). It comes from hydrating the interactive islands (hero mockup, carousels, quote form). The next step is to lazy-hydrate below-the-fold islands, e.g. render the quote form only once it scrolls near the viewport.
+- **/services LCP** was 3.9 s while reveals waited for hydration. The inline reveal bootstrap fixes that by design, but the host machine slowed down mid-session (Lighthouse benchmark index fell from ~3,650 to ~2,000), so the fix couldn't be re-measured reliably.
+- **Re-measure on the live Vercel URL with PageSpeed Insights.** That's the number that matters for the "95+" goal.
+
+## 7. Deliberate deviations from the brief
 
 - **No `SearchAction` in the WebSite JSON-LD.** The site has no search page, and Google retired the sitelinks search box in Nov 2024, so the markup would be invalid.
 - **Email is optional** in the quote form. Phone/WhatsApp is required, because most target clients prefer phone.

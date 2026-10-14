@@ -18,7 +18,10 @@ export function PillTabs({
 }) {
   return (
     <TabsPrimitive.Root defaultValue={defaultValue ?? tabs[0]?.value} className={className}>
-      <TabsPrimitive.List aria-label={label} className="mx-auto mb-10 flex w-fit max-w-full gap-1 rounded-full border border-border bg-card p-1.5 shadow-soft">
+      <TabsPrimitive.List
+        aria-label={label}
+        className="mx-auto mb-10 flex w-fit max-w-full gap-1 rounded-full border border-border bg-card p-1.5 shadow-soft"
+      >
         {tabs.map((tab) => (
           <TabsPrimitive.Trigger
             key={tab.value}

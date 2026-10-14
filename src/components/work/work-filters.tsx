@@ -1,7 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useMemo, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+
+const FILTER_EVENT = "work-filters-change";
+
+function subscribe(onChange: () => void) {
+  window.addEventListener("popstate", onChange);
+  window.addEventListener(FILTER_EVENT, onChange);
+  return () => {
+    window.removeEventListener("popstate", onChange);
+    window.removeEventListener(FILTER_EVENT, onChange);
+  };
+}
 
 type Item = { slug: string; status: string; category: string; node: ReactNode };
 type Group = { label: string; all: string; options: { value: string; label: string }[] };
@@ -21,23 +32,24 @@ export function WorkFilters({
   category: Group;
   strings: { empty: string; reset: string; results: string };
 }) {
-  const [sel, setSel] = useState<{ s: string; c: string }>({ s: "", c: "" });
-
-  // Read filters from the URL after hydration (server render is always unfiltered).
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search);
-    const s = q.get("status") ?? "";
-    const c = q.get("category") ?? "";
-    if (s || c) setSel({ s, c });
-  }, []);
+  // The URL query is the single source of truth (server snapshot = unfiltered).
+  const search = useSyncExternalStore(
+    subscribe,
+    () => window.location.search,
+    () => "",
+  );
+  const sel = useMemo(() => {
+    const q = new URLSearchParams(search);
+    return { s: q.get("status") ?? "", c: q.get("category") ?? "" };
+  }, [search]);
 
   const update = (next: { s: string; c: string }) => {
-    setSel(next);
     const q = new URLSearchParams();
     if (next.s) q.set("status", next.s);
     if (next.c) q.set("category", next.c);
     const qs = q.toString();
-    window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+    window.history.replaceState(window.history.state, "", qs ? `?${qs}` : window.location.pathname);
+    window.dispatchEvent(new Event(FILTER_EVENT));
   };
 
   const visible = useMemo(() => items.filter((i) => (!sel.s || i.status === sel.s) && (!sel.c || i.category === sel.c)), [items, sel]);
@@ -45,14 +57,22 @@ export function WorkFilters({
   const chip = (active: boolean) =>
     cn(
       "min-h-11 rounded-full border px-4 text-sm font-semibold transition-all duration-200",
-      active ? "border-brand-900 bg-brand-900 text-white shadow-soft dark:border-accent dark:bg-accent dark:text-brand-950" : "border-border bg-card text-muted-foreground hover:border-brand-600/40 hover:text-heading",
+      active
+        ? "border-brand-900 bg-brand-900 text-white shadow-soft dark:border-accent dark:bg-accent dark:text-brand-950"
+        : "border-border bg-card text-muted-foreground hover:border-brand-600/40 hover:text-heading",
     );
 
   const renderGroup = (g: Group, key: "s" | "c") => (
     <div role="group" aria-label={g.label} className="flex flex-wrap items-center gap-2">
-      <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{g.label}</span>
+      <span className="mr-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">{g.label}</span>
       {[{ value: "", label: g.all }, ...g.options].map((o) => (
-        <button key={o.value || "all"} type="button" aria-pressed={sel[key] === o.value} onClick={() => update({ ...sel, [key]: o.value })} className={chip(sel[key] === o.value)}>
+        <button
+          key={o.value || "all"}
+          type="button"
+          aria-pressed={sel[key] === o.value}
+          onClick={() => update({ ...sel, [key]: o.value })}
+          className={chip(sel[key] === o.value)}
+        >
           {o.label}
         </button>
       ))}

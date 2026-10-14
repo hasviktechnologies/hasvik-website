@@ -44,11 +44,11 @@ export async function AboutSection() {
               const TlIcon = timelineIcons[i % timelineIcons.length];
               return (
                 <li key={item.date} className="relative">
-                  <span className="absolute left-[-2.35rem] top-0 inline-flex size-8 items-center justify-center rounded-full bg-accent text-brand-950 ring-4 ring-background">
+                  <span className="absolute top-0 left-[-2.35rem] inline-flex size-8 items-center justify-center rounded-full bg-accent text-brand-950 ring-4 ring-background">
                     <TlIcon className="size-4" aria-hidden="true" />
                   </span>
                   <Reveal delay={i * 0.08}>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-eyebrow-foreground">{item.date}</p>
+                    <p className="text-xs font-semibold tracking-wider text-eyebrow-foreground uppercase">{item.date}</p>
                     <h3 className="text-lg font-semibold">{item.title}</h3>
                     <p className="text-sm text-muted-foreground">{item.body}</p>
                   </Reveal>
