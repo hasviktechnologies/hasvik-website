@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Devanagari, Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
@@ -76,10 +77,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       data-scroll-behavior="smooth"
       className={`${poppins.variable} ${devanagari.variable} scroll-smooth antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body className="min-h-dvh overflow-x-clip bg-background">
+        {/* next/script (not a raw <script>) avoids React 19's "script tag while rendering" warning. */}
+        <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeScript }} />
         <a
           href="#main"
           className="fixed top-4 left-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-3 font-semibold text-brand-950 transition-transform focus:translate-y-0"
@@ -95,7 +95,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           <WhatsappFab label={t.a11y.whatsapp} />
           <RevealObserver />
         </Providers>
-        <script dangerouslySetInnerHTML={{ __html: revealScript }} />
+        <Script id="reveal-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: revealScript }} />
         {/* Vercel Analytics scripts only exist on Vercel deployments. */}
         {process.env.VERCEL ? (
           <>

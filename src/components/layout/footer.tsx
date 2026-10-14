@@ -21,15 +21,17 @@ export async function Footer() {
   const year = await currentYear();
   const L = (p: string) => localizePath(p, locale);
 
+  // noPrefetch: Next 16.4 returns 404 for the segment prefetch of these fully static pages
+  // behind the locale rewrite (see docs/PROJECT_CONTEXT.md §6). Clicks navigate normally.
   const quick = [
     { href: L("/"), label: t.nav.home },
     { href: L("/about"), label: t.nav.about },
     { href: L("/services"), label: t.nav.services },
     { href: L("/work"), label: t.nav.work },
     { href: L("/team"), label: t.nav.team },
-    { href: L("/careers"), label: t.nav.careers },
+    { href: L("/careers"), label: t.nav.careers, noPrefetch: true },
     { href: L("/contact"), label: t.nav.contact },
-    { href: L("/locations"), label: t.footer.areas },
+    { href: L("/locations"), label: t.footer.areas, noPrefetch: true },
   ];
 
   const socials = [
@@ -86,7 +88,7 @@ export async function Footer() {
           <ul className="flex flex-col gap-2.5 text-sm">
             {quick.map((q) => (
               <li key={q.href}>
-                <Link href={q.href} className={linkCls}>
+                <Link href={q.href} prefetch={"noPrefetch" in q && q.noPrefetch ? false : undefined} className={linkCls}>
                   {q.label}
                 </Link>
               </li>
@@ -153,10 +155,10 @@ export async function Footer() {
             © {year} {site.name}. {t.footer.rights} {t.footer.madeWith}
           </p>
           <div className="flex gap-4">
-            <Link href={L("/privacy")} className={linkCls}>
+            <Link href={L("/privacy")} prefetch={false} className={linkCls}>
               {t.footer.privacy}
             </Link>
-            <Link href={L("/terms")} className={linkCls}>
+            <Link href={L("/terms")} prefetch={false} className={linkCls}>
               {t.footer.terms}
             </Link>
           </div>
