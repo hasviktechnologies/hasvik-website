@@ -24,7 +24,7 @@ export function ProcessStrip({ locale, t }: { locale: Locale; t: Dictionary }) {
             <div className="flex h-full flex-col items-center rounded-card border border-border bg-card p-6 text-center shadow-soft">
               <span className="relative mb-4 inline-flex size-[4.5rem] items-center justify-center rounded-full bg-gradient-to-br from-brand-900 to-brand-600 text-white ring-8 ring-background">
                 <Icon name={step.icon} className="size-7" />
-                <span className="absolute -top-1 -right-1 inline-flex size-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-brand-950">
+                <span className="absolute -top-1 -right-1 inline-flex size-7 items-center justify-center rounded-full bg-accent-ink text-xs font-bold text-white">
                   {i + 1}
                 </span>
               </span>

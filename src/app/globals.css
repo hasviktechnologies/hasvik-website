@@ -24,7 +24,7 @@
   --ink: #222222;
   --orange-600: #e36a00;
   --orange-400: #ff9533;
-  --whatsapp: #25d366;
+  --whatsapp: #087c42;
 
   /* Semantic (light) */
   --background: #ffffff;
@@ -217,7 +217,7 @@
     background: linear-gradient(var(--surface), color-mix(in oklab, var(--surface-2) 70%, var(--background)) 45%, var(--background));
   }
   .bg-green-cta {
-    background-image: linear-gradient(90deg, #71c554, #5bb140);
+    background-image: linear-gradient(90deg, #367c25, #2f6b1f);
   }
   .bg-grid {
     background-image:

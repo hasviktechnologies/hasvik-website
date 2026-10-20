@@ -70,7 +70,7 @@ export async function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${s.label} ${t.a11y.external}`}
-                      className="inline-flex size-11 items-center justify-center rounded-full bg-white/8 text-white/85 ring-1 ring-white/10 transition-colors hover:bg-accent hover:text-brand-950"
+                      className="inline-flex size-11 items-center justify-center rounded-full bg-white/8 text-white/85 ring-1 ring-white/10 transition-colors hover:bg-accent-ink hover:text-white"
                     >
                       <svg viewBox="0 0 24 24" className="size-[18px]" fill="currentColor" aria-hidden="true">
                         <path d={s.path} />

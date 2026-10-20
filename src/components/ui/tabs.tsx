@@ -4,6 +4,12 @@ import { Tabs as TabsPrimitive } from "radix-ui";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+declare global {
+  interface Window {
+    __hasvikReveal?: () => void;
+  }
+}
+
 /** Pill tabs. Panels are passed in pre-rendered (Server Components) so only the switcher is client JS. */
 export function PillTabs({
   label,
@@ -17,7 +23,15 @@ export function PillTabs({
   className?: string;
 }) {
   return (
-    <TabsPrimitive.Root defaultValue={defaultValue ?? tabs[0]?.value} className={className}>
+    <TabsPrimitive.Root
+      defaultValue={defaultValue ?? tabs[0]?.value}
+      className={className}
+      onValueChange={() => {
+        // Radix mounts the newly active panel after this event; rescan it for
+        // scroll reveals on the next frame so its cards are not left hidden.
+        window.requestAnimationFrame(() => window.__hasvikReveal?.());
+      }}
+    >
       <TabsPrimitive.List
         aria-label={label}
         className="mx-auto mb-10 flex w-fit max-w-full gap-1 rounded-full border border-border bg-card p-1.5 shadow-soft"
@@ -28,7 +42,7 @@ export function PillTabs({
             value={tab.value}
             className={cn(
               "min-h-11 rounded-full px-5 text-sm font-semibold text-muted-foreground transition-all duration-200 sm:px-7 sm:text-base",
-              "hover:text-heading data-[state=active]:bg-brand-900 data-[state=active]:text-white data-[state=active]:shadow-soft dark:data-[state=active]:bg-accent dark:data-[state=active]:text-brand-950",
+              "hover:text-heading data-[state=active]:bg-brand-900 data-[state=active]:text-white data-[state=active]:shadow-soft dark:data-[state=active]:bg-accent-ink dark:data-[state=active]:text-white",
             )}
           >
             {tab.label}

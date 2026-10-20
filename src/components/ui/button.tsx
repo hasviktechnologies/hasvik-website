@@ -8,14 +8,13 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Green fill + deep navy text = 7.9:1 contrast (white on green would fail AA).
         primary:
-          "bg-green-cta text-brand-950 shadow-[0_8px_24px_-8px_rgb(113_197_84/0.65)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-10px_rgb(113_197_84/0.8)]",
+          "bg-green-cta text-white shadow-[0_8px_24px_-8px_rgb(54_124_37/0.65)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-10px_rgb(54_124_37/0.8)]",
         navy: "bg-brand-900 text-white shadow-soft hover:-translate-y-0.5 hover:bg-brand-700 dark:bg-brand-700 dark:hover:bg-brand-600",
         outline: "border border-border bg-card text-heading hover:-translate-y-0.5 hover:border-brand-600/40 hover:shadow-soft",
         glass: "glass text-white hover:-translate-y-0.5 hover:bg-white/20",
         ghost: "text-heading hover:bg-surface-2",
-        whatsapp: "bg-whatsapp text-brand-950 hover:-translate-y-0.5 hover:brightness-105",
+        whatsapp: "bg-whatsapp text-white hover:-translate-y-0.5 hover:brightness-105",
       },
       size: {
         sm: "h-10 px-4 text-sm",

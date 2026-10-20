@@ -58,7 +58,7 @@ export function WorkFilters({
     cn(
       "min-h-11 rounded-full border px-4 text-sm font-semibold transition-all duration-200",
       active
-        ? "border-brand-900 bg-brand-900 text-white shadow-soft dark:border-accent dark:bg-accent dark:text-brand-950"
+        ? "border-brand-900 bg-brand-900 text-white shadow-soft dark:border-accent-ink dark:bg-accent-ink dark:text-white"
         : "border-border bg-card text-muted-foreground hover:border-brand-600/40 hover:text-heading",
     );
 

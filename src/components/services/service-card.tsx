@@ -31,18 +31,16 @@ export function ServiceCard({
         className,
       )}
     >
-      {featured && service.image ? (
-        <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:w-[46%]">
-          <Image
-            src={service.image.src}
-            alt={tr(service.image.alt, locale)}
-            fill
-            sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 92vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-950/50 to-transparent" />
-        </div>
-      ) : null}
+      <div className={cn("relative aspect-[16/10] overflow-hidden", featured && "md:aspect-auto md:w-[46%]")}>
+        <Image
+          src={service.image.src}
+          alt={tr(service.image.alt, locale)}
+          fill
+          sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 92vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-950/50 to-transparent" />
+      </div>
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <span className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-600 text-white shadow-soft transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-4deg]">

@@ -15,7 +15,7 @@ export function WhatsappFab({ label }: { label: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="group fixed right-5 bottom-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-[0_10px_30px_-6px_rgb(37_211_102/0.6)] transition-transform duration-200 hover:scale-105 sm:right-6 sm:bottom-6"
+      className="group fixed right-5 bottom-5 z-40 inline-flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-[0_10px_30px_-6px_rgb(8_124_66/0.6)] transition-transform duration-200 hover:scale-105 sm:right-6 sm:bottom-6"
     >
       <span aria-hidden="true" className="absolute inset-0 animate-ping rounded-full bg-whatsapp/40 [animation-duration:2.4s]" />
       <WhatsappGlyph className="relative size-7" />

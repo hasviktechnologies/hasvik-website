@@ -3,8 +3,8 @@
  * It runs as soon as the HTML is parsed — before hydration — so above-the-fold
  * content is revealed on the first frame and never waits for React (LCP).
  * <RevealObserver/> calls `window.__hasvikReveal()` again after client navigations.
- * Revealed elements get a `data-revealed` attribute rather than a class, so
- * React hydration never sees a className mismatch.
+ * Revealed elements get a `data-revealed` attribute; reveal elements suppress
+ * hydration warnings for this intentional pre-hydration DOM mutation.
  */
 export const revealScript = `(function(){
 var d=document;if(!('IntersectionObserver' in window)){d.documentElement.classList.remove('js');return;}

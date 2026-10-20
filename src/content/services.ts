@@ -11,7 +11,7 @@ export type Service = {
   kind: ServiceKind;
   published: boolean;
   icon: IconName;
-  image?: { src: string; alt: Localized };
+  image: { src: string; alt: Localized };
   title: Localized;
   short: Localized;
   description: Localized;
@@ -31,14 +31,14 @@ export const services: Service[] = [
       src: "/images/Business.webp",
       alt: { en: "Custom business website shown on laptop and phone", hi: "लैपटॉप और फ़ोन पर दिखती कस्टम बिज़नेस वेबसाइट" },
     },
-    title: { en: "Custom Website Development", hi: "कस्टम वेबसाइट डेवलपमेंट" },
+    title: { en: "Website Design & Development", hi: "वेबसाइट डिज़ाइन और डेवलपमेंट" },
     short: {
-      en: "Websites for parlours, salons, portfolios and local businesses with modern layouts and a seamless experience.",
-      hi: "पार्लर, सैलून, पोर्टफ़ोलियो और लोकल बिज़नेस के लिए आधुनिक, आसान और तेज़ वेबसाइट।",
+      en: "Professional websites for businesses, schools and hospitality teams, designed around your customers and goals.",
+      hi: "व्यवसायों, स्कूलों और हॉस्पिटैलिटी टीमों के लिए ग्राहकों और लक्ष्यों के अनुसार प्रोफ़ेशनल वेबसाइटें।",
     },
     description: {
-      en: "Website design for parlours, salons, business portfolios, and other businesses with modern layouts, custom features, and a seamless user experience. Every site is built mobile-first, loads fast, and is easy for your customers to contact you from.",
-      hi: "पार्लर, सैलून, बिज़नेस पोर्टफ़ोलियो और दूसरे व्यवसायों के लिए आधुनिक लेआउट, कस्टम फ़ीचर और आसान यूज़र अनुभव वाली वेबसाइट। हर वेबसाइट मोबाइल-फ़र्स्ट, तेज़ और ग्राहकों के लिए संपर्क करने में आसान होती है।",
+      en: "HASVIK TECHNOLOGIES designs and develops business and corporate websites, school and educational websites, and hotel and hospitality websites. We also support website redesigns and ongoing maintenance, with responsive layouts and clear paths for customers to get in touch.",
+      hi: "HASVIK TECHNOLOGIES व्यवसाय और कॉर्पोरेट वेबसाइटें, स्कूल और शैक्षिक वेबसाइटें तथा होटल और हॉस्पिटैलिटी वेबसाइटें डिज़ाइन और विकसित करता है। हम वेबसाइट री-डिज़ाइन और नियमित मेंटेनेंस में भी मदद करते हैं, साथ ही मोबाइल-फ़्रेंडली लेआउट और संपर्क के स्पष्ट विकल्प देते हैं।",
     },
     features: [
       { en: "Mobile-first, modern design", hi: "मोबाइल-फ़र्स्ट, आधुनिक डिज़ाइन" },
@@ -50,6 +50,8 @@ export const services: Service[] = [
       { en: "Contact form, map and WhatsApp integration", hi: "संपर्क फ़ॉर्म, मैप और WhatsApp इंटीग्रेशन" },
       { en: "Basic on-page SEO and Google indexing", hi: "बेसिक ऑन-पेज SEO और Google इंडेक्सिंग" },
       { en: "Training so you can update content", hi: "कंटेंट अपडेट करने की ट्रेनिंग" },
+      { en: "Corporate, school, education and hospitality website design", hi: "कॉर्पोरेट, स्कूल, शिक्षा और हॉस्पिटैलिटी वेबसाइट डिज़ाइन" },
+      { en: "Website redesign and maintenance options", hi: "वेबसाइट री-डिज़ाइन और मेंटेनेंस विकल्प" },
     ],
     idealFor: [
       { en: "Beauty parlours & salons", hi: "ब्यूटी पार्लर और सैलून" },
@@ -113,7 +115,7 @@ export const services: Service[] = [
   {
     slug: "educational-website-development",
     kind: "tech",
-    published: true,
+    published: false,
     icon: "graduation-cap",
     image: {
       src: "/images/education.webp",
@@ -159,14 +161,18 @@ export const services: Service[] = [
     kind: "tech",
     published: true,
     icon: "wrench",
-    title: { en: "Website Maintenance & Support", hi: "वेबसाइट मेंटेनेंस और सपोर्ट" },
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "Website and application maintenance on a computer", hi: "कंप्यूटर पर वेबसाइट और एप्लिकेशन मेंटेनेंस" },
+    },
+    title: { en: "Software Maintenance & Support", hi: "सॉफ़्टवेयर मेंटेनेंस और सपोर्ट" },
     short: {
-      en: "Updates, security patches, backups and monitoring so your site stays fast and safe after launch.",
-      hi: "अपडेट, सिक्योरिटी पैच, बैकअप और मॉनिटरिंग, ताकि लॉन्च के बाद भी वेबसाइट तेज़ और सुरक्षित रहे।",
+      en: "Ongoing maintenance for websites and applications, from bug fixes and upgrades to monitoring and technical support.",
+      hi: "वेबसाइट और एप्लिकेशन के लिए नियमित मेंटेनेंस: बग फ़िक्स और अपग्रेड से लेकर मॉनिटरिंग और तकनीकी सहायता तक।",
     },
     description: {
-      en: "Launch is only the beginning. We keep your website healthy with regular updates, security patches, backups, uptime monitoring, content changes and performance tuning, so you can focus on your business while we look after the site.",
-      hi: "लॉन्च तो शुरुआत है। हम नियमित अपडेट, सिक्योरिटी पैच, बैकअप, अपटाइम मॉनिटरिंग, कंटेंट बदलाव और परफ़ॉर्मेंस सुधार से आपकी वेबसाइट को स्वस्थ रखते हैं, ताकि आप अपने व्यवसाय पर ध्यान दें।",
+      en: "HASVIK TECHNOLOGIES provides ongoing website and application maintenance, including annual maintenance contract options, bug fixing, upgrades, technical support and application monitoring. Scope is agreed around your product and support needs.",
+      hi: "HASVIK TECHNOLOGIES वेबसाइट और एप्लिकेशन के लिए नियमित मेंटेनेंस देता है, जिसमें वार्षिक मेंटेनेंस कॉन्ट्रैक्ट विकल्प, बग फ़िक्स, अपग्रेड, तकनीकी सहायता और एप्लिकेशन मॉनिटरिंग शामिल हैं। काम का दायरा आपके प्रोडक्ट और सहायता की ज़रूरत के अनुसार तय होता है।",
     },
     features: [
       { en: "Security patches & regular backups", hi: "सिक्योरिटी पैच और नियमित बैकअप" },
@@ -178,6 +184,9 @@ export const services: Service[] = [
       { en: "Automated backups with quick restore", hi: "जल्दी रीस्टोर वाले ऑटोमैटिक बैकअप" },
       { en: "Uptime alerts and speed checks", hi: "अपटाइम अलर्ट और स्पीड जाँच" },
       { en: "Text, image and price changes", hi: "टेक्स्ट, इमेज और कीमत में बदलाव" },
+      { en: "Annual Maintenance Contract options", hi: "वार्षिक मेंटेनेंस कॉन्ट्रैक्ट विकल्प" },
+      { en: "Bug fixes, upgrades and technical support", hi: "बग फ़िक्स, अपग्रेड और तकनीकी सहायता" },
+      { en: "Application monitoring", hi: "एप्लिकेशन मॉनिटरिंग" },
     ],
     idealFor: [
       { en: "Businesses without an in-house developer", hi: "बिना इन-हाउस डेवलपर वाले व्यवसाय" },
@@ -196,9 +205,13 @@ export const services: Service[] = [
   },
   {
     slug: "google-map-listing",
-    kind: "tech",
+    kind: "non-tech",
     published: true,
     icon: "map-pin",
+    image: {
+      src: "/images/Business.webp",
+      alt: { en: "Business online listing and local visibility", hi: "बिज़नेस की ऑनलाइन लिस्टिंग और स्थानीय पहचान" },
+    },
     title: { en: "Google Map Listing", hi: "Google मैप लिस्टिंग" },
     short: {
       en: "Get found on Google Maps: optimised listings that increase local reach and bring nearby customers.",
@@ -236,46 +249,328 @@ export const services: Service[] = [
   },
   {
     slug: "google-business-profile",
-    kind: "tech",
+    kind: "non-tech",
     published: true,
     icon: "badge-check",
-    title: { en: "Google Business Profile Creation & Optimization", hi: "Google बिज़नेस प्रोफ़ाइल निर्माण और ऑप्टिमाइज़ेशन" },
+    image: {
+      src: "/images/Business.webp",
+      alt: { en: "Business profile and digital content", hi: "बिज़नेस प्रोफ़ाइल और डिजिटल कंटेंट" },
+    },
+    title: { en: "Digital Business Support", hi: "डिजिटल बिज़नेस सहायता" },
     short: {
-      en: "Create and optimise your Google Business Profile to build trust and attract nearby customers.",
-      hi: "Google बिज़नेस प्रोफ़ाइल बनाएँ और ऑप्टिमाइज़ करें, भरोसा बढ़ाएँ और नज़दीकी ग्राहक पाएँ।",
+      en: "Practical support for business profiles, product descriptions and digital content across online channels.",
+      hi: "ऑनलाइन चैनलों पर बिज़नेस प्रोफ़ाइल, प्रोडक्ट विवरण और डिजिटल कंटेंट के लिए व्यावहारिक सहायता।",
     },
     description: {
-      en: "Helping businesses create and optimize their Google Business Profile to improve local visibility, build customer trust, and attract more nearby customers. A complete, active profile helps you appear in local search and Maps results.",
-      hi: "व्यवसायों को Google बिज़नेस प्रोफ़ाइल बनाने और ऑप्टिमाइज़ करने में मदद, ताकि लोकल पहचान बढ़े, ग्राहकों का भरोसा बने और ज़्यादा नज़दीकी ग्राहक आएँ।",
+      en: "HASVIK TECHNOLOGIES helps businesses prepare their digital presence with Google Business Profile setup assistance, business profile updates, product description writing, digital content preparation and marketplace profile optimization. Marketplace names refer to independent support; no official partnership is implied.",
+      hi: "HASVIK TECHNOLOGIES Google Business Profile सेटअप सहायता, बिज़नेस प्रोफ़ाइल अपडेट, प्रोडक्ट विवरण लेखन, डिजिटल कंटेंट तैयारी और मार्केटप्लेस प्रोफ़ाइल ऑप्टिमाइज़ेशन में मदद करता है। मार्केटप्लेस का उल्लेख स्वतंत्र सहायता के लिए है; किसी आधिकारिक साझेदारी का दावा नहीं है।",
     },
     features: [
-      { en: "Profile setup & verification help", hi: "प्रोफ़ाइल सेटअप और वेरिफ़िकेशन मदद" },
-      { en: "Posts, photos & services", hi: "पोस्ट, फ़ोटो और सर्विसेज़" },
-      { en: "Review & reputation guidance", hi: "रिव्यू और प्रतिष्ठा मार्गदर्शन" },
+      { en: "Profile setup and update assistance", hi: "प्रोफ़ाइल सेटअप और अपडेट में सहायता" },
+      { en: "Clear, customer-focused product descriptions", hi: "स्पष्ट और ग्राहक-केंद्रित प्रोडक्ट विवरण" },
+      { en: "Prepared digital content for online channels", hi: "ऑनलाइन चैनलों के लिए तैयार डिजिटल कंटेंट" },
     ],
     deliverables: [
-      { en: "Complete profile with services and products", hi: "सर्विस और प्रोडक्ट के साथ पूरी प्रोफ़ाइल" },
-      { en: "Keyword-rich business description", hi: "कीवर्ड वाला बिज़नेस विवरण" },
-      { en: "Website, WhatsApp and booking links", hi: "वेबसाइट, WhatsApp और बुकिंग लिंक" },
-      { en: "Monthly post ideas (optional)", hi: "मासिक पोस्ट आइडिया (वैकल्पिक)" },
+      { en: "Google Business Profile setup assistance", hi: "Google Business Profile सेटअप सहायता" },
+      { en: "Business profile content and updates", hi: "बिज़नेस प्रोफ़ाइल कंटेंट और अपडेट" },
+      { en: "Product description writing and digital content preparation", hi: "प्रोडक्ट विवरण लेखन और डिजिटल कंटेंट तैयारी" },
+      { en: "Marketplace profile optimization support", hi: "मार्केटप्लेस प्रोफ़ाइल ऑप्टिमाइज़ेशन सहायता" },
     ],
     idealFor: [
-      { en: "New businesses starting online", hi: "ऑनलाइन शुरुआत करने वाले नए व्यवसाय" },
-      { en: "Businesses with few or no reviews", hi: "कम या बिना रिव्यू वाले व्यवसाय" },
-      { en: "Anyone appearing in local search", hi: "लोकल सर्च में आने वाले सभी" },
+      { en: "Businesses preparing or updating their online profiles", hi: "ऑनलाइन प्रोफ़ाइल तैयार या अपडेट करने वाले व्यवसाय" },
+      { en: "Sellers who need product content support", hi: "प्रोडक्ट कंटेंट सहायता चाहने वाले विक्रेता" },
+      { en: "Teams preparing digital business content", hi: "डिजिटल बिज़नेस कंटेंट तैयार करने वाली टीमें" },
     ],
     faqs: [
       {
-        q: { en: "Is Google Business Profile free?", hi: "क्या Google बिज़नेस प्रोफ़ाइल मुफ़्त है?" },
+        q: {
+          en: "Can you help prepare our business profiles and content?",
+          hi: "क्या आप हमारी बिज़नेस प्रोफ़ाइल और कंटेंट तैयार करने में मदद कर सकते हैं?",
+        },
         a: {
-          en: "Yes, Google does not charge for the profile. You pay us only for setup and optimisation work.",
-          hi: "हाँ, Google प्रोफ़ाइल के लिए शुल्क नहीं लेता। आप केवल हमारे सेटअप और ऑप्टिमाइज़ेशन काम का भुगतान करते हैं।",
+          en: "Yes. Share the channels and content you need help with, and we can discuss a suitable scope.",
+          hi: "हाँ। जिन चैनलों और कंटेंट में मदद चाहिए, उनकी जानकारी दें ताकि काम का सही दायरा तय किया जा सके।",
+        },
+      },
+    ],
+  },
+
+  {
+    slug: "custom-software-development",
+    kind: "tech",
+    published: true,
+    icon: "code",
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "Custom business software displayed on a computer", hi: "कंप्यूटर पर दिखता कस्टम बिज़नेस सॉफ़्टवेयर" },
+    },
+    title: { en: "Custom Software Development", hi: "कस्टम सॉफ़्टवेयर डेवलपमेंट" },
+    short: {
+      en: "Purpose-built business applications shaped around your workflows, users and operational needs.",
+      hi: "आपके वर्कफ़्लो, उपयोगकर्ताओं और संचालन की ज़रूरतों के अनुसार बनाए गए बिज़नेस एप्लिकेशन।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES plans and builds custom business software around your requirements. Solutions can include CRM and sales management systems, ERP and HRM applications, inventory tools, hotel booking and reservation platforms, and SaaS products.",
+      hi: "HASVIK TECHNOLOGIES आपकी आवश्यकताओं के अनुसार कस्टम बिज़नेस सॉफ़्टवेयर की योजना और विकास करता है। समाधान में CRM और सेल्स मैनेजमेंट सिस्टम, ERP और HRM एप्लिकेशन, इन्वेंटरी टूल, होटल बुकिंग और रिज़र्वेशन प्लेटफ़ॉर्म तथा SaaS प्रोडक्ट शामिल हो सकते हैं।",
+    },
+    features: [
+      { en: "Workflows tailored to your business", hi: "आपके व्यवसाय के अनुसार वर्कफ़्लो" },
+      { en: "Role-based tools for teams and customers", hi: "टीम और ग्राहकों के लिए भूमिका-आधारित टूल" },
+      { en: "A clear path for future improvements", hi: "भविष्य के सुधार के लिए स्पष्ट योजना" },
+    ],
+    deliverables: [
+      { en: "CRM and sales management systems", hi: "CRM और सेल्स मैनेजमेंट सिस्टम" },
+      { en: "ERP and HRM applications", hi: "ERP और HRM एप्लिकेशन" },
+      { en: "Inventory management systems", hi: "इन्वेंटरी मैनेजमेंट सिस्टम" },
+      { en: "Hotel booking and reservation platforms", hi: "होटल बुकिंग और रिज़र्वेशन प्लेटफ़ॉर्म" },
+      { en: "Custom business applications and SaaS solutions", hi: "कस्टम बिज़नेस एप्लिकेशन और SaaS समाधान" },
+    ],
+    idealFor: [
+      { en: "Businesses coordinating work across teams", hi: "टीमों के बीच काम का समन्वय करने वाले व्यवसाय" },
+      { en: "Organizations replacing manual workflows", hi: "मैनुअल वर्कफ़्लो बदलने वाले संगठन" },
+      { en: "Founders validating a software product idea", hi: "सॉफ़्टवेयर प्रोडक्ट आइडिया पर काम करने वाले संस्थापक" },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Can you scope a software project before development?",
+          hi: "क्या डेवलपमेंट से पहले सॉफ़्टवेयर प्रोजेक्ट का दायरा तय कर सकते हैं?",
+        },
+        a: {
+          en: "Yes. We can discuss your users, workflows and priorities first, then define a suitable scope together.",
+          hi: "हाँ। पहले उपयोगकर्ताओं, वर्कफ़्लो और प्राथमिकताओं पर चर्चा करके मिलकर उपयुक्त दायरा तय किया जा सकता है।",
+        },
+      },
+    ],
+  },
+  {
+    slug: "ui-ux-design",
+    kind: "tech",
+    published: true,
+    icon: "palette",
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "User interface design displayed on a computer", hi: "कंप्यूटर पर दिखता यूज़र इंटरफ़ेस डिज़ाइन" },
+    },
+    title: { en: "UI/UX Design", hi: "UI/UX डिज़ाइन" },
+    short: {
+      en: "Clear, responsive interfaces that make websites and applications easier to understand and use.",
+      hi: "वेबसाइट और एप्लिकेशन को समझने और इस्तेमाल करने में आसान बनाने वाले स्पष्ट, रिस्पॉन्सिव इंटरफ़ेस।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES designs web and application interfaces around real user needs. The design process can include wireframes, interactive prototypes, responsive layouts and dashboards, creating a clear foundation for development.",
+      hi: "HASVIK TECHNOLOGIES वास्तविक उपयोगकर्ता ज़रूरतों के अनुसार वेब और एप्लिकेशन इंटरफ़ेस डिज़ाइन करता है। डिज़ाइन प्रक्रिया में वायरफ़्रेम, इंटरैक्टिव प्रोटोटाइप, रिस्पॉन्सिव लेआउट और डैशबोर्ड शामिल हो सकते हैं, जो डेवलपमेंट के लिए स्पष्ट आधार देते हैं।",
+    },
+    features: [
+      { en: "Layouts designed for different screen sizes", hi: "अलग-अलग स्क्रीन के लिए डिज़ाइन लेआउट" },
+      { en: "Clickable prototypes to review ideas", hi: "आइडिया की समीक्षा के लिए क्लिक करने योग्य प्रोटोटाइप" },
+      { en: "Consistent, easy-to-follow visual patterns", hi: "सुसंगत और समझने में आसान विज़ुअल पैटर्न" },
+    ],
+    deliverables: [
+      { en: "Web and application interface design", hi: "वेब और एप्लिकेशन इंटरफ़ेस डिज़ाइन" },
+      { en: "Wireframing and prototyping", hi: "वायरफ़्रेमिंग और प्रोटोटाइपिंग" },
+      { en: "Responsive interface design", hi: "रिस्पॉन्सिव इंटरफ़ेस डिज़ाइन" },
+      { en: "Dashboard design", hi: "डैशबोर्ड डिज़ाइन" },
+    ],
+    idealFor: [
+      { en: "Teams planning a new website or application", hi: "नई वेबसाइट या एप्लिकेशन की योजना बनाने वाली टीमें" },
+      { en: "Businesses improving an existing user experience", hi: "मौजूदा यूज़र अनुभव बेहतर करने वाले व्यवसाय" },
+      { en: "Product teams aligning before development", hi: "डेवलपमेंट से पहले तालमेल करने वाली प्रोडक्ट टीमें" },
+    ],
+    faqs: [
+      {
+        q: { en: "Can you provide designs before development starts?", hi: "क्या डेवलपमेंट शुरू होने से पहले डिज़ाइन मिल सकता है?" },
+        a: {
+          en: "Yes. Wireframes and prototypes can be reviewed with your team before implementation.",
+          hi: "हाँ। लागू करने से पहले आपकी टीम वायरफ़्रेम और प्रोटोटाइप की समीक्षा कर सकती है।",
+        },
+      },
+    ],
+  },
+  {
+    slug: "cloud-it-solutions",
+    kind: "tech",
+    published: false,
+    icon: "server",
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "Cloud and IT services for digital products", hi: "डिजिटल प्रोडक्ट के लिए क्लाउड और IT सेवाएँ" },
+    },
+    title: { en: "Cloud & IT Solutions", hi: "क्लाउड और IT समाधान" },
+    short: {
+      en: "Practical cloud, deployment, API and database support for your digital products.",
+      hi: "आपके डिजिटल प्रोडक्ट के लिए व्यावहारिक क्लाउड, डिप्लॉयमेंट, API और डेटाबेस सहायता।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES helps plan and implement cloud hosting and deployment, including AWS and Vercel deployments. Support can also cover API development and integration, database management and IT consulting based on your requirements.",
+      hi: "HASVIK TECHNOLOGIES AWS और Vercel डिप्लॉयमेंट सहित क्लाउड होस्टिंग और डिप्लॉयमेंट की योजना और कार्यान्वयन में मदद करता है। ज़रूरत के अनुसार API डेवलपमेंट और इंटीग्रेशन, डेटाबेस मैनेजमेंट और IT कंसल्टिंग भी शामिल हो सकते हैं।",
+    },
+    features: [
+      { en: "Deployment choices matched to your project", hi: "प्रोजेक्ट के अनुसार डिप्लॉयमेंट विकल्प" },
+      { en: "Connected APIs and managed data workflows", hi: "जुड़े हुए APIs और व्यवस्थित डेटा वर्कफ़्लो" },
+      { en: "Technical guidance for infrastructure decisions", hi: "इन्फ़्रास्ट्रक्चर फ़ैसलों के लिए तकनीकी मार्गदर्शन" },
+    ],
+    deliverables: [
+      { en: "Cloud hosting and deployment", hi: "क्लाउड होस्टिंग और डिप्लॉयमेंट" },
+      { en: "AWS and Vercel deployment", hi: "AWS और Vercel डिप्लॉयमेंट" },
+      { en: "API development and integration", hi: "API डेवलपमेंट और इंटीग्रेशन" },
+      { en: "Database management", hi: "डेटाबेस मैनेजमेंट" },
+      { en: "IT consulting", hi: "IT कंसल्टिंग" },
+    ],
+    idealFor: [
+      { en: "Businesses launching a new digital product", hi: "नया डिजिटल प्रोडक्ट लॉन्च करने वाले व्यवसाय" },
+      { en: "Teams integrating systems and services", hi: "सिस्टम और सेवाएँ जोड़ने वाली टीमें" },
+      { en: "Organizations seeking infrastructure guidance", hi: "इन्फ़्रास्ट्रक्चर मार्गदर्शन चाहने वाले संगठन" },
+    ],
+    faqs: [
+      {
+        q: { en: "Can you work with our existing cloud setup?", hi: "क्या आप हमारे मौजूदा क्लाउड सेटअप के साथ काम कर सकते हैं?" },
+        a: {
+          en: "We can review your current setup and discuss the deployment or integration work that fits your needs.",
+          hi: "हम मौजूदा सेटअप की समीक्षा करके आपकी ज़रूरत के अनुसार डिप्लॉयमेंट या इंटीग्रेशन पर चर्चा कर सकते हैं।",
+        },
+      },
+    ],
+  },
+  {
+    slug: "mobile-app-development",
+    kind: "tech",
+    published: true,
+    icon: "smartphone",
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "Mobile application interface for customers", hi: "ग्राहकों के लिए मोबाइल एप्लिकेशन इंटरफ़ेस" },
+    },
+    title: { en: "Mobile App Development", hi: "मोबाइल ऐप डेवलपमेंट" },
+    short: {
+      en: "Mobile experiences planned around your customers, product goals and day-to-day workflows.",
+      hi: "आपके ग्राहकों, प्रोडक्ट लक्ष्यों और रोज़मर्रा के वर्कफ़्लो के अनुसार मोबाइल अनुभव।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES plans and develops mobile applications around your users and business requirements. We work with you to define the app's core features, platform needs and integration requirements before agreeing on a delivery scope.",
+      hi: "HASVIK TECHNOLOGIES आपके उपयोगकर्ताओं और व्यावसायिक ज़रूरतों के अनुसार मोबाइल एप्लिकेशन की योजना और विकास करता है। काम का दायरा तय करने से पहले ऐप के मुख्य फ़ीचर, प्लेटफ़ॉर्म की ज़रूरतें और इंटीग्रेशन आवश्यकताओं पर चर्चा की जाती है।",
+    },
+    features: [
+      { en: "Features scoped to real user needs", hi: "वास्तविक उपयोगकर्ता ज़रूरतों के अनुसार फ़ीचर" },
+      { en: "Interfaces designed for mobile use", hi: "मोबाइल उपयोग के लिए डिज़ाइन इंटरफ़ेस" },
+      { en: "Integration planning for existing services", hi: "मौजूदा सेवाओं के साथ इंटीग्रेशन की योजना" },
+    ],
+    deliverables: [
+      { en: "Mobile application planning and development", hi: "मोबाइल एप्लिकेशन की योजना और डेवलपमेंट" },
+      { en: "Feature and user-flow definition", hi: "फ़ीचर और यूज़र फ़्लो निर्धारण" },
+      { en: "Mobile interface implementation", hi: "मोबाइल इंटरफ़ेस कार्यान्वयन" },
+      { en: "Integration planning for APIs and business systems", hi: "APIs और बिज़नेस सिस्टम इंटीग्रेशन की योजना" },
+    ],
+    idealFor: [
+      { en: "Businesses planning a mobile customer experience", hi: "मोबाइल ग्राहक अनुभव की योजना बनाने वाले व्यवसाय" },
+      { en: "Teams extending a web product to mobile", hi: "वेब प्रोडक्ट को मोबाइल तक विस्तारित करने वाली टीमें" },
+      { en: "Organizations digitizing on-the-go workflows", hi: "मोबाइल वर्कफ़्लो को डिजिटल बनाने वाले संगठन" },
+    ],
+    faqs: [
+      {
+        q: { en: "Which platforms can an app support?", hi: "ऐप किन प्लेटफ़ॉर्म पर काम कर सकता है?" },
+        a: {
+          en: "Platform requirements depend on your audience and project scope. We discuss those needs before recommending an approach.",
+          hi: "प्लेटफ़ॉर्म की ज़रूरतें आपके उपयोगकर्ताओं और प्रोजेक्ट के दायरे पर निर्भर करती हैं। तरीका सुझाने से पहले हम इन ज़रूरतों पर चर्चा करते हैं।",
+        },
+      },
+    ],
+  },
+  {
+    slug: "software-testing-quality-assurance",
+    kind: "tech",
+    published: false,
+    icon: "shield-check",
+    image: {
+      src: "/images/Computer-Screen.webp",
+      alt: { en: "Software quality checks on a computer", hi: "कंप्यूटर पर सॉफ़्टवेयर क्वालिटी जाँच" },
+    },
+    title: { en: "Software Testing & Quality Assurance", hi: "सॉफ़्टवेयर टेस्टिंग और क्वालिटी एश्योरेंस" },
+    short: {
+      en: "Structured checks to help websites and applications work as intended across key user flows.",
+      hi: "वेबसाइट और एप्लिकेशन के प्रमुख उपयोगकर्ता फ़्लो को सही ढंग से जाँचने की व्यवस्थित प्रक्रिया।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES helps teams review websites and applications through planned functional checks, responsive-layout reviews and regression testing. Findings are documented clearly to support informed fixes and releases.",
+      hi: "HASVIK TECHNOLOGIES योजनाबद्ध फ़ंक्शनल जाँच, रिस्पॉन्सिव लेआउट समीक्षा और रिग्रेशन टेस्टिंग के ज़रिए वेबसाइट और एप्लिकेशन की समीक्षा करता है। सुधार और रिलीज़ में मदद के लिए निष्कर्ष स्पष्ट रूप से दर्ज किए जाते हैं।",
+    },
+    features: [
+      { en: "Test coverage focused on important user flows", hi: "महत्वपूर्ण यूज़र फ़्लो पर केंद्रित टेस्ट कवरेज" },
+      { en: "Issues documented for clear follow-up", hi: "आगे की कार्रवाई के लिए स्पष्ट रूप से दर्ज समस्याएँ" },
+      { en: "Checks across supported screen sizes", hi: "समर्थित स्क्रीन साइज़ पर जाँच" },
+    ],
+    deliverables: [
+      { en: "Functional testing of key features", hi: "मुख्य फ़ीचर की फ़ंक्शनल टेस्टिंग" },
+      { en: "Responsive layout checks", hi: "रिस्पॉन्सिव लेआउट जाँच" },
+      { en: "Regression checks after updates", hi: "अपडेट के बाद रिग्रेशन जाँच" },
+      { en: "Documented findings and reproduction steps", hi: "दर्ज निष्कर्ष और समस्या दोहराने के चरण" },
+    ],
+    idealFor: [
+      { en: "Teams preparing a website or app release", hi: "वेबसाइट या ऐप रिलीज़ की तैयारी करने वाली टीमें" },
+      { en: "Businesses reviewing an existing digital product", hi: "मौजूदा डिजिटल प्रोडक्ट की समीक्षा करने वाले व्यवसाय" },
+      { en: "Organizations checking changes before rollout", hi: "रोलआउट से पहले बदलाव जाँचने वाले संगठन" },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Can you test an application built by another team?",
+          hi: "क्या आप दूसरी टीम द्वारा बनाए गए एप्लिकेशन की टेस्टिंग कर सकते हैं?",
+        },
+        a: {
+          en: "Yes. We can discuss access, supported environments and your priority user flows to define a suitable test scope.",
+          hi: "हाँ। उपयुक्त टेस्ट दायरा तय करने के लिए हम एक्सेस, समर्थित एनवायरनमेंट और प्राथमिक यूज़र फ़्लो पर चर्चा कर सकते हैं।",
         },
       },
     ],
   },
 
   // ---------------- Non-tech services ----------------
+  {
+    slug: "ecommerce-marketplace-management",
+    kind: "non-tech",
+    published: true,
+    icon: "shopping-bag",
+    image: {
+      src: "/images/shopping.webp",
+      alt: { en: "Online marketplace products ready for listing", hi: "लिस्टिंग के लिए तैयार ऑनलाइन मार्केटप्लेस प्रोडक्ट" },
+    },
+    title: { en: "E-commerce Marketplace Management", hi: "ई-कॉमर्स मार्केटप्लेस मैनेजमेंट" },
+    short: {
+      en: "Organized product listing and seller account support across popular online marketplaces.",
+      hi: "लोकप्रिय ऑनलाइन मार्केटप्लेस पर व्यवस्थित प्रोडक्ट लिस्टिंग और सेलर अकाउंट सहायता।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES offers independent seller support for product listings on Amazon, Flipkart and Meesho. Services can include account setup assistance, catalog creation, bulk uploads, listing optimization, inventory and pricing updates, and seller account management. HASVIK TECHNOLOGIES is not affiliated with or endorsed by these marketplaces.",
+      hi: "HASVIK TECHNOLOGIES Amazon, Flipkart और Meesho पर प्रोडक्ट लिस्टिंग के लिए स्वतंत्र सेलर सहायता देता है। सेवाओं में अकाउंट सेटअप सहायता, कैटलॉग निर्माण, बल्क अपलोड, लिस्टिंग ऑप्टिमाइज़ेशन, इन्वेंटरी और कीमत अपडेट तथा सेलर अकाउंट मैनेजमेंट शामिल हो सकते हैं। HASVIK TECHNOLOGIES इन मार्केटप्लेस से संबद्ध या समर्थित नहीं है।",
+    },
+    features: [
+      { en: "Consistent product information across listings", hi: "लिस्टिंग में सुसंगत प्रोडक्ट जानकारी" },
+      { en: "Support for bulk catalog workflows", hi: "बल्क कैटलॉग वर्कफ़्लो के लिए सहायता" },
+      { en: "Ongoing listing, inventory and pricing updates", hi: "लिस्टिंग, इन्वेंटरी और कीमतों के नियमित अपडेट" },
+    ],
+    deliverables: [
+      { en: "Amazon, Flipkart and Meesho product listing assistance", hi: "Amazon, Flipkart और Meesho प्रोडक्ट लिस्टिंग सहायता" },
+      { en: "Seller account setup assistance", hi: "सेलर अकाउंट सेटअप सहायता" },
+      { en: "Product catalog creation and bulk product uploads", hi: "प्रोडक्ट कैटलॉग निर्माण और बल्क अपलोड" },
+      { en: "Product listing optimization", hi: "प्रोडक्ट लिस्टिंग ऑप्टिमाइज़ेशन" },
+      { en: "Inventory and pricing updates", hi: "इन्वेंटरी और कीमत अपडेट" },
+      { en: "Seller account management support", hi: "सेलर अकाउंट मैनेजमेंट सहायता" },
+    ],
+    idealFor: [
+      { en: "Sellers organizing a growing product catalog", hi: "बढ़ता प्रोडक्ट कैटलॉग व्यवस्थित करने वाले विक्रेता" },
+      { en: "Businesses preparing to sell through marketplaces", hi: "मार्केटप्लेस के ज़रिए बिक्री की तैयारी करने वाले व्यवसाय" },
+      { en: "Teams needing ongoing listing updates", hi: "नियमित लिस्टिंग अपडेट चाहने वाली टीमें" },
+    ],
+    faqs: [
+      {
+        q: { en: "Are you officially connected with these marketplaces?", hi: "क्या इन मार्केटप्लेस के साथ आपकी आधिकारिक साझेदारी है?" },
+        a: {
+          en: "No. HASVIK TECHNOLOGIES provides independent seller support and is not affiliated with or endorsed by Amazon, Flipkart or Meesho.",
+          hi: "नहीं। HASVIK TECHNOLOGIES स्वतंत्र सेलर सहायता देता है और Amazon, Flipkart या Meesho से संबद्ध या समर्थित नहीं है।",
+        },
+      },
+    ],
+  },
   {
     slug: "data-entry-processing",
     kind: "non-tech",
@@ -285,14 +580,14 @@ export const services: Service[] = [
       src: "/images/data_entry.webp",
       alt: { en: "Data entry and processing work on a computer", hi: "कंप्यूटर पर डेटा एंट्री और प्रोसेसिंग" },
     },
-    title: { en: "Data Entry & Processing", hi: "डेटा एंट्री और प्रोसेसिंग" },
+    title: { en: "Data Entry & Catalog Management", hi: "डेटा एंट्री और कैटलॉग मैनेजमेंट" },
     short: {
-      en: "Accurate and organized data entry solutions for businesses and organizations.",
-      hi: "व्यवसायों और संस्थाओं के लिए सटीक और व्यवस्थित डेटा एंट्री सेवाएँ।",
+      en: "Accurate data processing, spreadsheet support and structured product catalog management.",
+      hi: "सटीक डेटा प्रोसेसिंग, स्प्रेडशीट सहायता और व्यवस्थित प्रोडक्ट कैटलॉग मैनेजमेंट।",
     },
     description: {
-      en: "Accurate and organized data entry solutions for businesses and organizations. Our trained team converts records, forms and documents into clean, structured digital data delivered in the format you need.",
-      hi: "व्यवसायों और संस्थाओं के लिए सटीक और व्यवस्थित डेटा एंट्री। हमारी प्रशिक्षित टीम रिकॉर्ड, फ़ॉर्म और दस्तावेज़ों को साफ़, व्यवस्थित डिजिटल डेटा में बदलती है, आपकी ज़रूरत के फ़ॉर्मेट में।",
+      en: "HASVIK TECHNOLOGIES supports data entry and processing, spreadsheet management, data cleaning and validation, product catalog digitization and bulk data management. Records can be organized and delivered in the agreed format.",
+      hi: "HASVIK TECHNOLOGIES डेटा एंट्री और प्रोसेसिंग, स्प्रेडशीट मैनेजमेंट, डेटा सफ़ाई और वैलिडेशन, प्रोडक्ट कैटलॉग डिजिटाइज़ेशन तथा बल्क डेटा मैनेजमेंट में सहायता करता है। रिकॉर्ड को तय फ़ॉर्मेट में व्यवस्थित करके दिया जा सकता है।",
     },
     features: [
       { en: "High accuracy, double-checked", hi: "उच्च सटीकता, दोबारा जाँचा गया" },
@@ -303,6 +598,8 @@ export const services: Service[] = [
       { en: "Manual entry from paper or scanned records", hi: "काग़ज़ या स्कैन रिकॉर्ड से मैनुअल एंट्री" },
       { en: "Data cleaning and de-duplication", hi: "डेटा सफ़ाई और डुप्लीकेट हटाना" },
       { en: "Structured spreadsheets and reports", hi: "व्यवस्थित स्प्रेडशीट और रिपोर्ट" },
+      { en: "Spreadsheet management and data validation", hi: "स्प्रेडशीट मैनेजमेंट और डेटा वैलिडेशन" },
+      { en: "Product catalog digitization and bulk data management", hi: "प्रोडक्ट कैटलॉग डिजिटाइज़ेशन और बल्क डेटा मैनेजमेंट" },
     ],
     idealFor: [
       { en: "Schools managing student records", hi: "छात्र रिकॉर्ड संभालने वाले स्कूल" },
@@ -319,20 +616,66 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    slug: "business-process-support",
+    kind: "non-tech",
+    published: true,
+    icon: "briefcase",
+    image: {
+      src: "/images/data_entry.webp",
+      alt: { en: "Organized business records and data processing", hi: "व्यवस्थित बिज़नेस रिकॉर्ड और डेटा प्रोसेसिंग" },
+    },
+    title: { en: "Business Process Support", hi: "बिज़नेस प्रोसेस सहायता" },
+    short: {
+      en: "Dependable back-office and administrative support to help keep day-to-day work organized.",
+      hi: "रोज़मर्रा के काम व्यवस्थित रखने के लिए भरोसेमंद बैक-ऑफ़िस और प्रशासनिक सहायता।",
+    },
+    description: {
+      en: "HASVIK TECHNOLOGIES provides business process support for recurring operational tasks. Support can include back-office operations, documentation management, order processing assistance, business reporting and administrative support, with responsibilities agreed to suit your workflows.",
+      hi: "HASVIK TECHNOLOGIES नियमित संचालन संबंधी कामों के लिए बिज़नेस प्रोसेस सहायता देता है। सहायता में बैक-ऑफ़िस संचालन, दस्तावेज़ मैनेजमेंट, ऑर्डर प्रोसेसिंग, बिज़नेस रिपोर्टिंग और प्रशासनिक सहायता शामिल हो सकती है; ज़िम्मेदारियाँ आपके वर्कफ़्लो के अनुसार तय होती हैं।",
+    },
+    features: [
+      { en: "Structured support for recurring processes", hi: "नियमित प्रक्रियाओं के लिए व्यवस्थित सहायता" },
+      { en: "Clear documentation and handoffs", hi: "स्पष्ट दस्तावेज़ीकरण और काम का हस्तांतरण" },
+      { en: "Flexible support aligned with agreed tasks", hi: "तय कामों के अनुसार लचीली सहायता" },
+    ],
+    deliverables: [
+      { en: "Back-office operations", hi: "बैक-ऑफ़िस संचालन" },
+      { en: "Documentation management", hi: "दस्तावेज़ मैनेजमेंट" },
+      { en: "Order processing support", hi: "ऑर्डर प्रोसेसिंग सहायता" },
+      { en: "Business reporting", hi: "बिज़नेस रिपोर्टिंग" },
+      { en: "Administrative support", hi: "प्रशासनिक सहायता" },
+    ],
+    idealFor: [
+      { en: "Small teams managing recurring operational tasks", hi: "नियमित संचालन कार्य संभालने वाली छोटी टीमें" },
+      { en: "Businesses organizing orders and records", hi: "ऑर्डर और रिकॉर्ड व्यवस्थित करने वाले व्यवसाय" },
+      { en: "Organizations needing administrative assistance", hi: "प्रशासनिक सहायता चाहने वाले संगठन" },
+    ],
+    faqs: [
+      {
+        q: { en: "Can support be limited to specific tasks?", hi: "क्या सहायता कुछ चुने हुए कामों तक सीमित हो सकती है?" },
+        a: {
+          en: "Yes. We can discuss the tasks, handoffs and reporting needs and agree on a focused scope.",
+          hi: "हाँ। काम, हस्तांतरण और रिपोर्टिंग की ज़रूरतों पर चर्चा करके सीमित दायरा तय किया जा सकता है।",
+        },
+      },
+    ],
+  },
   // TODO(owner): confirm, rewrite and set published: true for the non-tech services you offer.
   ...(
     [
-      ["back-office-support", "briefcase", "Back-Office Support", "बैक-ऑफ़िस सपोर्ट"],
-      ["document-digitization", "scan", "Document Digitization", "दस्तावेज़ डिजिटाइज़ेशन"],
-      ["typing-form-filling", "keyboard", "Typing & Form Filling", "टाइपिंग और फ़ॉर्म भरना"],
-      ["social-media-management", "megaphone", "Social Media Management", "सोशल मीडिया मैनेजमेंट"],
-      ["graphic-design-printing", "palette", "Graphic Design & Printing", "ग्राफ़िक डिज़ाइन और प्रिंटिंग"],
+      ["back-office-support", "briefcase", "Back-Office Support", "बैक-ऑफ़िस सपोर्ट", "/images/data_entry.webp"],
+      ["document-digitization", "scan", "Document Digitization", "दस्तावेज़ डिजिटाइज़ेशन", "/images/data_entry.webp"],
+      ["typing-form-filling", "keyboard", "Typing & Form Filling", "टाइपिंग और फ़ॉर्म भरना", "/images/Computer-Screen.webp"],
+      ["social-media-management", "megaphone", "Social Media Management", "सोशल मीडिया मैनेजमेंट", "/images/Business.webp"],
+      ["graphic-design-printing", "palette", "Graphic Design & Printing", "ग्राफ़िक डिज़ाइन और प्रिंटिंग", "/images/Computer-Screen.webp"],
     ] as const
-  ).map(([slug, icon, en, hi]): Service => ({
+  ).map(([slug, icon, en, hi, imageSrc]): Service => ({
     slug,
     kind: "non-tech",
     published: false,
     icon,
+    image: { src: imageSrc, alt: { en, hi } },
     title: { en, hi },
     short: "TODO(owner): one-line description",
     description: "TODO(owner): full description",

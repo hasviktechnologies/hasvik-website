@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, Flag, HandCoins, Rocket, Sparkles, Sprout, Target, Users } from "lucide-react";
 import { getDictionary } from "@/i18n/server";
-import { hasLocale, localizePath, tr } from "@/i18n/config";
+import { hasLocale, localizePath } from "@/i18n/config";
 import { dictionaryFor } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo";
-import { getProject } from "@/content/projects";
 import { site } from "@/content/site";
 import { PageHero, splitTitle } from "@/components/layout/page-hero";
 import { Container, Section, SectionHeader } from "@/components/ui/section";
 import { buttonVariants } from "@/components/ui/button";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { BrandVisual } from "@/components/home/brand-visual";
 import { TeamGrid } from "@/components/team/team-grid";
 import { CtaBand } from "@/components/home/cta-band";
 
@@ -26,8 +25,6 @@ export default async function AboutPage() {
   const { locale, t } = await getDictionary();
   const L = (p: string) => localizePath(p, locale);
   const { start, highlight } = splitTitle(t.aboutPage.title);
-  const lr = getProject("lr-engineering-solutions")!;
-  const rm = getProject("rm-suncity-public-school")!;
   const valueIcons = [Sparkles, Sprout, Users, HandCoins];
   const journey = [
     ...t.about.timeline.map((it, i) => ({ ...it, Icon: [Flag, Award][i] })),
@@ -68,11 +65,18 @@ export default async function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <BrandVisual
-              caption={t.about.visualCaption}
-              laptop={{ src: lr.image.src, alt: tr(lr.image.alt, locale) }}
-              phone={{ src: rm.caseStudy.gallery![0].src, alt: tr(rm.caseStudy.gallery![0].alt, locale) }}
-            />
+            <figure>
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] shadow-lift">
+                <Image
+                  src="/images/office.png"
+                  alt={locale === "hi" ? "HASVIK TECHNOLOGIES का कार्यालय" : "HASVIK TECHNOLOGIES office"}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-4 text-center text-sm text-muted-foreground">{t.about.visualCaption}</figcaption>
+            </figure>
           </Reveal>
         </Container>
       </Section>
@@ -107,7 +111,7 @@ export default async function AboutPage() {
           <ol className="relative flex flex-col gap-8 before:absolute before:top-2 before:bottom-2 before:left-6 before:w-0.5 before:bg-gradient-to-b before:from-accent before:to-brand-600/30 sm:before:left-1/2">
             {journey.map((item, i) => (
               <li key={item.date} className="relative grid grid-cols-[3rem_1fr] gap-5 sm:grid-cols-2 sm:gap-12">
-                <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-full bg-accent text-brand-950 ring-8 ring-background sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-full bg-accent-ink text-white ring-8 ring-background sm:absolute sm:left-1/2 sm:-translate-x-1/2">
                   <item.Icon className="size-5" aria-hidden="true" />
                 </span>
                 <Reveal className={i % 2 === 0 ? "sm:col-start-1 sm:pr-10 sm:text-right" : "sm:col-start-2 sm:pl-10"}>

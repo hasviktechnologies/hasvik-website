@@ -7,47 +7,30 @@ import { PillTabs } from "@/components/ui/tabs";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ServiceCard } from "./service-card";
 
-/** Tech / Non-Tech tabs with a bento grid. Used on the homepage and /services. */
-/**
- * Bento order: wide image cards (span 2) alternate sides with plain cards so
- * every 3-column row is filled: [W,p] [p,W] [W,p] ...
- */
-function bentoOrder<T extends { image?: unknown }>(items: T[]) {
-  const wide = items.filter((s) => s.image);
-  const plain = items.filter((s) => !s.image);
-  const out: { item: T; wide: boolean }[] = [];
-  const rows = Math.max(wide.length, plain.length);
-  for (let r = 0; r < rows; r++) {
-    const w = wide[r] ? [{ item: wide[r], wide: true }] : [];
-    const p = plain[r] ? [{ item: plain[r], wide: false }] : [];
-    out.push(...(r % 2 === 0 ? [...w, ...p] : [...p, ...w]));
-  }
-  return out;
-}
-
+/** Technology and non-technology service tabs. Used on the homepage and /services. */
 export function ServicesGrid({ locale, t }: { locale: Locale; t: Dictionary }) {
   const tech = (
-    <RevealGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {bentoOrder(techServices).map(({ item: s, wide }) => (
-        <RevealItem key={s.slug} className={wide ? "md:col-span-2" : undefined}>
-          <ServiceCard service={s} locale={locale} learnMore={t.services.learnMore} featured={wide} />
+    <RevealGroup className="grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {techServices.map((s) => (
+        <RevealItem key={s.slug}>
+          <ServiceCard service={s} locale={locale} learnMore={t.services.learnMore} />
         </RevealItem>
       ))}
     </RevealGroup>
   );
 
   const nonTech = (
-    <RevealGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <RevealGroup className="grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {nonTechServices.map((s) => (
-        <RevealItem key={s.slug} className="md:col-span-2">
-          <ServiceCard service={s} locale={locale} learnMore={t.services.learnMore} featured />
+        <RevealItem key={s.slug}>
+          <ServiceCard service={s} locale={locale} learnMore={t.services.learnMore} />
         </RevealItem>
       ))}
       <RevealItem>
         <div className="on-dark bg-hero relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-card p-7 text-white shadow-soft">
           <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
           <div className="relative">
-            <span className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-accent text-brand-950">
+            <span className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-accent-ink text-white">
               <MessageCircleQuestion className="size-6" aria-hidden="true" />
             </span>
             <h3 className="mb-2 text-xl font-semibold text-white">{t.services.customTitle}</h3>

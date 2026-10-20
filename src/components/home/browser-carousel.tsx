@@ -131,7 +131,7 @@ export function BrowserCarousel({
             type="button"
             onClick={() => go(1)}
             aria-label={strings.next}
-            className="inline-flex size-11 items-center justify-center rounded-full bg-accent text-brand-950 hover:brightness-105"
+            className="inline-flex size-11 items-center justify-center rounded-full bg-accent-ink text-white hover:brightness-105"
           >
             <ChevronRight className="size-5" aria-hidden="true" />
           </button>

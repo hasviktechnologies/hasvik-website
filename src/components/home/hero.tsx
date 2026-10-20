@@ -4,7 +4,7 @@ import { getDictionary } from "@/i18n/server";
 import { localizePath, tr } from "@/i18n/config";
 import { fmt } from "@/i18n/dictionaries";
 import { site } from "@/content/site";
-import { projects } from "@/content/projects";
+import { featuredProjectSlug, getProject } from "@/content/projects";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
 import { RotatingText } from "@/components/motion/rotating-text";
@@ -13,7 +13,13 @@ import { cn } from "@/lib/utils";
 
 export async function Hero() {
   const { locale, t } = await getDictionary();
-  const shots = projects.map((p) => ({ src: p.image.src, alt: tr(p.image.alt, locale), name: p.name, url: p.liveUrl }));
+  const featuredProject = getProject(featuredProjectSlug);
+  const shots = featuredProject
+    ? (featuredProject.caseStudy.gallery ?? [featuredProject.image]).map((image) => ({
+        src: image.src,
+        alt: tr(image.alt, locale),
+      }))
+    : [];
   const trustIcons = [BadgeCheck, CalendarDays, FolderCheck, MapPinned];
   const trust = t.hero.trust.map((s) => fmt(s, { n: site.stats.projectsCompleted }));
   const tagline = tr(site.tagline, locale)
@@ -23,7 +29,7 @@ export async function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="on-dark bg-hero relative isolate overflow-hidden pt-32 pb-16 text-white sm:pt-36 lg:pt-44 lg:pb-24"
+      className="on-dark bg-hero relative isolate overflow-hidden pt-32 pb-16 text-white sm:pt-36 lg:pt-36 lg:pb-24"
     >
       {/* Animated aurora + grid background */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
@@ -81,7 +87,14 @@ export async function Hero() {
           </div>
         </div>
 
-        <HeroMockup shots={shots} badges={t.hero.badges} label={t.hero.mockupLabel} goToLabel={t.a11y.goToSlide} />
+        {shots.length ? (
+          <HeroMockup
+            shots={shots}
+            label={t.hero.mockupLabel}
+            goToLabel={t.a11y.goToSlide}
+            recentlyDeliveredLabel={t.hero.recentlyDelivered}
+          />
+        ) : null}
       </Container>
 
       <Container className="mt-16 lg:mt-20">

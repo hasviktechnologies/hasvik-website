@@ -50,7 +50,7 @@ export function MapFacade({
             <path d="M0 90 L 400 120" stroke="currentColor" strokeWidth="4" />
             <path d="M300 0 L 260 300" stroke="currentColor" strokeWidth="4" />
           </svg>
-          <span className="relative inline-flex size-14 items-center justify-center rounded-full bg-accent text-brand-950 shadow-lg ring-8 ring-accent/25 transition-transform group-hover:scale-110">
+          <span className="relative inline-flex size-14 items-center justify-center rounded-full bg-accent-ink text-white shadow-lg ring-8 ring-accent/25 transition-transform group-hover:scale-110">
             <MapPin className="size-7" aria-hidden="true" />
           </span>
           <span className="relative max-w-xs text-sm text-white/85">{address}</span>

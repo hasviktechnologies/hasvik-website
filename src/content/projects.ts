@@ -276,5 +276,5 @@ export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
 
-/** The project highlighted in the "Website Successfully Delivered!" banner. */
+/** The recently delivered project highlighted in the homepage hero carousel. */
 export const featuredProjectSlug = "rm-suncity-public-school";

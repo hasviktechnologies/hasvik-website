@@ -16,7 +16,9 @@ import {
   Rocket,
   ScanLine,
   Server,
+  ShieldCheck,
   ShoppingBag,
+  Smartphone,
   Wrench,
   type LucideProps,
 } from "lucide-react";
@@ -42,6 +44,8 @@ const registry = {
   "life-buoy": LifeBuoy,
   monitor: Monitor,
   server: Server,
+  "shield-check": ShieldCheck,
+  smartphone: Smartphone,
 } as const;
 
 export type IconName = keyof typeof registry;

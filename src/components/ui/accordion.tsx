@@ -16,7 +16,7 @@ export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
             <h3>
               <A.Trigger className="group flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-heading sm:px-6">
                 {it.q}
-                <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-surface-2 text-heading transition-all duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-accent group-data-[state=open]:text-brand-950">
+                <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-surface-2 text-heading transition-all duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-accent-ink group-data-[state=open]:text-white">
                   <Plus className="size-4" aria-hidden="true" />
                 </span>
               </A.Trigger>

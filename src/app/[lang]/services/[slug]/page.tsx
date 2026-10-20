@@ -43,6 +43,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
   const L = (p: string) => localizePath(p, locale);
   const title = tr(service.title, locale);
   const words = title.split(" ");
+  const titleSplit = splitTitle(title, words.at(-2) === "&" ? 3 : words.length > 3 ? 2 : 1);
   const related = projects.filter((p) => p.services.includes(service.slug)).slice(0, 3);
   const others = publishedServices.filter((s) => s.slug !== service.slug).slice(0, 3);
   const hl = (s: string) => {
@@ -63,15 +64,15 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
           url: absoluteUrl(L(`/services/${service.slug}`)),
           provider: { "@id": `${siteUrl}/#business`, "@type": "LocalBusiness", name: site.name },
           areaServed: cities.map((c) => ({ "@type": "City", name: tr(c.name, "en") })),
-          ...(service.image ? { image: absoluteUrl(service.image.src) } : {}),
+          image: absoluteUrl(service.image.src),
         }}
       />
       {faqs.length ? <JsonLd data={faqSchema(faqs)} /> : null}
 
       <PageHero
         eyebrow={service.kind === "tech" ? t.services.tabTech : t.services.tabNonTech}
-        title={words.slice(0, -2).join(" ") || words[0]}
-        highlight={words.length > 2 ? words.slice(-2).join(" ") : words.slice(1).join(" ")}
+        title={titleSplit.start}
+        highlight={titleSplit.highlight}
         intro={tr(service.short, locale)}
         crumbLabel={t.a11y.breadcrumb}
         crumbs={[
@@ -80,21 +81,13 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
           { name: title, href: L(`/services/${service.slug}`) },
         ]}
         aside={
-          service.image ? (
-            <div className="relative hidden aspect-[4/3] overflow-hidden rounded-xl2 border border-white/15 shadow-lift lg:block">
-              <Image src={service.image.src} alt={tr(service.image.alt, locale)} fill priority sizes="480px" className="object-cover" />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-950/60 to-transparent" />
-              <span className="absolute bottom-5 left-5 inline-flex size-14 items-center justify-center rounded-2xl bg-accent text-brand-950 shadow-lg">
-                <Icon name={service.icon} className="size-7" />
-              </span>
-            </div>
-          ) : (
-            <div aria-hidden="true" className="hidden justify-center lg:flex">
-              <span className="glass inline-flex size-48 items-center justify-center rounded-[2.5rem] text-accent">
-                <Icon name={service.icon} className="size-20" />
-              </span>
-            </div>
-          )
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-xl2 border border-white/15 shadow-lift lg:block">
+            <Image src={service.image.src} alt={tr(service.image.alt, locale)} fill priority sizes="480px" className="object-cover" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-950/60 to-transparent" />
+            <span className="absolute bottom-5 left-5 inline-flex size-14 items-center justify-center rounded-2xl bg-accent-ink text-white shadow-lg">
+              <Icon name={service.icon} className="size-7" />
+            </span>
+          </div>
         }
       >
         <div className="flex flex-wrap gap-3">
@@ -103,7 +96,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
             <ArrowRight className="transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />
           </Link>
           <a
-            href={whatsappLink(`Hello HASVIK, I am interested in ${tr(service.title, "en")}`)}
+            href={whatsappLink(`Hello HASVIK TECHNOLOGIES, I am interested in ${tr(service.title, "en")}`)}
             target="_blank"
             rel="noopener noreferrer"
             className={buttonVariants({ variant: "glass" })}
@@ -148,14 +141,17 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
                 ))}
               </ul>
             </div>
-            <ul className="flex flex-col gap-2 rounded-xl2 border border-border bg-card p-6 shadow-soft">
-              {service.features.map((f) => (
-                <li key={tr(f, "en")} className="flex items-center gap-2 text-sm font-medium">
-                  <CheckCircle2 className="size-4 text-accent-ink dark:text-accent" aria-hidden="true" />
-                  {tr(f, locale)}
-                </li>
-              ))}
-            </ul>
+            <div className="rounded-xl2 border border-border bg-card p-6 shadow-soft">
+              <h3 className="mb-3 text-sm font-semibold text-heading">{t.services.benefits}</h3>
+              <ul className="flex flex-col gap-2">
+                {service.features.map((f) => (
+                  <li key={tr(f, "en")} className="flex items-center gap-2 text-sm font-medium">
+                    <CheckCircle2 className="size-4 text-accent-ink dark:text-accent" aria-hidden="true" />
+                    {tr(f, locale)}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
         </Container>
       </Section>

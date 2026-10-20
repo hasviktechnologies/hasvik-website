@@ -97,7 +97,7 @@ export async function ContactSection({
                     href={ch.href}
                     className="group flex h-full flex-col gap-1 rounded-card border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lift"
                   >
-                    <span className="mb-2 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-brand-700 group-hover:bg-accent group-hover:text-brand-950 dark:bg-white/5 dark:text-accent">
+                    <span className="mb-2 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-brand-700 group-hover:bg-accent-ink group-hover:text-white dark:bg-white/5 dark:text-accent dark:group-hover:bg-accent-ink dark:group-hover:text-white">
                       <ch.icon className="size-5" aria-hidden="true" />
                     </span>
                     <span className="text-sm font-semibold text-heading">{ch.label}</span>

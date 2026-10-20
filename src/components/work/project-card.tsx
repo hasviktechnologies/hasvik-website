@@ -7,7 +7,7 @@ import type { Project, ProjectStatus } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
 const statusStyle: Record<ProjectStatus, { cls: string; Icon: typeof CheckCircle2 }> = {
-  completed: { cls: "bg-[#e7f6e1] text-[#2f6b1f] ring-[#71c554]/40", Icon: CheckCircle2 },
+  completed: { cls: "bg-accent-ink text-white ring-accent-ink/40", Icon: CheckCircle2 },
   "in-progress": { cls: "bg-[#fff1e4] text-[#a14b00] ring-[#ff9533]/40", Icon: Loader },
   demo: { cls: "bg-[#e6f1ff] text-[#004c9a] ring-[#015bb5]/30", Icon: FlaskConical },
 };

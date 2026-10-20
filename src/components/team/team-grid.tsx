@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { UserRound } from "lucide-react";
 import { tr, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { mentors, team } from "@/content/team";
@@ -8,22 +9,27 @@ import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 
 export function TeamGrid({ locale }: { locale: Locale }) {
   return (
-    <RevealGroup className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6">
+    <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
       {team.map((m) => (
         <RevealItem key={m.name}>
-          <figure className="group flex h-full flex-col items-center rounded-card border border-border bg-card p-4 text-center shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-lift sm:p-5">
-            <div className="relative mb-4 aspect-square w-full max-w-36 overflow-hidden rounded-2xl bg-surface-2 ring-4 ring-sky-50 dark:ring-white/5">
-              <Image
-                src={m.photo.src}
-                alt={m.name}
-                fill
-                sizes="(min-width: 1024px) 144px, 40vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+          <figure className="group flex h-full flex-col items-center rounded-card border border-border bg-card p-5 text-center shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-lift sm:p-6">
+            <div className="relative mb-4 flex aspect-square w-full max-w-36 items-center justify-center overflow-hidden rounded-2xl bg-surface-2 text-brand-700 ring-4 ring-sky-50 dark:text-accent dark:ring-white/5">
+              {m.photo ? (
+                <Image
+                  src={m.photo.src}
+                  alt={m.name}
+                  fill
+                  sizes="(min-width: 1024px) 144px, 40vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <UserRound className="size-16" aria-hidden="true" />
+              )}
             </div>
-            <figcaption>
+            <figcaption className="flex flex-1 flex-col items-center">
               <p className="font-semibold text-heading">{m.name}</p>
-              <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">{tr(m.role, locale)}</p>
+              <p className="mt-0.5 text-xs font-medium text-muted-foreground sm:text-sm">{tr(m.role, locale)}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{tr(m.bio, locale)}</p>
             </figcaption>
           </figure>
         </RevealItem>

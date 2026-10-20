@@ -9,7 +9,6 @@ import { Container, Section, SectionHeader } from "@/components/ui/section";
 import { buttonVariants } from "@/components/ui/button";
 import { Hero } from "@/components/home/hero";
 import { AboutSection } from "@/components/home/about-section";
-import { FeaturedProject } from "@/components/home/featured-project";
 import { WhySection } from "@/components/home/why-section";
 import { TechSection } from "@/components/home/tech-section";
 import { WorkSection } from "@/components/home/work-section";
@@ -34,7 +33,6 @@ export default async function HomePage() {
       <JsonLd data={[organizationSchema(), localBusinessSchema(locale), websiteSchema(locale)]} />
       <Hero />
       <AboutSection />
-      <FeaturedProject />
 
       <Section tone="surface" id="services" aria-labelledby="services-title">
         <Container>

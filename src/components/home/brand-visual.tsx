@@ -73,7 +73,7 @@ export function BrandVisual({
           </div>
           <div
             aria-hidden="true"
-            className="absolute bottom-[38%] left-[30%] inline-flex size-10 items-center justify-center rounded-full bg-accent text-brand-950 shadow-lg ring-4 ring-white/20"
+            className="absolute bottom-[38%] left-[30%] inline-flex size-10 items-center justify-center rounded-full bg-accent-ink text-white shadow-lg ring-4 ring-white/20"
           >
             <ShieldCheck className="size-5" />
           </div>

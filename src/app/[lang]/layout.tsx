@@ -82,7 +82,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeScript }} />
         <a
           href="#main"
-          className="fixed top-4 left-4 z-[100] -translate-y-24 rounded-full bg-accent px-5 py-3 font-semibold text-brand-950 transition-transform focus:translate-y-0"
+          className="fixed top-4 left-4 z-[100] -translate-y-24 rounded-full bg-accent-ink px-5 py-3 font-semibold text-white transition-transform focus:translate-y-0"
         >
           {t.a11y.skip}
         </a>
