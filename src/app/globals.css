@@ -259,13 +259,14 @@
 
 @layer utilities {
   .on-dark .bg-green-cta {
-    background: #fff;
-    color: var(--accent-ink);
-    box-shadow: 0 8px 24px -8px rgb(255 255 255 / 0.3);
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    box-shadow: none !important;
   }
   .on-dark .bg-green-cta:hover {
-    background: #f1f8ee;
-    box-shadow: 0 14px 32px -10px rgb(255 255 255 / 0.4);
+    border: 2px solid #fff;
+    background: #00000055;
   }
 }
 
