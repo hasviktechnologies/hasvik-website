@@ -34,6 +34,7 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   poweredByHeader: false,
   experimental: {
+    agentUpgrade: "security",
     // Inline Tailwind CSS into the HTML: removes the render-blocking stylesheet
     // request for first-time (mostly mobile) visitors. See docs/PROJECT_CONTEXT.md.
     inlineCss: true,
