@@ -3,7 +3,7 @@ export const en = {
   meta: {
     defaultTitle: "Website Development & Digital Solutions Worldwide | HASVIK Technologies",
     description:
-      "Professional website development and digital solutions for businesses worldwide. Custom websites, e-commerce, education platforms, Google Business Profile setup, and reliable data services—delivered remotely with care.",
+      "Quality-focused, security-conscious website development and digital services for businesses worldwide. Custom websites, e-commerce, education platforms, marketplace product listings, Google Business Profile setup, and data services.",
   },
   a11y: {
     skip: "Skip to main content",
@@ -139,8 +139,8 @@ export const en = {
     title: "Driving Digital",
     highlight: "Growth",
     titleEnd: "with Purpose",
-    p1: "HASVIK Technologies is an Udyam Registered MSME and a team of skilled professionals delivering reliable, innovative, and affordable digital solutions.",
-    p2: "We help businesses and organizations build a strong digital presence with solutions that are secure, scalable, and future-ready.",
+    p1: "HASVIK Technologies is an Udyam Registered MSME delivering quality-focused, reliable, and practical digital services for businesses and organizations.",
+    p2: "We take a security-conscious approach to the websites, software, product listings, and business support we deliver—with clear communication, careful execution, and solutions shaped around each project's needs.",
     timeline: [
       { date: "5 April 2025", title: "Founded", body: "Our journey began with a vision to make technology accessible for all." },
       {
@@ -162,7 +162,7 @@ export const en = {
     eyebrow: "Our Services",
     title: "Solutions Built for",
     highlight: "Your Success!",
-    subtitle: "Smart, scalable digital services built for business success",
+    subtitle: "Quality-focused, security-conscious digital services, delivered with care and clear communication.",
     tabTech: "Tech",
     tabNonTech: "Non-Tech",
     tabsLabel: "Service categories",
@@ -183,17 +183,24 @@ export const en = {
     related: "Related work",
     otherServices: "Other services",
     pageTitle: "Services",
-    pageIntro: "Tech and non-tech services for businesses, schools and organizations worldwide, delivered by one trusted partner.",
+    pageIntro:
+      "Tech and non-tech services for businesses, schools, and organizations worldwide—with a focus on quality, security-conscious practices, accuracy, and clear communication.",
   },
   why: {
     eyebrow: "Why Choose Us",
     title: "Your Success Is Our",
     highlight: "Priority",
-    subtitle: "Delivering excellence through quality, innovation, and dedication",
+    subtitle: "Quality, security-conscious practices, and dependable communication in every engagement.",
     stats: { completed: "Projects Completed", inProgress: "Projects In Progress", clients: "Happy Clients", years: "Year Experience" },
     cards: [
-      { title: "Quality Focused", body: "Clean, reliable, and scalable digital solutions." },
-      { title: "Passionate Team", body: "A team driven by learning and continuous improvement." },
+      {
+        title: "Quality & Security Focused",
+        body: "We work carefully, consider security throughout delivery, and tailor safeguards to each project's scope.",
+      },
+      {
+        title: "Clear Communication",
+        body: "Understandable updates, agreed expectations, and a collaborative process from start to handover.",
+      },
       { title: "Affordable Pricing", body: "Smart pricing for startups and growing businesses." },
       { title: "Fast Delivery", body: "Timely execution without compromising quality." },
     ],
