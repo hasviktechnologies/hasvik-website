@@ -320,6 +320,8 @@ export const en = {
       sending: "Sending…",
       success: "Thank you! Your request has been sent. We'll contact you soon.",
       error: "Sorry, something went wrong. Please try again or message us on WhatsApp.",
+      actionOutdated: "This page is out of date. Refresh it before trying again.",
+      refreshPage: "Refresh page",
       crmConflict:
         "The CRM couldn't accept this request because it conflicts with its current records. Please contact us on WhatsApp for help.",
       rateLimited: "Too many requests. Please wait a few minutes or message us on WhatsApp.",

@@ -534,19 +534,23 @@ export const services: Service[] = [
       src: "/images/services/ecommerce-marketplace-management.svg",
       alt: { en: "Online marketplace products ready for listing", hi: "लिस्टिंग के लिए तैयार ऑनलाइन मार्केटप्लेस प्रोडक्ट" },
     },
-    title: { en: "E-commerce Marketplace Management", hi: "ई-कॉमर्स मार्केटप्लेस मैनेजमेंट" },
+    title: {
+      en: "E-commerce Product Listing & Marketplace Management",
+      hi: "ई-कॉमर्स प्रोडक्ट लिस्टिंग और मार्केटप्लेस मैनेजमेंट",
+    },
     short: {
-      en: "Organized product listing and seller account support across popular online marketplaces.",
-      hi: "लोकप्रिय ऑनलाइन मार्केटप्लेस पर व्यवस्थित प्रोडक्ट लिस्टिंग और सेलर अकाउंट सहायता।",
+      en: "Product catalog creation, listing uploads and seller account support using client-authorized access for Amazon, Flipkart and Meesho.",
+      hi: "Amazon, Flipkart और Meesho पर ग्राहक की अधिकृत पहुँच से प्रोडक्ट कैटलॉग, लिस्टिंग अपलोड और सेलर अकाउंट सहायता।",
     },
     description: {
-      en: "HASVIK TECHNOLOGIES offers independent seller support for product listings on Amazon, Flipkart and Meesho. Services can include account setup assistance, catalog creation, bulk uploads, listing optimization, inventory and pricing updates, and seller account management. HASVIK TECHNOLOGIES is not affiliated with or endorsed by these marketplaces.",
-      hi: "HASVIK TECHNOLOGIES Amazon, Flipkart और Meesho पर प्रोडक्ट लिस्टिंग के लिए स्वतंत्र सेलर सहायता देता है। सेवाओं में अकाउंट सेटअप सहायता, कैटलॉग निर्माण, बल्क अपलोड, लिस्टिंग ऑप्टिमाइज़ेशन, इन्वेंटरी और कीमत अपडेट तथा सेलर अकाउंट मैनेजमेंट शामिल हो सकते हैं। HASVIK TECHNOLOGIES इन मार्केटप्लेस से संबद्ध या समर्थित नहीं है।",
+      en: "HASVIK TECHNOLOGIES offers independent seller support for product listings on Amazon, Flipkart and Meesho. Services can include account setup assistance, catalog creation, bulk uploads, listing optimization, inventory and pricing updates, and seller account management. We work only with access authorized by the account owner; do not send passwords by email or WhatsApp. Clients are responsible for the accuracy and rights to their product information, images and claims, and for reviewing and approving listings before publication. Marketplace approval, ranking, sales and uninterrupted platform availability are not guaranteed. HASVIK TECHNOLOGIES is not affiliated with or endorsed by these marketplaces.",
+      hi: "HASVIK TECHNOLOGIES Amazon, Flipkart और Meesho पर प्रोडक्ट लिस्टिंग के लिए स्वतंत्र सेलर सहायता देता है। सेवाओं में अकाउंट सेटअप सहायता, कैटलॉग निर्माण, बल्क अपलोड, लिस्टिंग ऑप्टिमाइज़ेशन, इन्वेंटरी और कीमत अपडेट तथा सेलर अकाउंट मैनेजमेंट शामिल हो सकते हैं। हम केवल अकाउंट मालिक द्वारा अधिकृत पहुँच से काम करते हैं; पासवर्ड ईमेल या WhatsApp से न भेजें। प्रोडक्ट जानकारी, तस्वीरों और दावों की सटीकता और उन पर अधिकार ग्राहक की ज़िम्मेदारी है; प्रकाशित करने से पहले लिस्टिंग की समीक्षा और मंज़ूरी भी ग्राहक को देनी होगी। मार्केटप्लेस की मंज़ूरी, रैंकिंग, बिक्री या प्लेटफ़ॉर्म की निरंतर उपलब्धता की गारंटी नहीं है। HASVIK TECHNOLOGIES इन मार्केटप्लेस से संबद्ध या समर्थित नहीं है।",
     },
     features: [
       { en: "Consistent product information across listings", hi: "लिस्टिंग में सुसंगत प्रोडक्ट जानकारी" },
       { en: "Support for bulk catalog workflows", hi: "बल्क कैटलॉग वर्कफ़्लो के लिए सहायता" },
       { en: "Ongoing listing, inventory and pricing updates", hi: "लिस्टिंग, इन्वेंटरी और कीमतों के नियमित अपडेट" },
+      { en: "Account access only with the seller's authorization", hi: "सेलर की अनुमति से ही अकाउंट की पहुँच" },
     ],
     deliverables: [
       { en: "Amazon, Flipkart and Meesho product listing assistance", hi: "Amazon, Flipkart और Meesho प्रोडक्ट लिस्टिंग सहायता" },
@@ -555,6 +559,7 @@ export const services: Service[] = [
       { en: "Product listing optimization", hi: "प्रोडक्ट लिस्टिंग ऑप्टिमाइज़ेशन" },
       { en: "Inventory and pricing updates", hi: "इन्वेंटरी और कीमत अपडेट" },
       { en: "Seller account management support", hi: "सेलर अकाउंट मैनेजमेंट सहायता" },
+      { en: "Listing review and approval workflow agreed with the client", hi: "ग्राहक के साथ तय लिस्टिंग समीक्षा और मंज़ूरी प्रक्रिया" },
     ],
     idealFor: [
       { en: "Sellers organizing a growing product catalog", hi: "बढ़ता प्रोडक्ट कैटलॉग व्यवस्थित करने वाले विक्रेता" },
@@ -567,6 +572,20 @@ export const services: Service[] = [
         a: {
           en: "No. HASVIK TECHNOLOGIES provides independent seller support and is not affiliated with or endorsed by Amazon, Flipkart or Meesho.",
           hi: "नहीं। HASVIK TECHNOLOGIES स्वतंत्र सेलर सहायता देता है और Amazon, Flipkart या Meesho से संबद्ध या समर्थित नहीं है।",
+        },
+      },
+      {
+        q: { en: "Do you guarantee listing approval or sales?", hi: "क्या आप लिस्टिंग की मंज़ूरी या बिक्री की गारंटी देते हैं?" },
+        a: {
+          en: "No. Marketplace decisions, ranking, sales and platform availability are controlled by the marketplaces and market conditions. We do not guarantee those outcomes.",
+          hi: "नहीं। मार्केटप्लेस के निर्णय, रैंकिंग, बिक्री और प्लेटफ़ॉर्म की उपलब्धता मार्केटप्लेस तथा बाज़ार की परिस्थितियों पर निर्भर करती है। हम इन परिणामों की गारंटी नहीं देते।",
+        },
+      },
+      {
+        q: { en: "How do you access our seller account?", hi: "आप हमारे सेलर अकाउंट तक कैसे पहुँचते हैं?" },
+        a: {
+          en: "We work only with access you authorize for the agreed tasks. Never send account passwords by email or WhatsApp; use the marketplace's supported user or delegated-access options where available.",
+          hi: "हम तय कामों के लिए केवल आपके द्वारा अधिकृत पहुँच से काम करते हैं। अकाउंट पासवर्ड ईमेल या WhatsApp से कभी न भेजें; जहाँ उपलब्ध हो, मार्केटप्लेस के समर्थित यूज़र या डेलीगेटेड-एक्सेस विकल्प का उपयोग करें।",
         },
       },
     ],

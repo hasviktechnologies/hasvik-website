@@ -42,6 +42,13 @@ export const privacy: LegalDoc = {
       },
     },
     {
+      heading: { en: "Information handled for client projects", hi: "ग्राहक प्रोजेक्ट के लिए प्रोसेस की गई जानकारी" },
+      body: {
+        en: "For marketplace or other client work, we may access information in a client's account only when authorized and needed for the agreed tasks. If a project requires access to buyer or other individuals' personal information, the permitted data, purposes, access, safeguards and deletion or return arrangements must be agreed with the client in writing before that access is provided. We use such information only for the agreed client work and do not use it for our own marketing. The client remains responsible for its own notices and obligations to buyers; the marketplace may separately process their information under its own privacy terms.",
+        hi: "मार्केटप्लेस या अन्य ग्राहक प्रोजेक्ट के लिए, हम ग्राहक के अकाउंट की जानकारी तक केवल तभी पहुँचते हैं जब इसकी अनुमति हो और तय काम के लिए ज़रूरी हो। यदि किसी प्रोजेक्ट में खरीदारों या अन्य व्यक्तियों की व्यक्तिगत जानकारी तक पहुँच आवश्यक हो, तो उस डेटा, उसके उपयोग के उद्देश्यों, पहुँच, सुरक्षा उपायों और जानकारी हटाने या लौटाने की व्यवस्था पर पहुँच देने से पहले ग्राहक के साथ लिखित सहमति होनी चाहिए। ऐसी जानकारी का उपयोग केवल तय ग्राहक कार्य के लिए किया जाएगा, अपने मार्केटिंग के लिए नहीं। खरीदारों को अपनी सूचनाएँ देने और उनके प्रति अपने दायित्वों का पालन करने की ज़िम्मेदारी ग्राहक की रहती है; मार्केटप्लेस भी अपनी गोपनीयता शर्तों के अनुसार उनकी जानकारी प्रोसेस कर सकता है।",
+      },
+    },
+    {
       heading: { en: "Security concerns", hi: "सुरक्षा संबंधी चिंताएँ" },
       body: {
         en: "To report a suspected security issue affecting this website, email info@hasviktech.com with details that help us investigate. Please avoid accessing, changing or deleting data that is not yours.",
@@ -73,6 +80,13 @@ export const terms: LegalDoc = {
       body: {
         en: "Ownership and handover of project deliverables are as stated in the written project agreement. Unless that agreement says otherwise, client-provided materials remain the client's responsibility, and third-party tools or assets remain subject to their own licence terms. We may show completed work in our portfolio unless you ask us not to.",
         hi: "प्रोजेक्ट के डिलिवरेबल्स का स्वामित्व और हस्तांतरण लिखित प्रोजेक्ट समझौते के अनुसार होगा। जब तक उस समझौते में कुछ और न कहा गया हो, ग्राहक द्वारा दी गई सामग्री की ज़िम्मेदारी ग्राहक की रहेगी और तृतीय-पक्ष टूल या सामग्री उनके अपने लाइसेंस नियमों के अधीन होंगे। आप मना न करें तो हम पूरा हुआ काम अपने पोर्टफ़ोलियो में दिखा सकते हैं।",
+      },
+    },
+    {
+      heading: { en: "Marketplace and account work", hi: "मार्केटप्लेस और अकाउंट का काम" },
+      body: {
+        en: "For marketplace services, the client must provide accurate product details and ensure it has the rights and permissions needed for supplied text, images, trademarks and product claims. The client must review and approve listing content before publication and remains responsible for its seller account, products and compliance with marketplace rules and applicable law. HASVIK Technologies will access accounts only with the account owner's authorization and only for the agreed tasks. Clients should use supported delegated or user access where available and must not send passwords by email or WhatsApp. If agreed work requires access to buyer or other individuals' personal information, the parties must agree in writing beforehand on permitted use, access, safeguards, retention and deletion or return. Marketplace approval, search ranking, sales, account status and uninterrupted platform availability are controlled by third parties and are not guaranteed by HASVIK Technologies. Marketplace names are used only to describe independent support; no affiliation or endorsement is implied.",
+        hi: "मार्केटप्लेस सेवाओं के लिए, ग्राहक को सही प्रोडक्ट विवरण देना और यह सुनिश्चित करना होगा कि दिए गए टेक्स्ट, तस्वीरों, ट्रेडमार्क और प्रोडक्ट दावों के लिए उसके पास आवश्यक अधिकार और अनुमतियाँ हैं। प्रकाशित करने से पहले लिस्टिंग कंटेंट की समीक्षा और मंज़ूरी ग्राहक को देनी होगी; अपने सेलर अकाउंट, प्रोडक्ट और मार्केटप्लेस नियमों तथा लागू कानून के अनुपालन की ज़िम्मेदारी ग्राहक की रहेगी। HASVIK Technologies अकाउंट तक केवल अकाउंट मालिक की अनुमति से और तय कामों के लिए ही पहुँचेगा। जहाँ उपलब्ध हो, ग्राहक समर्थित डेलीगेटेड या यूज़र एक्सेस का उपयोग करें और पासवर्ड ईमेल या WhatsApp से न भेजें। यदि तय काम में खरीदारों या अन्य व्यक्तियों की व्यक्तिगत जानकारी तक पहुँच आवश्यक हो, तो अनुमत उपयोग, पहुँच, सुरक्षा उपायों, जानकारी रखने की अवधि तथा उसे हटाने या लौटाने पर दोनों पक्षों को पहले लिखित सहमति करनी होगी। मार्केटप्लेस की मंज़ूरी, सर्च रैंकिंग, बिक्री, अकाउंट की स्थिति और प्लेटफ़ॉर्म की निरंतर उपलब्धता तृतीय पक्षों के नियंत्रण में हैं और HASVIK Technologies इनकी गारंटी नहीं देता। मार्केटप्लेस के नाम केवल स्वतंत्र सहायता बताने के लिए हैं; किसी संबद्धता या समर्थन का दावा नहीं है।",
       },
     },
     {

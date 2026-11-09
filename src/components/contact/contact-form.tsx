@@ -17,6 +17,10 @@ import { cn } from "@/lib/utils";
 
 type Option = { value: string; label: string };
 
+function isStaleServerActionError(error: unknown) {
+  return error instanceof Error && (error.name === "UnrecognizedActionError" || error.message.includes("was not found on the server"));
+}
+
 type Props = {
   strings: Dictionary["contact"]["form"];
   validation: Dictionary["contact"]["validation"];
@@ -54,10 +58,10 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
   const [sent, setSent] = useState(false);
   const [categories, setCategories] = useState<DemoCategory[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
-  const [categoryError, setCategoryError] = useState<"configuration" | "crm" | null>(null);
+  const [categoryError, setCategoryError] = useState<"configuration" | "crm" | "refresh" | null>(null);
   const [cityOptions, setCityOptions] = useState<string[]>([]);
   const [citiesLoading, setCitiesLoading] = useState(false);
-  const [cityError, setCityError] = useState<"configuration" | "crm" | null>(null);
+  const [cityError, setCityError] = useState<"configuration" | "crm" | "refresh" | null>(null);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
   const [activeCityIndex, setActiveCityIndex] = useState(0);
   const summaryRef = useRef<HTMLDivElement>(null);
@@ -113,8 +117,12 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
         setCategoryError(result.error === "not_configured" ? "configuration" : "crm");
       }
     } catch (error) {
-      console.error("[contact] Could not load CRM categories:", error);
-      setCategoryError("crm");
+      if (isStaleServerActionError(error)) {
+        setCategoryError("refresh");
+      } else {
+        console.error("[contact] Could not load CRM categories:", error);
+        setCategoryError("crm");
+      }
     } finally {
       setCategoriesLoading(false);
     }
@@ -133,8 +141,12 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
           setCategoryError(result.error === "not_configured" ? "configuration" : "crm");
         }
       } catch (error) {
-        console.error("[contact] Could not load CRM categories:", error);
-        if (active) setCategoryError("crm");
+        if (active && isStaleServerActionError(error)) {
+          setCategoryError("refresh");
+        } else if (active) {
+          console.error("[contact] Could not load CRM categories:", error);
+          setCategoryError("crm");
+        }
       } finally {
         if (active) setCategoriesLoading(false);
       }
@@ -169,8 +181,12 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
           setCityError(result.error === "not_configured" ? "configuration" : "crm");
         }
       } catch (error) {
-        console.error("[contact] Could not load matching CRM cities:", error);
-        if (active) setCityError("crm");
+        if (active && isStaleServerActionError(error)) {
+          setCityError("refresh");
+        } else if (active) {
+          console.error("[contact] Could not load matching CRM cities:", error);
+          setCityError("crm");
+        }
       } finally {
         if (active) setCitiesLoading(false);
       }
@@ -217,8 +233,14 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
           res.error === "rate_limited" ? strings.rateLimited : res.error === "crm_conflict" ? strings.crmConflict : strings.error,
         );
       } catch (error) {
-        console.error("[contact] Could not submit quote request:", error);
-        toast.error(strings.error);
+        if (isStaleServerActionError(error)) {
+          toast.error(strings.actionOutdated, {
+            action: { label: strings.refreshPage, onClick: () => window.location.reload() },
+          });
+        } else {
+          console.error("[contact] Could not submit quote request:", error);
+          toast.error(strings.error);
+        }
       }
     });
   };
@@ -490,17 +512,25 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
           ) : null}
           {categoryError ? (
             <p role="status" className="mt-1.5 text-sm text-muted-foreground">
-              {categoryError === "configuration" ? strings.crmUnavailable : strings.categoryLoadError}{" "}
-              {categoryError === "crm" ? (
+              {categoryError === "configuration"
+                ? strings.crmUnavailable
+                : categoryError === "refresh"
+                  ? strings.actionOutdated
+                  : strings.categoryLoadError}{" "}
+              {categoryError === "crm" || categoryError === "refresh" ? (
                 <button
                   type="button"
                   className="font-semibold underline underline-offset-2"
                   onClick={() => {
-                    setCategoriesLoading(true);
-                    void loadCategories();
+                    if (categoryError === "refresh") {
+                      window.location.reload();
+                    } else {
+                      setCategoriesLoading(true);
+                      void loadCategories();
+                    }
                   }}
                 >
-                  {strings.retry}
+                  {categoryError === "refresh" ? strings.refreshPage : strings.retry}
                 </button>
               ) : null}
             </p>
@@ -571,7 +601,16 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
                   <p className="px-3 py-2 text-sm text-muted-foreground">{strings.loadingCities}</p>
                 ) : cityError ? (
                   <p role="status" className="px-3 py-2 text-sm text-muted-foreground">
-                    {cityError === "configuration" ? strings.crmUnavailable : strings.cityLoadError}
+                    {cityError === "configuration"
+                      ? strings.crmUnavailable
+                      : cityError === "refresh"
+                        ? strings.actionOutdated
+                        : strings.cityLoadError}{" "}
+                    {cityError === "refresh" ? (
+                      <button type="button" className="font-semibold underline underline-offset-2" onClick={() => window.location.reload()}>
+                        {strings.refreshPage}
+                      </button>
+                    ) : null}
                   </p>
                 ) : cityOptions.length ? (
                   cityOptions.map((option, index) => (
@@ -602,7 +641,19 @@ export function ContactForm({ strings, validation, privacyHref, techOptions, non
           </div>
           {cityError && !cityMenuOpen ? (
             <p role="status" className="mt-1.5 text-sm text-muted-foreground">
-              {cityError === "configuration" ? strings.crmUnavailable : strings.cityLoadError}
+              {cityError === "configuration"
+                ? strings.crmUnavailable
+                : cityError === "refresh"
+                  ? strings.actionOutdated
+                  : strings.cityLoadError}
+              {cityError === "refresh" ? (
+                <>
+                  {" "}
+                  <button type="button" className="font-semibold underline underline-offset-2" onClick={() => window.location.reload()}>
+                    {strings.refreshPage}
+                  </button>
+                </>
+              ) : null}
             </p>
           ) : null}
           {errors.city ? (

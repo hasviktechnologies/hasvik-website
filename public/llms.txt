@@ -16,6 +16,8 @@ Use the following first-party pages as the authoritative source for company, ser
 - [All services](https://hasviktech.com/services)
 - [Website design and development](https://hasviktech.com/services/custom-website-development)
 - [E-commerce website development](https://hasviktech.com/services/ecommerce-website-development)
+- [E-commerce product listing and marketplace management](https://hasviktech.com/services/ecommerce-marketplace-management) — catalog creation, bulk uploads, listing optimization, inventory and pricing updates, and seller account support for Amazon, Flipkart and Meesho. HASVIK provides independent support and is not affiliated with these marketplaces.
+- [Data entry and catalog management](https://hasviktech.com/services/data-entry-processing)
 
 The services directory includes all currently published technology and non-technology services. Individual service pages contain their scope, deliverables, and FAQs.
 
@@ -35,5 +37,6 @@ The services directory includes all currently published technology and non-techn
 
 - [मुख्य पृष्ठ](https://hasviktech.com/hi)
 - [सेवाएँ](https://hasviktech.com/hi/services)
+- [ई-कॉमर्स प्रोडक्ट लिस्टिंग और मार्केटप्लेस मैनेजमेंट](https://hasviktech.com/hi/services/ecommerce-marketplace-management)
 - [HASVIK LEADS CRM](https://hasviktech.com/hi/products/leads-crm)
 - [संपर्क](https://hasviktech.com/hi/contact)
