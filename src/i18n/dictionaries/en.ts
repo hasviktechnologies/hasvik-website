@@ -1,9 +1,9 @@
 // UI strings (English). hi.ts must mirror this shape — TypeScript enforces it.
 export const en = {
   meta: {
-    defaultTitle: "Website Development Services India | HASVIK Technologies | वेबसाइट बनवाएँ",
+    defaultTitle: "Website Development & Digital Solutions Worldwide | HASVIK Technologies",
     description:
-      "Professional website development services in India. Business websites, e-commerce, educational sites, Google Business listing and data entry, affordable and high quality from rural India. अब Ballia, Maniar, Ghazipur, Varanasi, Prayagraj, Gorakhpur, Mau आदि में वेबसाइट बनवाएँ।",
+      "Professional website development and digital solutions for businesses worldwide. Custom websites, e-commerce, education platforms, Google Business Profile setup, and reliable data services—delivered remotely with care.",
   },
   a11y: {
     skip: "Skip to main content",
@@ -53,7 +53,7 @@ export const en = {
     ctaPrimary: "Explore Services",
     ctaSecondary: "Contact Us",
     ctaCrm: "Explore Leads CRM",
-    trust: ["Udyam Registered MSME", "Founded 2025", "{n}+ Projects", "Serving Eastern UP & beyond"],
+    trust: ["Udyam Registered MSME", "Founded 2025", "{n}+ Projects", "Serving clients worldwide"],
     mockupLabel: "HASVIK LEADS CRM product tour",
     productLabel: "Our First Product",
     productName: "HASVIK LEADS CRM",
@@ -93,6 +93,7 @@ export const en = {
       submitError: "We couldn't send your request. Please try again in a moment.",
       rateLimited: "Too many requests. Please wait a few minutes and try again.",
       privacy: "Your details will be added to our CRM so our team can follow up.",
+      privacyPolicyLink: "Read our Privacy Policy",
       validation: {
         name: "Enter a name with at least 2 characters.",
         phone: "Enter a valid phone number.",
@@ -182,7 +183,7 @@ export const en = {
     related: "Related work",
     otherServices: "Other services",
     pageTitle: "Services",
-    pageIntro: "Tech and non-tech services for small businesses, schools and local shops, all from one trusted partner.",
+    pageIntro: "Tech and non-tech services for businesses, schools and organizations worldwide, delivered by one trusted partner.",
   },
   why: {
     eyebrow: "Why Choose Us",
@@ -324,6 +325,7 @@ export const en = {
       rateLimited: "Too many requests. Please wait a few minutes or message us on WhatsApp.",
       whatsappFallback: "Prefer WhatsApp? Send the same details there",
       privacy: "Your details will be added to our CRM and used to reply to your enquiry.",
+      privacyPolicyLink: "Read our Privacy Policy",
       errorSummary: "Please fix the highlighted fields.",
     },
     validation: {
@@ -344,7 +346,7 @@ export const en = {
     quickLinks: "Quick Links",
     services: "Services",
     getInTouch: "Get In Touch",
-    areas: "Areas we serve",
+    areas: "Locations",
     follow: "Follow us",
     rights: "All rights reserved.",
     madeWith: "Made with ♥ for digital excellence",
@@ -359,7 +361,7 @@ export const en = {
     storyTitle: "Our story",
     story: [
       "HASVIK Technologies was founded on 5 April 2025 with a simple belief: every small business, school and shop deserves a professional digital presence, and talented young people in small towns deserve meaningful tech careers without leaving home.",
-      "Today we design and build websites, set up Google listings and handle data work for clients across Eastern Uttar Pradesh and beyond, while training and mentoring local talent to industry standards.",
+      "Today we design and build websites, set up Google listings and handle data work for clients worldwide, while training and mentoring local talent to industry standards.",
     ],
     missionTitle: "Our mission",
     mission: "Make technology accessible for all, and create opportunities for rural talent to do high-quality digital work.",
@@ -369,18 +371,18 @@ export const en = {
     journey: "Our journey",
     today: {
       date: "Today",
-      title: "Growing across Eastern UP",
+      title: "Serving clients worldwide",
       body: "{projects}+ projects delivered for {clients}+ happy clients, from schools to engineering firms, and the team keeps growing.",
     },
   },
   careersPage: {
     title: "Careers at HASVIK",
-    intro: "Join a growing team that is building real products for real clients, right here in Eastern UP.",
+    intro: "Join a growing team building real products for clients around the world.",
     whyTitle: "Why work with us",
     why: [
       { title: "Real projects", body: "Ship live websites for schools and businesses from your first month." },
       { title: "Industry mentors", body: "Learn from senior frontend and backend engineers." },
-      { title: "Grow locally", body: "Build a tech career without leaving your hometown." },
+      { title: "Grow your skills", body: "Build a tech career while contributing to products for clients worldwide." },
     ],
     rolesTitle: "Open roles",
     noRoles: "We don't have specific openings listed right now, but we're always happy to meet talented people.",
@@ -405,8 +407,9 @@ export const en = {
       "school website {city}",
       "website developer near me",
     ],
-    indexTitle: "Areas We Serve",
-    indexIntro: "Based in Maniar, Ballia, we work with businesses across Eastern Uttar Pradesh, in person and remotely.",
+    indexTitle: "Our Locations",
+    indexIntro:
+      "Based in Maniar, Ballia, we serve clients worldwide through remote collaboration, with in-person support available locally.",
   },
   legal: {
     privacyTitle: "Privacy Policy",

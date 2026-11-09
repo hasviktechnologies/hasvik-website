@@ -8,6 +8,7 @@ export const site = {
   foundedISO: "2025-04-05",
   udyamISO: "2026-08-01",
   domain: "hasviktech.com",
+  serviceArea: "Worldwide",
   tagline: { en: "Innovate. Automate. Grow", hi: "नवाचार. स्वचालन. विकास" } as Localized,
 
   logo: { src: "/images/logo.webp", png: "/images/logo.png", width: 364, height: 124 },

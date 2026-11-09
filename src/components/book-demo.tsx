@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
+import Link from "next/link";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog } from "radix-ui";
@@ -15,11 +16,12 @@ type Props = {
   strings: Dictionary["hero"]["demoForm"];
   triggerLabel: string;
   triggerClassName?: string;
+  privacyHref: string;
 };
 
 const isIndividualCategory = (category: DemoCategory) => /^individuals?$/i.test(category.name.trim());
 
-export function BookDemo({ strings, triggerLabel, triggerClassName }: Props) {
+export function BookDemo({ strings, triggerLabel, triggerClassName, privacyHref }: Props) {
   const [open, setOpen] = useState(false);
   const [categories, setCategories] = useState<DemoCategory[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(false);
@@ -464,7 +466,12 @@ export function BookDemo({ strings, triggerLabel, triggerClassName }: Props) {
                 </div>
               </div>
               <div className="shrink-0 space-y-3 border-t border-border bg-background px-5 py-4 sm:px-7">
-                <p className="text-xs leading-relaxed text-muted-foreground">{strings.privacy}</p>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {strings.privacy}{" "}
+                  <Link href={privacyHref} className="font-medium text-link underline underline-offset-2">
+                    {strings.privacyPolicyLink}
+                  </Link>
+                </p>
                 <button
                   type="submit"
                   disabled={pending || categoriesLoading || !!categoryError || !options.length}

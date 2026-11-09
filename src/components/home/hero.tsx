@@ -98,6 +98,7 @@ export async function Hero() {
 
         <HeroMockup
           shots={shots}
+          productPageUrl={localizePath("/products/leads-crm", locale)}
           label={t.hero.mockupLabel}
           goToLabel={t.a11y.goToSlide}
           previousLabel={t.a11y.previous}
@@ -107,6 +108,7 @@ export async function Hero() {
           exploreCrmLabel={t.hero.ctaCrm}
           bookDemoLabel={t.hero.bookDemo}
           demoStrings={t.hero.demoForm}
+          privacyHref={localizePath("/privacy", locale)}
         />
       </Container>
 

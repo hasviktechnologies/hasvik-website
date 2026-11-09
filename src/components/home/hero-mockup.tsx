@@ -8,14 +8,14 @@ import { useReducedMotion } from "motion/react";
 import { BookDemo } from "@/components/book-demo";
 import { buttonVariants } from "@/components/ui/button";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { leadsCrmUrl } from "@/content/products";
 import { cn } from "@/lib/utils";
-
-const leadsCrmUrl = process.env.NEXT_PUBLIC_LEADS_CRM_URL || "https://salescrm.hasviktech.com/explore-crm";
 
 type Shot = { src: string; width: number; height: number; title: string; description: string };
 
 export function HeroMockup({
   shots,
+  productPageUrl,
   label,
   goToLabel,
   previousLabel,
@@ -25,8 +25,10 @@ export function HeroMockup({
   exploreCrmLabel,
   bookDemoLabel,
   demoStrings,
+  privacyHref,
 }: {
   shots: Shot[];
+  productPageUrl: string;
   label: string;
   goToLabel: string;
   previousLabel: string;
@@ -36,6 +38,7 @@ export function HeroMockup({
   exploreCrmLabel: string;
   bookDemoLabel: string;
   demoStrings: Dictionary["hero"]["demoForm"];
+  privacyHref: string;
 }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -65,7 +68,11 @@ export function HeroMockup({
       <div aria-hidden="true" className="pointer-events-none absolute -inset-8 rounded-[2.5rem] bg-accent/25 blur-3xl" />
 
       <header className="mb-2 flex items-center justify-between gap-3 px-1 sm:mb-3 sm:px-2">
-        <h2 className="truncate text-sm font-bold tracking-wide text-white sm:text-base">{productName}</h2>
+        <h2 className="truncate text-sm font-bold tracking-wide text-white sm:text-base">
+          <Link href={productPageUrl} className="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2">
+            {productName}
+          </Link>
+        </h2>
         <span className="shrink-0 rounded-full border border-white/20 bg-white/[0.08] px-2.5 py-1 text-[0.65rem] font-medium text-white/70 tabular-nums sm:text-xs">
           {String(active + 1).padStart(2, "0")} <span className="text-white/40">/</span> {String(shots.length).padStart(2, "0")}
         </span>
@@ -116,7 +123,12 @@ export function HeroMockup({
                 aria-hidden="true"
               />
             </Link>
-            <BookDemo strings={demoStrings} triggerLabel={bookDemoLabel} triggerClassName="w-full min-[440px]:w-auto" />
+            <BookDemo
+              strings={demoStrings}
+              triggerLabel={bookDemoLabel}
+              triggerClassName="w-full min-[440px]:w-auto"
+              privacyHref={privacyHref}
+            />
           </div>
         </div>
 

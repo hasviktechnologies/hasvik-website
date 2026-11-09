@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { htmlLang, localizePath, ogLocale, tr, type Locale } from "@/i18n/config";
+import { htmlLang, localizePath, ogLocale, type Locale } from "@/i18n/config";
 import { dictionaryFor } from "@/i18n/dictionaries";
 import { site } from "@/content/site";
-import { cities } from "@/content/locations";
 import { absoluteUrl, siteUrl } from "./utils";
 
 /** Per-page metadata with canonical + hreflang alternates. `path` is locale-free ("/about"). */
@@ -64,6 +63,7 @@ export function organizationSchema() {
     email: site.emails.info,
     telephone: site.phone.schema,
     foundingDate: site.foundedISO,
+    areaServed: site.serviceArea,
     sameAs,
   };
 }
@@ -98,7 +98,7 @@ export function localBusinessSchema(locale: Locale) {
       opens: site.hours.opens,
       closes: site.hours.closes,
     },
-    areaServed: cities.map((c) => ({ "@type": "City", name: tr(c.name, "en") })),
+    areaServed: site.serviceArea,
     sameAs,
     aggregateRating: {
       "@type": "AggregateRating",

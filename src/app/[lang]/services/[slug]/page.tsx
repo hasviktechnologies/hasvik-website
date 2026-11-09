@@ -8,7 +8,6 @@ import { getDictionary } from "@/i18n/server";
 import { hasLocale, localizePath, tr } from "@/i18n/config";
 import { getService, publishedServices } from "@/content/services";
 import { projects } from "@/content/projects";
-import { cities } from "@/content/locations";
 import { site, whatsappLink } from "@/content/site";
 import { faqSchema, pageMetadata } from "@/lib/seo";
 import { absoluteUrl, siteUrl } from "@/lib/utils";
@@ -74,7 +73,7 @@ async function ServicePageContent({ params, searchParams }: PageProps<"/[lang]/s
           serviceType: tr(service.title, "en"),
           url: absoluteUrl(L(`/services/${service.slug}`)),
           provider: { "@id": `${siteUrl}/#business`, "@type": "LocalBusiness", name: site.name },
-          areaServed: cities.map((c) => ({ "@type": "City", name: tr(c.name, "en") })),
+          areaServed: site.serviceArea,
           image: absoluteUrl(service.image.src),
         }}
       />

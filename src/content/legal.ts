@@ -1,10 +1,10 @@
-// TODO(owner): have these reviewed by a legal professional before launch.
+// TODO(owner): have these terms and privacy disclosures reviewed by a legal professional before publication.
 import type { Localized } from "@/i18n/config";
 
 export type LegalDoc = { updatedISO: string; sections: { heading: Localized; body: Localized }[] };
 
 export const privacy: LegalDoc = {
-  updatedISO: "2026-10-14",
+  updatedISO: "2026-11-09",
   sections: [
     {
       heading: { en: "Who we are", hi: "हम कौन हैं" },
@@ -16,36 +16,43 @@ export const privacy: LegalDoc = {
     {
       heading: { en: "What we collect", hi: "हम क्या जानकारी लेते हैं" },
       body: {
-        en: "When you submit the quote form we receive your name, phone number, optional email, selected service, budget range and message. We do not ask for payment details on this website.",
-        hi: "कोटेशन फ़ॉर्म भरने पर हमें आपका नाम, फ़ोन नंबर, वैकल्पिक ईमेल, चुनी गई सेवा, बजट और संदेश मिलता है। इस वेबसाइट पर हम भुगतान की जानकारी नहीं माँगते।",
+        en: "When you submit a quote or demo request, we collect the details you provide, which may include your name, phone number, optional email, whether you are enquiring as an individual or business, service or CRM category, city, budget range and project description or notes. We also process your IP address for abuse prevention; it is included in our internal quote notification email. We do not ask for payment details on this website.",
+        hi: "कोटेशन या डेमो अनुरोध भेजने पर, आपके दिए हुए विवरण लिए जाते हैं। इनमें आपका नाम, फ़ोन नंबर, वैकल्पिक ईमेल, व्यक्ति या व्यवसाय के रूप में पूछताछ, सेवा या CRM श्रेणी, शहर, बजट और प्रोजेक्ट का विवरण या नोट्स शामिल हो सकते हैं। दुरुपयोग रोकने के लिए आपका IP पता भी प्रोसेस किया जाता है; यह हमारी आंतरिक कोटेशन सूचना ईमेल में शामिल होता है। इस वेबसाइट पर हम भुगतान की जानकारी नहीं माँगते।",
       },
     },
     {
       heading: { en: "How we use it", hi: "हम इसका उपयोग कैसे करते हैं" },
       body: {
-        en: "Only to reply to your enquiry, prepare a quote and deliver the services you ask for. We never sell your information. Form submissions are delivered to our inbox by our email provider (Resend).",
-        hi: "केवल आपकी पूछताछ का जवाब देने, कोटेशन बनाने और आपकी माँगी सेवाएँ देने के लिए। हम आपकी जानकारी कभी नहीं बेचते। फ़ॉर्म की जानकारी हमारे ईमेल प्रदाता (Resend) के ज़रिए हमारे इनबॉक्स तक पहुँचती है।",
+        en: "We use these details to respond to your enquiry, prepare a quote or demo, and provide requested services. Quote and demo requests are sent to our CRM provider to manage follow-up; quote requests may also be sent to our team by email using Resend. These providers process information to provide their services to us. We do not sell your personal information.",
+        hi: "इन विवरणों का उपयोग आपकी पूछताछ का जवाब देने, कोटेशन या डेमो तैयार करने और माँगी गई सेवाएँ देने के लिए किया जाता है। आगे संपर्क करने के लिए कोटेशन और डेमो अनुरोध हमारे CRM प्रदाता को भेजे जाते हैं; कोटेशन अनुरोध Resend के माध्यम से ईमेल द्वारा हमारी टीम को भी भेजे जा सकते हैं। ये प्रदाता हमें अपनी सेवाएँ देने के लिए जानकारी प्रोसेस करते हैं। हम आपकी व्यक्तिगत जानकारी नहीं बेचते।",
       },
     },
     {
       heading: { en: "Analytics and third parties", hi: "एनालिटिक्स और तृतीय पक्ष" },
       body: {
-        en: "We use privacy-friendly, cookie-less Vercel Analytics to understand page visits in aggregate. The Google Map on our contact page loads only after you click it. WhatsApp links open WhatsApp, which has its own privacy policy.",
-        hi: "हम पेज विज़िट को सामूहिक रूप से समझने के लिए बिना कुकी वाले Vercel Analytics का उपयोग करते हैं। संपर्क पेज का Google मैप आपके क्लिक करने पर ही लोड होता है। WhatsApp लिंक WhatsApp खोलते हैं, जिसकी अपनी गोपनीयता नीति है।",
+        en: "When the site is deployed on Vercel, Vercel Analytics and Speed Insights help us understand site usage and performance. The Google Map on our contact page loads only after you choose to load it. WhatsApp links open WhatsApp, which has its own privacy policy. These third parties may process information under their own privacy terms.",
+        hi: "जब साइट Vercel पर तैनात होती है, तब Vercel Analytics और Speed Insights साइट के उपयोग और प्रदर्शन को समझने में हमारी मदद करते हैं। संपर्क पेज का Google Map आपके उसे लोड करने का विकल्प चुनने के बाद ही लोड होता है। WhatsApp लिंक WhatsApp खोलते हैं, जिसकी अपनी गोपनीयता नीति है। ये तृतीय पक्ष अपनी गोपनीयता शर्तों के अनुसार जानकारी प्रोसेस कर सकते हैं।",
       },
     },
     {
       heading: { en: "Retention and your rights", hi: "रखने की अवधि और आपके अधिकार" },
       body: {
-        en: "We keep enquiry details only as long as needed to serve you. You can ask us to see, correct or delete your information at any time by emailing info@hasviktech.com.",
-        hi: "हम पूछताछ की जानकारी केवल उतने समय रखते हैं जितनी ज़रूरत हो। आप info@hasviktech.com पर ईमेल करके कभी भी अपनी जानकारी देखने, सुधारने या हटाने को कह सकते हैं।",
+        en: "We retain enquiry details for as long as reasonably needed to respond, provide services, maintain business records and meet legal obligations, then delete or anonymise them where practicable. You can ask us to access, correct or delete your information by emailing info@hasviktech.com. We may need to retain some information where the law requires it.",
+        hi: "पूछताछ के विवरण उतने समय तक रखे जाते हैं जितने समय तक जवाब देने, सेवाएँ देने, व्यावसायिक रिकॉर्ड रखने और कानूनी दायित्वों को पूरा करने के लिए उचित रूप से ज़रूरी हों; उसके बाद जहाँ संभव हो उन्हें हटाया या पहचान-रहित किया जाता है। आप info@hasviktech.com पर ईमेल करके अपनी जानकारी देखने, सुधारने या हटाने का अनुरोध कर सकते हैं। कानून की आवश्यकता होने पर कुछ जानकारी रखनी पड़ सकती है।",
+      },
+    },
+    {
+      heading: { en: "Security concerns", hi: "सुरक्षा संबंधी चिंताएँ" },
+      body: {
+        en: "To report a suspected security issue affecting this website, email info@hasviktech.com with details that help us investigate. Please avoid accessing, changing or deleting data that is not yours.",
+        hi: "इस वेबसाइट को प्रभावित करने वाली किसी संदिग्ध सुरक्षा समस्या की सूचना देने के लिए, जाँच में मदद करने वाले विवरण info@hasviktech.com पर ईमेल करें। कृपया किसी ऐसे डेटा को न देखें, न बदलें और न हटाएँ जो आपका नहीं है।",
       },
     },
   ],
 };
 
 export const terms: LegalDoc = {
-  updatedISO: "2026-10-14",
+  updatedISO: "2026-11-09",
   sections: [
     {
       heading: { en: "Services", hi: "सेवाएँ" },
@@ -57,15 +64,15 @@ export const terms: LegalDoc = {
     {
       heading: { en: "Payments", hi: "भुगतान" },
       body: {
-        en: "Projects usually begin after an advance payment, with the balance due before go-live, unless agreed otherwise. All payments are receipted.",
-        hi: "आमतौर पर प्रोजेक्ट अग्रिम भुगतान के बाद शुरू होते हैं और बाक़ी राशि लाइव होने से पहले देनी होती है, जब तक कुछ और तय न हो। हर भुगतान की रसीद दी जाती है।",
+        en: "Payment amounts, milestones, due dates and any applicable taxes are set out in the written project agreement or invoice. Do not rely on a payment schedule unless it has been confirmed in writing.",
+        hi: "भुगतान की राशि, चरण, देय तारीखें और लागू कर लिखित प्रोजेक्ट समझौते या इनवॉइस में दिए जाते हैं। लिखित पुष्टि के बिना किसी भुगतान कार्यक्रम को तय न मानें।",
       },
     },
     {
       heading: { en: "Ownership", hi: "स्वामित्व" },
       body: {
-        en: "Once paid in full, you own your website content and domain. We may show the finished work in our portfolio unless you ask us not to.",
-        hi: "पूरा भुगतान होने पर वेबसाइट का कंटेंट और डोमेन आपका होता है। आप मना न करें तो हम पूरा हुआ काम अपने पोर्टफ़ोलियो में दिखा सकते हैं।",
+        en: "Ownership and handover of project deliverables are as stated in the written project agreement. Unless that agreement says otherwise, client-provided materials remain the client's responsibility, and third-party tools or assets remain subject to their own licence terms. We may show completed work in our portfolio unless you ask us not to.",
+        hi: "प्रोजेक्ट के डिलिवरेबल्स का स्वामित्व और हस्तांतरण लिखित प्रोजेक्ट समझौते के अनुसार होगा। जब तक उस समझौते में कुछ और न कहा गया हो, ग्राहक द्वारा दी गई सामग्री की ज़िम्मेदारी ग्राहक की रहेगी और तृतीय-पक्ष टूल या सामग्री उनके अपने लाइसेंस नियमों के अधीन होंगे। आप मना न करें तो हम पूरा हुआ काम अपने पोर्टफ़ोलियो में दिखा सकते हैं।",
       },
     },
     {
@@ -73,6 +80,13 @@ export const terms: LegalDoc = {
       body: {
         en: "Content on hasviktech.com is for general information. Client names, logos and screenshots belong to their respective owners and are shown with permission.",
         hi: "hasviktech.com की सामग्री सामान्य जानकारी के लिए है। ग्राहकों के नाम, लोगो और स्क्रीनशॉट उनके मालिकों के हैं और अनुमति से दिखाए गए हैं।",
+      },
+    },
+    {
+      heading: { en: "Project changes and cancellation", hi: "प्रोजेक्ट में बदलाव और रद्द करना" },
+      body: {
+        en: "Any changes to scope, revisions, timelines, cancellation, refunds, warranties and liability should be set out in the written project agreement or otherwise agreed in writing. That agreement also governs dispute resolution and applicable law. If it conflicts with these general website terms, the project agreement controls for that project.",
+        hi: "प्रोजेक्ट के दायरे में बदलाव, संशोधन, समय-सीमा, रद्दीकरण, रिफंड, वारंटी और देयता लिखित प्रोजेक्ट समझौते में या अन्य लिखित सहमति से तय होनी चाहिए। विवाद निपटान और लागू कानून भी उसी समझौते के अनुसार होंगे। इन सामान्य वेबसाइट शर्तों और प्रोजेक्ट समझौते में टकराव होने पर, उस प्रोजेक्ट के लिए प्रोजेक्ट समझौता लागू होगा।",
       },
     },
     {

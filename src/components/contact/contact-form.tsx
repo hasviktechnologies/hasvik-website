@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import Link from "next/link";
 import { useForm, useWatch, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -19,6 +20,7 @@ type Option = { value: string; label: string };
 type Props = {
   strings: Dictionary["contact"]["form"];
   validation: Dictionary["contact"]["validation"];
+  privacyHref: string;
   techOptions: Option[];
   nonTechOptions: Option[];
   defaultService?: string;
@@ -46,7 +48,7 @@ function Req({ label }: { label: string }) {
   );
 }
 
-export function ContactForm({ strings, validation, techOptions, nonTechOptions, defaultService = "" }: Props) {
+export function ContactForm({ strings, validation, privacyHref, techOptions, nonTechOptions, defaultService = "" }: Props) {
   const schema = useMemo(() => contactFieldsSchema(validation), [validation]);
   const [pending, startTransition] = useTransition();
   const [sent, setSent] = useState(false);
@@ -633,7 +635,10 @@ export function ContactForm({ strings, validation, techOptions, nonTechOptions, 
       </div>
 
       <p id="cf-privacy" className="text-xs text-muted-foreground">
-        {strings.privacy}
+        {strings.privacy}{" "}
+        <Link href={privacyHref} className="font-medium text-link underline underline-offset-2">
+          {strings.privacyPolicyLink}
+        </Link>
       </p>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

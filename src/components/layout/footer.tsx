@@ -27,6 +27,7 @@ export async function Footer() {
     { href: L("/"), label: t.nav.home },
     { href: L("/about"), label: t.nav.about },
     { href: L("/services"), label: t.nav.services },
+    { href: L("/products/leads-crm"), label: t.hero.productName },
     { href: L("/work"), label: t.nav.work },
     { href: L("/team"), label: t.nav.team },
     { href: L("/careers"), label: t.nav.careers, noPrefetch: true },

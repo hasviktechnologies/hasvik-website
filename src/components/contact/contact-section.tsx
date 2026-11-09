@@ -1,6 +1,6 @@
 import { Briefcase, Clock, Headphones, Info, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { getDictionary } from "@/i18n/server";
-import { tr } from "@/i18n/config";
+import { localizePath, tr } from "@/i18n/config";
 import { fullAddress, site, whatsappLink } from "@/content/site";
 import { nonTechServices, techServices } from "@/content/services";
 import { Container, Section, SectionHeader } from "@/components/ui/section";
@@ -147,6 +147,7 @@ export async function ContactSection({
               <ContactForm
                 strings={t.contact.form}
                 validation={t.contact.validation}
+                privacyHref={localizePath("/privacy", locale)}
                 techOptions={techServices.map(toOption)}
                 nonTechOptions={nonTechServices.map(toOption)}
                 defaultService={defaultService}
