@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Devanagari, Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
@@ -65,7 +66,15 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   };
 }
 
-export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
+export default function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
+  return (
+    <Suspense fallback={null}>
+      <RootLayoutContent params={params}>{children}</RootLayoutContent>
+    </Suspense>
+  );
+}
+
+async function RootLayoutContent({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const t = dictionaryFor(lang);

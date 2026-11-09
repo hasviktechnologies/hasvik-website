@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, CheckCircle2, MapPin, Quote, Star, Target, Wrench } from "lucide-react";
 import { getDictionary } from "@/i18n/server";
@@ -31,7 +32,17 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/work/[slug
   return pageMetadata({ locale: lang, path: `/work/${slug}`, title: project.name, description: tr(project.caseStudy.solution, lang) });
 }
 
-export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/[slug]">) {
+export default function CaseStudyPage({ params, searchParams }: PageProps<"/[lang]/work/[slug]">) {
+  void searchParams;
+  return (
+    <Suspense fallback={null}>
+      <CaseStudyPageContent params={params} searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function CaseStudyPageContent({ params, searchParams }: PageProps<"/[lang]/work/[slug]">) {
+  void searchParams;
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();

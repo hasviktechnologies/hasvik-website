@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, MapPin, Search, Sparkles } from "lucide-react";
 import { getDictionary } from "@/i18n/server";
@@ -38,7 +39,17 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/locations/
   });
 }
 
-export default async function CityPage({ params }: PageProps<"/[lang]/locations/[city]">) {
+export default function CityPage({ params, searchParams }: PageProps<"/[lang]/locations/[city]">) {
+  void searchParams;
+  return (
+    <Suspense fallback={null}>
+      <CityPageContent params={params} searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function CityPageContent({ params, searchParams }: PageProps<"/[lang]/locations/[city]">) {
+  void searchParams;
   const { city: slug } = await params;
   const city = getCity(slug);
   if (!city) notFound();

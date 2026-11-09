@@ -33,14 +33,19 @@ A Husky pre-commit hook runs ESLint and Prettier on staged files (`lint-staged`)
 
 ## 2. Environment variables
 
-| Name                   | Required   | Purpose                                                             |
-| ---------------------- | ---------- | ------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | yes        | Canonical origin, e.g. `https://hasviktech.com` (no trailing slash) |
-| `RESEND_API_KEY`       | production | Sends quote-form emails via [Resend](https://resend.com)            |
-| `CONTACT_TO_EMAIL`     | no         | Inbox that receives quote requests (default `sales@hasviktech.com`) |
-| `CONTACT_FROM_EMAIL`   | no         | Sender. Must be on a domain verified in Resend                      |
+| Name                        | Required   | Purpose                                                             |
+| --------------------------- | ---------- | ------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`      | yes        | Canonical origin, e.g. `https://hasviktech.com` (no trailing slash) |
+| `NEXT_PUBLIC_LEADS_CRM_URL` | yes        | Public URL opened by the “Explore Leads CRM” button                 |
+| `RESEND_API_KEY`            | production | Sends quote-form emails via [Resend](https://resend.com)            |
+| `CONTACT_TO_EMAIL`          | no         | Inbox that receives quote requests (default `sales@hasviktech.com`) |
+| `CONTACT_FROM_EMAIL`        | no         | Sender. Must be on a domain verified in Resend                      |
+| `CRM_API_URL`               | production | Server-only base URL for the CRM API                                |
+| `CRM_API_EMAIL`             | production | Server-only CRM service account used for demo and quote requests    |
+| `CRM_API_PASSWORD`          | production | Server-only CRM service account password                            |
 
 Without `RESEND_API_KEY`, development logs submissions to the terminal. **Production shows an error** so a missing key is noticed straight away.
+The “Explore Leads CRM” button uses `NEXT_PUBLIC_LEADS_CRM_URL`, which is inlined into the client bundle at build time. The Book Demo and Get a Quote forms use `CRM_API_URL` and the CRM credentials only in server actions to submit leads. Quote requests continue to send an email through Resend as well. Configure these values in `.env.local` for development and in the deployment environment for production; never expose the CRM credentials with a `NEXT_PUBLIC_` prefix.
 
 ## 3. Editing content (no coding knowledge needed)
 

@@ -28,7 +28,7 @@ export const services: Service[] = [
     published: true,
     icon: "layout",
     image: {
-      src: "/images/Business.webp",
+      src: "/images/services/custom-website-development.svg",
       alt: { en: "Custom business website shown on laptop and phone", hi: "लैपटॉप और फ़ोन पर दिखती कस्टम बिज़नेस वेबसाइट" },
     },
     title: { en: "Website Design & Development", hi: "वेबसाइट डिज़ाइन और डेवलपमेंट" },
@@ -74,7 +74,7 @@ export const services: Service[] = [
     published: true,
     icon: "shopping-bag",
     image: {
-      src: "/images/shopping.webp",
+      src: "/images/services/ecommerce-website-development.svg",
       alt: { en: "Online store interface with products and cart", hi: "प्रोडक्ट और कार्ट वाला ऑनलाइन स्टोर" },
     },
     title: { en: "E-Commerce Website Development", hi: "ई-कॉमर्स वेबसाइट डेवलपमेंट" },
@@ -162,7 +162,7 @@ export const services: Service[] = [
     published: true,
     icon: "wrench",
     image: {
-      src: "/images/Computer-Screen.webp",
+      src: "/images/services/website-maintenance-support.svg",
       alt: { en: "Website and application maintenance on a computer", hi: "कंप्यूटर पर वेबसाइट और एप्लिकेशन मेंटेनेंस" },
     },
     title: { en: "Software Maintenance & Support", hi: "सॉफ़्टवेयर मेंटेनेंस और सपोर्ट" },
@@ -209,7 +209,7 @@ export const services: Service[] = [
     published: true,
     icon: "map-pin",
     image: {
-      src: "/images/Business.webp",
+      src: "/images/services/google-map-listing.svg",
       alt: { en: "Business online listing and local visibility", hi: "बिज़नेस की ऑनलाइन लिस्टिंग और स्थानीय पहचान" },
     },
     title: { en: "Google Map Listing", hi: "Google मैप लिस्टिंग" },
@@ -253,7 +253,7 @@ export const services: Service[] = [
     published: true,
     icon: "badge-check",
     image: {
-      src: "/images/Business.webp",
+      src: "/images/services/google-business-profile.svg",
       alt: { en: "Business profile and digital content", hi: "बिज़नेस प्रोफ़ाइल और डिजिटल कंटेंट" },
     },
     title: { en: "Digital Business Support", hi: "डिजिटल बिज़नेस सहायता" },
@@ -301,7 +301,7 @@ export const services: Service[] = [
     published: true,
     icon: "code",
     image: {
-      src: "/images/Computer-Screen.webp",
+      src: "/images/services/custom-software-development.svg",
       alt: { en: "Custom business software displayed on a computer", hi: "कंप्यूटर पर दिखता कस्टम बिज़नेस सॉफ़्टवेयर" },
     },
     title: { en: "Custom Software Development", hi: "कस्टम सॉफ़्टवेयर डेवलपमेंट" },
@@ -349,7 +349,7 @@ export const services: Service[] = [
     published: true,
     icon: "palette",
     image: {
-      src: "/images/Computer-Screen.webp",
+      src: "/images/services/ui-ux-design.svg",
       alt: { en: "User interface design displayed on a computer", hi: "कंप्यूटर पर दिखता यूज़र इंटरफ़ेस डिज़ाइन" },
     },
     title: { en: "UI/UX Design", hi: "UI/UX डिज़ाइन" },
@@ -438,7 +438,7 @@ export const services: Service[] = [
     published: true,
     icon: "smartphone",
     image: {
-      src: "/images/Computer-Screen.webp",
+      src: "/images/services/mobile-app-development.svg",
       alt: { en: "Mobile application interface for customers", hi: "ग्राहकों के लिए मोबाइल एप्लिकेशन इंटरफ़ेस" },
     },
     title: { en: "Mobile App Development", hi: "मोबाइल ऐप डेवलपमेंट" },
@@ -531,7 +531,7 @@ export const services: Service[] = [
     published: true,
     icon: "shopping-bag",
     image: {
-      src: "/images/shopping.webp",
+      src: "/images/services/ecommerce-marketplace-management.svg",
       alt: { en: "Online marketplace products ready for listing", hi: "लिस्टिंग के लिए तैयार ऑनलाइन मार्केटप्लेस प्रोडक्ट" },
     },
     title: { en: "E-commerce Marketplace Management", hi: "ई-कॉमर्स मार्केटप्लेस मैनेजमेंट" },
@@ -577,7 +577,7 @@ export const services: Service[] = [
     published: true,
     icon: "database",
     image: {
-      src: "/images/data_entry.webp",
+      src: "/images/services/data-entry-processing.svg",
       alt: { en: "Data entry and processing work on a computer", hi: "कंप्यूटर पर डेटा एंट्री और प्रोसेसिंग" },
     },
     title: { en: "Data Entry & Catalog Management", hi: "डेटा एंट्री और कैटलॉग मैनेजमेंट" },
@@ -622,7 +622,7 @@ export const services: Service[] = [
     published: true,
     icon: "briefcase",
     image: {
-      src: "/images/data_entry.webp",
+      src: "/images/services/business-process-support.svg",
       alt: { en: "Organized business records and data processing", hi: "व्यवस्थित बिज़नेस रिकॉर्ड और डेटा प्रोसेसिंग" },
     },
     title: { en: "Business Process Support", hi: "बिज़नेस प्रोसेस सहायता" },
@@ -710,6 +710,11 @@ export const processSteps: { icon: IconName; title: Localized; body: Localized }
     icon: "code",
     title: { en: "Develop", hi: "डेवलप" },
     body: { en: "Fast, secure, mobile-first build with modern tech.", hi: "आधुनिक तकनीक से तेज़, सुरक्षित, मोबाइल-फ़र्स्ट निर्माण।" },
+  },
+  {
+    icon: "shield-check",
+    title: { en: "Testing", hi: "टेस्टिंग" },
+    body: { en: "We check every detail across devices before launch.", hi: "लॉन्च से पहले हर डिवाइस पर सभी सुविधाओं की जाँच।" },
   },
   {
     icon: "rocket",

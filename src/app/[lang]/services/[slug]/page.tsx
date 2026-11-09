@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, Users } from "lucide-react";
 import { getDictionary } from "@/i18n/server";
@@ -35,7 +36,17 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/services/[
   return pageMetadata({ locale: lang, path: `/services/${slug}`, title: tr(service.title, lang), description: tr(service.short, lang) });
 }
 
-export default async function ServicePage({ params }: PageProps<"/[lang]/services/[slug]">) {
+export default function ServicePage({ params, searchParams }: PageProps<"/[lang]/services/[slug]">) {
+  void searchParams;
+  return (
+    <Suspense fallback={null}>
+      <ServicePageContent params={params} searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function ServicePageContent({ params, searchParams }: PageProps<"/[lang]/services/[slug]">) {
+  void searchParams;
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
